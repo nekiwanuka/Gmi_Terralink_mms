@@ -10,19 +10,21 @@
 <body>
   <div class="auth-shell">
     <aside class="auth-hero">
-      <h1>GMI Inventory<br/>&amp; Operations</h1>
-      <p>Real-time stock visibility across warehouses and storefronts, fast POS, and clear daily reporting — built for mining-supply teams.</p>
-      <ul>
-        <li>Warehouse, store and transfer tracking</li>
-        <li>POS-grade sales terminal</li>
-        <li>Quotations, invoices and receipts</li>
-        <li>Role-based access for every team</li>
-      </ul>
+      <div class="auth-mark">GMI</div>
+      <p class="auth-kicker">GMI Terralink</p>
+      <h1>Mining Inventory<br/>&amp; Management System</h1>
+      <p>Unified control for procurement, stock, sales, finance, payroll, mining operations and traceable business documents.</p>
+      <div class="auth-metrics">
+        <span><strong>24/7</strong> operational access</span>
+        <span><strong>Live</strong> stock visibility</span>
+        <span><strong>Secure</strong> role controls</span>
+      </div>
     </aside>
     <main class="auth-form-wrap">
       <div class="auth-form">
+        <p class="auth-kicker auth-kicker-dark">Authorized Access</p>
         <h2>Welcome back</h2>
-        <p class="auth-sub">Sign in to continue to your workspace.</p>
+        <p class="auth-sub">Sign in to continue to the GMI Terralink workspace.</p>
 
         {% if messages %}
           {% for m in messages %}<div class="msg {% if m.tags == 'error' %}msg-error{% endif %}">{{ m }}</div>{% endfor %}
@@ -36,9 +38,20 @@
           <label>Password</label>{{ form.password }}
           <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
-        <p class="auth-foot">© GMI Terralink · All rights reserved</p>
       </div>
     </main>
+    <footer class="auth-footer">
+      <div>
+        <strong>Contact</strong>
+        <span>Hamdeen Lwanga Close, Mitala Road &middot; Lower Residence, Plot 10/12, Muyenga, Kampala</span>
+        <span>Tel: +256 768 049 940 &middot; CN: +86 177 0195 4464</span>
+        <span>Email: <a href="mailto:gmiterralinkinfo@gmail.com">gmiterralinkinfo@gmail.com</a> &middot; <a href="https://www.gmi-terralink.com" target="_blank" rel="noopener">www.gmi-terralink.com</a></span>
+      </div>
+      <div>
+        <strong>System designed, managed and hosted by Devtown Technologies</strong>
+        <span><a href="https://www.devtownhosting.com" target="_blank" rel="noopener">www.devtownhosting.com</a> &middot; Tel: +256 784 509 809</span>
+      </div>
+    </footer>
   </div>
 </body>
 </html>
