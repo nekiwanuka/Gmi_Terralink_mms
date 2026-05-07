@@ -19,7 +19,7 @@ you don't need to configure Apache aliases.
 
 Compress the project locally (exclude `.venv/`, `__pycache__/`, `db.sqlite3`,
 `media/`, `staticfiles/`, `static/css/site.css.bak`) and upload via cPanel's
-**File Manager** or SFTP. Extract into e.g. `/home/<cpaneluser>/gmi_inventory/`.
+**File Manager** or SFTP. Extract into `/home/gmiterralink26/MIMS/`.
 
 ## 3. Create the Python app in cPanel
 
@@ -28,8 +28,8 @@ cPanel → **Setup Python App** → **Create Application**
 | Field | Value |
 | --- | --- |
 | Python version | 3.11 (or 3.10+) |
-| Application root | `gmi_inventory` |
-| Application URL | the domain or subdomain you want |
+| Application root | `MIMS` |
+| Application URL | `mims.gmiterralink.com` |
 | Application startup file | `passenger_wsgi.py` |
 | Application Entry point | `application` |
 
@@ -54,8 +54,8 @@ PostgreSQL credentials:
 ```env
 DJANGO_SECRET_KEY=replace-with-generated-secret
 DJANGO_DEBUG=False
-DJANGO_ALLOWED_HOSTS=mms.gmiterralink.com
-DJANGO_CSRF_TRUSTED_ORIGINS=https://mms.gmiterralink.com
+DJANGO_ALLOWED_HOSTS=mims.gmiterralink.com
+DJANGO_CSRF_TRUSTED_ORIGINS=https://mims.gmiterralink.com
 DB_ENGINE=django.db.backends.postgresql
 DB_NAME=your_cpanel_db_name
 DB_USER=your_cpanel_db_user
@@ -92,7 +92,7 @@ python manage.py createsuperuser
 ## 6. Restart and test
 
 cPanel → Setup Python App → click **Restart** for your application.
-Visit `https://yourdomain.com/` — you should see the redesigned login screen.
+Visit `https://mims.gmiterralink.com/` — you should see the redesigned login screen.
 
 ## 7. Updating the app
 
@@ -120,8 +120,9 @@ Then click **Restart** in Setup Python App.
 
 | Symptom | Fix |
 | --- | --- |
-| 500 on every page | `tail -n 100 ~/gmi_inventory/stderr.log` (Passenger writes errors here). Usually `DJANGO_ALLOWED_HOSTS` or `STATIC_ROOT` permission. |
+| 500 on every page | `tail -n 100 /home/gmiterralink26/MIMS/stderr.log` (Passenger writes errors here). Usually `DJANGO_ALLOWED_HOSTS` or `STATIC_ROOT` permission. |
 | Static files 404 | Re-run `collectstatic` and **Restart** the app. |
 | `DisallowedHost` | Add the host to `DJANGO_ALLOWED_HOSTS` env var. |
 | `CSRF verification failed` | Add the full `https://...` origin to `DJANGO_CSRF_TRUSTED_ORIGINS`. |
 | Changes don't appear | You forgot to **Restart** the Python App. |
+| Old teal dashboard appears | Remove root-level `index.html`, `styles.css`, and `app.js` from the server, then restart the Python App. Those were legacy prototype files and are no longer in the repo. |

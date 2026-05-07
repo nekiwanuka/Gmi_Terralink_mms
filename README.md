@@ -71,4 +71,4 @@ Open:
 
 ## Note
 
-The earlier static prototype files (`index.html`, `styles.css`, `app.js`) are still present for reference, but the active implementation is now Django-first.
+This repository is Django-first. The old browser-only prototype files were removed so production hosts serve the Django/Passenger app rather than a static `index.html`.

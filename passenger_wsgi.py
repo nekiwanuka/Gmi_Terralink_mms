@@ -7,8 +7,8 @@ application root and expects an `application` callable.
 Steps in cPanel (summary):
 1. cPanel → Setup Python App → Create Application
    - Python version: 3.11 (or 3.10+)
-   - Application root: gmi_inventory   (the folder you uploaded)
-   - Application URL: your domain / subdomain
+    - Application root: MIMS
+    - Application URL: mims.gmiterralink.com
    - Application startup file: passenger_wsgi.py
    - Application Entry point: application
 2. Create a private .env file in the application root; do not commit it.
