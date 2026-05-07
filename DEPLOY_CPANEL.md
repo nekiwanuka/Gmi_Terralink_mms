@@ -53,8 +53,14 @@ If you create a MySQL DB in cPanel:
 - `DB_NAME`, `DB_USER`, `DB_PASSWORD` — exactly as cPanel shows them (they are usually prefixed with your cPanel username, e.g. `cpaneluser_gmi`)
 - `DB_HOST=localhost`
 
-Then add `mysqlclient==2.2.4` (or `psycopg2-binary` for Postgres) to
-`requirements.txt` — uncomment the line that's already there.
+**Production database is PostgreSQL.** Create it via cPanel → **PostgreSQL Databases** (or your managed Postgres provider) and set:
+
+- `DB_ENGINE=django.db.backends.postgresql`
+- `DB_NAME`, `DB_USER`, `DB_PASSWORD` — exactly as cPanel shows them (typically prefixed with your cPanel username, e.g. `cpaneluser_gmi`)
+- `DB_HOST=localhost` (or the provider host)
+- `DB_PORT=5432`
+
+`psycopg2-binary` is already in `requirements.txt` so no further driver setup is needed. SQLite is intended for **local development only** and is not used in production.
 
 ## 5. Install dependencies & migrate
 
@@ -91,8 +97,9 @@ Then click **Restart** in Setup Python App.
 
 ## 8. Notes on database choice
 
-- **SQLite** works fine on cPanel for low-traffic single-tenant deployments — leave `DB_ENGINE` blank. Make sure the `db.sqlite3` file is writable by the cPanel user (`chmod 644` and parent dir `755`).
-- **MySQL** is the recommended cPanel default. Use the **MySQL Databases** tool to create the DB + user, grant *ALL PRIVILEGES*, then set the `DB_*` vars.
+- **PostgreSQL (production, required).** Create the database + role in cPanel → **PostgreSQL Databases** (or your managed Postgres provider). Grant the role full privileges on the DB, then set the `DB_*` env vars (engine `django.db.backends.postgresql`, port `5432`). The `psycopg2-binary` driver is bundled in `requirements.txt`.
+- **SQLite (development only).** Leave `DB_ENGINE` blank locally and Django falls back to `db.sqlite3` in the project root. Do **not** use SQLite in production — it is excluded from deploys and ignored by git.
+- **MySQL (optional alternative).** Supported but not the default. Set `DB_ENGINE=django.db.backends.mysql`, port `3306`, and uncomment `mysqlclient==2.2.4` in `requirements.txt`.
 
 ## 9. Troubleshooting
 

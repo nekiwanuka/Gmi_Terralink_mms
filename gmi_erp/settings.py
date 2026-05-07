@@ -68,6 +68,8 @@ TEMPLATES = [
 WSGI_APPLICATION = "gmi_erp.wsgi.application"
 ASGI_APPLICATION = "gmi_erp.asgi.application"
 
+# Default to SQLite for local development. Production sets DB_ENGINE
+# (PostgreSQL is the supported production engine; MySQL also works).
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -75,7 +77,7 @@ DATABASES = {
     }
 }
 
-# Override DB via environment for cPanel / production (e.g. MySQL or PostgreSQL)
+# Override DB via environment for production (PostgreSQL recommended).
 _db_engine = _env("DB_ENGINE")
 if _db_engine:
     DATABASES["default"] = {
