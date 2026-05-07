@@ -9,7 +9,6 @@ that supports **Setup Python App** (Phusion Passenger).
 | --- | --- |
 | `passenger_wsgi.py` | Entry point cPanel/Passenger calls |
 | `.htaccess` | Security + caching rules |
-| `.env.example` | Environment variable template |
 | `requirements.txt` | Python dependencies (Django, DRF, Pillow, WhiteNoise, dotenv) |
 | `gmi_erp/settings.py` | Reads `DJANGO_SECRET_KEY`, `DJANGO_DEBUG`, `DJANGO_ALLOWED_HOSTS`, `DB_*` from env |
 
@@ -39,22 +38,12 @@ Click **Create**. cPanel will create a virtualenv and print an
 
 ## 4. Configure environment variables
 
-In the same screen click **Add Variable** for each entry from `.env.example`.
-At minimum set:
+In the same screen click **Add Variable** and set these values:
 
 - `DJANGO_SECRET_KEY` — generate with `python -c "import secrets; print(secrets.token_urlsafe(50))"`
 - `DJANGO_DEBUG=False`
 - `DJANGO_ALLOWED_HOSTS=yourdomain.com,www.yourdomain.com`
 - `DJANGO_CSRF_TRUSTED_ORIGINS=https://yourdomain.com,https://www.yourdomain.com`
-
-If you create a MySQL DB in cPanel:
-
-- `DB_ENGINE=django.db.backends.mysql`
-- `DB_NAME`, `DB_USER`, `DB_PASSWORD` — exactly as cPanel shows them (they are usually prefixed with your cPanel username, e.g. `cpaneluser_gmi`)
-- `DB_HOST=localhost`
-
-**Production database is PostgreSQL.** Create it via cPanel → **PostgreSQL Databases** (or your managed Postgres provider) and set:
-
 - `DB_ENGINE=django.db.backends.postgresql`
 - `DB_NAME`, `DB_USER`, `DB_PASSWORD` — exactly as cPanel shows them (typically prefixed with your cPanel username, e.g. `cpaneluser_gmi`)
 - `DB_HOST=localhost` (or the provider host)
