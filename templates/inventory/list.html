@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Inventory{% endblock %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+  <div>
+    <h2>Inventory Ledger</h2>
+    <p class="muted">Warehouse stock is held separately from storefront stock for sales.</p>
+  </div>
+  {% if user_role in "Owner,Admin,General Manager,Warehouse,Warehouse Manager" %}
+  <a href="/inventory/new/" class="btn btn-primary">+ Stock Warehouse</a>
+  {% endif %}
+</div>
+
+<form method="get" style="margin-bottom:10px;display:flex;gap:8px">
+  <input name="q" value="{{ q }}" placeholder="Search by name or SKU…" style="max-width:300px" />
+  <button type="submit" class="btn btn-secondary">Search</button>
+  {% if q %}<a href="/inventory/" class="btn btn-secondary">Clear</a>{% endif %}
+</form>
+
+<div class="panel">
+<table>
+  <thead>
+    <tr>
+      <th>Product</th><th>Category</th><th>Brand</th><th>Supplier</th><th>Unit</th>
+      <th>Warehouse</th><th>Store Front</th><th>Total</th><th>Status</th>
+      <th>Reorder</th><th>Cost</th><th>Price</th>
+      {% if user_role in "Owner,Admin,General Manager,Warehouse,Warehouse Manager" %}<th></th>{% endif %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in items %}
+    <tr>
+      <td>
+        <strong>{{ item.sku }}</strong><br />
+        {{ item.name }}
+        {% if item.barcode %}<div class="muted">{{ item.barcode }}</div>{% endif %}
+      </td>
+      <td>{{ item.category }}</td>
+      <td>{{ item.brand|default:"-" }}</td>
+      <td>{{ item.supplier|default:"-" }}</td>
+      <td>{{ item.unit }}</td>
+      <td>
+        <strong>{{ item.warehouse_qty }}</strong>
+        <div class="muted">{{ warehouse.code }}</div>
+      </td>
+      <td><strong>{{ item.store_qty }}</strong><div class="muted">{{ store.code }}</div></td>
+      <td>{{ item.stock_on_hand }}</td>
+      <td>
+        <span class="badge {% if item.status == 'Available' and item.stock_status == 'In Stock' %}badge-green{% elif item.status == 'Available' and item.stock_status == 'Low Stock' %}badge-yellow{% else %}badge-red{% endif %}">
+          {{ item.status }}{% if item.status == 'Available' %} / {{ item.stock_status }}{% endif %}
+        </span>
+      </td>
+      <td>{{ item.reorder_level }}</td>
+      <td>{{ currency_code }} {{ item.unit_cost|floatformat:0 }}</td>
+      <td>{{ currency_code }} {{ item.selling_price|floatformat:0 }}</td>
+      {% if user_role in "Owner,Admin,General Manager,Warehouse,Warehouse Manager" %}
+      <td><a href="/inventory/{{ item.pk }}/edit/" class="btn btn-secondary btn-sm">Edit</a></td>
+      {% endif %}
+    </tr>
+    {% empty %}
+    <tr><td colspan="13" style="text-align:center;padding:20px">No items found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

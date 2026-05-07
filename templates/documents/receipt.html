@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Receipt {{ receipt.code }} — {{ profile.business_name }}</title>
+  <link rel="stylesheet" href="/static/css/site.css" />
+</head>
+<body class="document">
+
+  <div class="doc-actions">
+    <button onclick="window.print()" class="btn btn-primary btn-sm">Print / Save PDF</button>
+    <a href="/sales/{{ invoice.sales_order.pk }}/" class="btn btn-secondary btn-sm">Back</a>
+  </div>
+
+  <section class="doc-page">
+    <div class="doc-watermark">RECEIPT</div>
+
+    <header class="doc-head">
+      <div class="brand-block">
+        {% if profile.logo %}<img src="{{ profile.logo.url }}" alt="Logo" />{% endif %}
+        <div>
+          <div class="biz-name">{{ profile.business_name }}</div>
+          <div class="biz-meta">
+            {{ profile.business_address|linebreaksbr }}<br/>
+            Tel: {{ profile.business_phone }}<br/>
+            Email: <a href="mailto:{{ profile.business_email }}">{{ profile.business_email }}</a><br/>
+            <a href="https://{{ profile.business_website }}" target="_blank">{{ profile.business_website }}</a>
+          </div>
+        </div>
+      </div>
+      <div class="doc-title-block">
+        <div class="doc-title">Receipt</div>
+        <div class="doc-code">No. {{ receipt.code }}</div>
+        <div class="doc-code">Date: {{ receipt.created_at|date:"d M Y" }}</div>
+      </div>
+    </header>
+
+    <div class="doc-meta-grid">
+      <div class="meta-card">
+        <h4>Received From</h4>
+        <p><strong>{{ client.name }}</strong></p>
+        {% if client.phone %}<p>Tel: {{ client.phone }}</p>{% endif %}
+        {% if client.email %}<p>Email: {{ client.email }}</p>{% endif %}
+      </div>
+      <div class="meta-card">
+        <h4>Payment Details</h4>
+        <p><strong>Invoice:</strong> {{ invoice.code }}</p>
+        <p><strong>Mode:</strong> {{ receipt.payment.mode }}</p>
+        <p><strong>Sales Order:</strong> {{ invoice.sales_order.code }}</p>
+      </div>
+    </div>
+
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th style="width:200px">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Payment received against invoice <strong>{{ invoice.code }}</strong></td>
+          <td>{{ currency_code }} {{ receipt.payment.amount|floatformat:0 }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="doc-totals">
+      <div class="notes-box">
+        This receipt acknowledges payment received in {{ receipt.payment.mode }} towards
+        invoice {{ invoice.code }}. Issued by {{ profile.business_name }}.
+      </div>
+      <div class="totals-box">
+        <div class="row"><span>Invoice Total</span><span>{{ currency_code }} {{ invoice.total_amount|floatformat:0 }}</span></div>
+        <div class="row"><span>This Payment</span><span>{{ currency_code }} {{ receipt.payment.amount|floatformat:0 }}</span></div>
+        <div class="row"><span>Total Paid</span><span>{{ currency_code }} {{ invoice.paid_amount|floatformat:0 }}</span></div>
+        <div class="row grand"><span>Outstanding</span><span>{{ currency_code }} {{ invoice.balance|floatformat:0 }}</span></div>
+      </div>
+    </div>
+
+    <footer class="doc-footer">
+      <div>
+        Thank you for your payment.<br/>
+        {{ profile.business_email }} · {{ profile.business_phone }}
+      </div>
+      <div class="stamp">Received With Thanks</div>
+    </footer>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}New Stock Request{% endblock %}
+{% block content %}
+<h2>Request Stock from Warehouse</h2>
+<p class="muted" style="margin-bottom:14px">This raises a request from the <strong>Main Store</strong> for items currently held in the <strong>Main Warehouse</strong>. After Warehouse approves, fulfilling executes the transfer.</p>
+<div class="panel" style="max-width:520px">
+<form method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <label>Item</label>
+    <select name="item" required>
+      {% for it in items %}
+      <option value="{{ it.pk }}">{{ it.sku }} — {{ it.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-row">
+    <label>Quantity</label>
+    <input type="number" name="quantity" min="1" required />
+  </div>
+  <div class="form-row">
+    <label>Note (optional)</label>
+    <textarea name="note" rows="3"></textarea>
+  </div>
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Raise Request</button>
+    <a href="{% url 'stock_request_list' %}" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>
+</div>
+{% endblock %}

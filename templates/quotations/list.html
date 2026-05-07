@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Quotations{% endblock %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+  <h2>Quotations</h2>
+  {% if user_role in "Owner,Sales" %}
+  <a href="/quotations/new/" class="btn btn-primary">+ New Quotation</a>
+  {% endif %}
+</div>
+
+<form method="get" style="margin-bottom:10px">
+  <select name="status" onchange="this.form.submit()">
+    <option value="">All Statuses</option>
+    {% for val, label in status_choices %}
+      <option value="{{ val }}" {% if val == current_status %}selected{% endif %}>{{ label }}</option>
+    {% endfor %}
+  </select>
+</form>
+
+<div class="panel">
+<table>
+  <thead>
+    <tr>
+      <th>Code</th><th>Client</th><th>Date</th><th>Valid Until</th>
+      <th>Status</th><th>Total ({{ currency_code }})</th><th>Converted To</th><th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for q in quotes %}
+    <tr>
+      <td><a href="/quotations/{{ q.pk }}/">{{ q.code }}</a></td>
+      <td>{{ q.client.name }}</td>
+      <td>{{ q.quote_date|date:"Y-m-d" }}</td>
+      <td>{{ q.valid_until|default:"—" }}</td>
+      <td>
+        <span class="badge {% if q.status == 'Converted' %}badge-green{% elif q.status == 'Rejected' or q.status == 'Expired' %}badge-grey{% else %}badge-yellow{% endif %}">
+          {{ q.status }}
+        </span>
+      </td>
+      <td>{{ q.subtotal|floatformat:0 }}</td>
+      <td>
+        {% if q.converted_sales_order %}
+          <a href="/sales/{{ q.converted_sales_order.pk }}/">{{ q.converted_sales_order.code }}</a>
+        {% else %}—{% endif %}
+      </td>
+      <td>
+        <div style="display:inline-flex;gap:4px">
+          <a href="/quotations/{{ q.pk }}/" class="btn btn-secondary btn-sm">View</a>
+          <a href="/documents/quotation/{{ q.pk }}/" class="btn btn-secondary btn-sm" target="_blank" title="Preview / Print">Preview</a>
+        </div>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="8" style="text-align:center;padding:20px">No quotations yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

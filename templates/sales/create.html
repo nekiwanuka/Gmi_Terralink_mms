@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block title %}POS Terminal{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h2>Point of Sale</h2>
+    <p class="muted">Sales are fulfilled from storefront inventory only.</p>
+  </div>
+  <a href="/inventory/requests/new/" class="btn btn-secondary btn-sm">Request Store Stock</a>
+</div>
+<div class="panel pos-panel">
+<form method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div>
+      <label class="form-label">Customer</label>
+      <select name="client" class="form-input">
+        <option value="">Walk-in customer</option>
+        {% for c in clients %}
+          <option value="{{ c.pk }}">{{ c.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="form-label">Payment Method</label>
+      <select name="payment_method">
+        {% for value, label in payment_modes %}<option value="{{ value }}">{{ label }}</option>{% endfor %}
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div>
+      <label class="form-label">Amount Paid ({{ currency_code }})</label>
+      <input type="number" name="deposit" value="0" min="0" step="0.01" />
+    </div>
+    <div>
+      <label class="form-label">Discount ({{ currency_code }})</label>
+      <input type="number" name="discount" id="discount" value="0" min="0" step="0.01" oninput="updateTotals()" />
+    </div>
+    <div>
+      <label class="form-label">Tax ({{ currency_code }})</label>
+      <input type="number" name="tax" id="tax" value="0" min="0" step="0.01" oninput="updateTotals()" />
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:8px;padding-bottom:2px">
+      <input type="checkbox" name="allow_no_stock_override" id="override" style="width:auto" />
+      <label for="override" style="font-size:.88rem">Allow backorder</label>
+    </div>
+  </div>
+
+  <h3 style="margin:14px 0 8px">Cart</h3>
+  <table class="lines-table">
+    <thead>
+      <tr><th>#</th><th>Product Search / Barcode</th><th>Store Stock</th><th>Qty</th><th>Unit Price ({{ currency_code }})</th><th>Line Total</th><th></th></tr>
+    </thead>
+    <tbody id="lines-body">
+      <tr>
+        <td>1</td>
+        <td>
+          <select name="line_0_item" id="item_0" onchange="updateStock(0); updateTotals();" class="form-input">
+            <option value="">— select item —</option>
+            {% for item in items %}
+            <option value="{{ item.pk }}" data-stock="{{ item.store_stock }}" data-price="{{ item.selling_price }}">
+              {{ item.sku }}{% if item.barcode %} / {{ item.barcode }}{% endif %} — {{ item.name }}
+            </option>
+            {% endfor %}
+          </select>
+        </td>
+        <td id="stock_0">—</td>
+        <td><input type="number" name="line_0_qty" min="1" value="1" style="width:70px" oninput="updateTotals()" /></td>
+        <td><input type="number" name="line_0_price" step="0.01" min="0" id="price_0" value="0" style="width:110px" oninput="updateTotals()" /></td>
+        <td id="line_total_0">0</td>
+        <td><button type="button" class="btn btn-danger btn-sm" onclick="removeLine(this)">✕</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-secondary btn-sm" id="add-line" onclick="addLine()">+ Add Line</button>
+
+  <div class="pos-summary">
+    <div><span>Subtotal</span><strong>{{ currency_code }} <b id="subtotal">0</b></strong></div>
+    <div><span>Discount</span><strong>{{ currency_code }} <b id="discount_total">0</b></strong></div>
+    <div><span>Tax</span><strong>{{ currency_code }} <b id="tax_total">0</b></strong></div>
+    <div class="summary-total"><span>Total</span><strong>{{ currency_code }} <b id="grand_total">0</b></strong></div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Complete Sale &amp; Generate Receipt</button>
+    <a href="/sales/" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+const itemData = {
+  {% for item in items %}
+  {{ item.pk }}: { stock: {{ item.store_stock }}, price: "{{ item.selling_price }}" },
+  {% endfor %}
+};
+const itemOptions = `<option value="">— select item —</option>` +
+  [{% for item in items %}
+    `<option value="{{ item.pk }}" data-stock="{{ item.store_stock }}" data-price="{{ item.selling_price }}">{{ item.sku }}{% if item.barcode %} / {{ item.barcode }}{% endif %} — {{ item.name|escapejs }}</option>`,
+  {% endfor %}].join('');
+
+let lineCount = 1;
+
+function updateStock(idx) {
+  const sel = document.getElementById(`item_${idx}`);
+  const pk = sel.value;
+  const stockEl = document.getElementById(`stock_${idx}`);
+  const priceEl = document.getElementById(`price_${idx}`);
+  if (pk && itemData[pk]) {
+    stockEl.textContent = itemData[pk].stock;
+    priceEl.value = itemData[pk].price;
+  } else {
+    stockEl.textContent = "—";
+  }
+}
+
+function numberValue(selector) {
+  const value = parseFloat(document.querySelector(selector)?.value || '0');
+  return Number.isFinite(value) ? value : 0;
+}
+
+function updateTotals() {
+  let subtotal = 0;
+  document.querySelectorAll('#lines-body tr').forEach((row) => {
+    const qty = parseFloat(row.querySelector('input[name$="_qty"]')?.value || '0') || 0;
+    const price = parseFloat(row.querySelector('input[name$="_price"]')?.value || '0') || 0;
+    const total = qty * price;
+    subtotal += total;
+    const totalCell = row.querySelector('td[id^="line_total_"]');
+    if (totalCell) totalCell.textContent = total.toFixed(0);
+  });
+  const discount = numberValue('#discount');
+  const tax = numberValue('#tax');
+  document.getElementById('subtotal').textContent = subtotal.toFixed(0);
+  document.getElementById('discount_total').textContent = discount.toFixed(0);
+  document.getElementById('tax_total').textContent = tax.toFixed(0);
+  document.getElementById('grand_total').textContent = Math.max(0, subtotal - discount + tax).toFixed(0);
+}
+
+function addLine() {
+  const tbody = document.getElementById('lines-body');
+  const idx = lineCount++;
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td>${idx + 1}</td>
+    <td><select name="line_${idx}_item" id="item_${idx}" onchange="updateStock(${idx}); updateTotals();" class="form-input">${itemOptions}</select></td>
+    <td id="stock_${idx}">—</td>
+    <td><input type="number" name="line_${idx}_qty" min="1" value="1" style="width:70px" oninput="updateTotals()" /></td>
+    <td><input type="number" name="line_${idx}_price" step="0.01" min="0" id="price_${idx}" value="0" style="width:110px" oninput="updateTotals()" /></td>
+    <td id="line_total_${idx}">0</td>
+    <td><button type="button" class="btn btn-danger btn-sm" onclick="removeLine(this)">✕</button></td>
+  `;
+  tbody.appendChild(tr);
+}
+
+function removeLine(btn) {
+  if (document.querySelectorAll('#lines-body tr').length > 1)
+    btn.closest('tr').remove();
+  updateTotals();
+}
+
+updateTotals();
+</script>
+{% endblock %}

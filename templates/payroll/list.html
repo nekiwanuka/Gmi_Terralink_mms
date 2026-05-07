@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Worker Pay Records{% endblock %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+  <div>
+    <h2>Worker Pay Records</h2>
+    <p class="muted">Payroll is tracked separately for mining activities and is not deducted from sales totals.</p>
+  </div>
+  <a href="/payroll/new/" class="btn btn-primary">+ Record Worker Pay</a>
+</div>
+
+<form method="get" style="margin-bottom:12px;display:flex;gap:8px;align-items:center">
+  <label class="form-label" style="margin-bottom:0">Filter Month:</label>
+  <input type="month" name="month" value="{{ month }}" />
+  <button type="submit" class="btn btn-secondary btn-sm">Filter</button>
+  {% if month %}<a href="/payroll/" class="btn btn-secondary btn-sm">Clear</a>{% endif %}
+</form>
+
+<div class="kpis" style="grid-template-columns:repeat(1,minmax(0,1fr));margin-bottom:16px">
+  <article>
+    <p style="font-size:.78rem;opacity:.8">Total Worker Pay Recorded</p>
+    <h3>{{ currency_code }} {{ totals.total_pay|default:0|floatformat:0 }}</h3>
+  </article>
+</div>
+
+<div class="panel">
+<table>
+  <thead>
+    <tr>
+      <th>Date</th><th>Worker</th><th>Department</th><th>Mining Activity</th><th>Role / Job</th><th>Worker Pay</th><th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for entry in entries %}
+    <tr>
+      <td>{{ entry.date }}</td>
+      <td>{{ entry.worker_name|default:"-" }}</td>
+      <td>{{ entry.department }}</td>
+      <td>{{ entry.mining_activity|default:"-" }}</td>
+      <td>{{ entry.role }}</td>
+      <td>{{ currency_code }} {{ entry.pay_per_role|floatformat:0 }}</td>
+      <td>{{ entry.notes }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="7" style="text-align:center;padding:20px">No payroll entries found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GMI ERP - GMI TERRALINK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-shape bg-shape-a"></div>
+  <div class="bg-shape bg-shape-b"></div>
+
+  <header class="topbar">
+    <div class="brand-wrap">
+      <img id="headerLogo" class="brand-logo hidden" alt="GMI logo" />
+      <div>
+        <h1>GMI ERP</h1>
+        <p id="headerBusinessName">GMI TERRALINK</p>
+      </div>
+    </div>
+    <div class="chip" id="todayDate"></div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-tab="dashboard">Dashboard</button>
+    <button class="tab" data-tab="procurement">Procurement & Import</button>
+    <button class="tab" data-tab="inventory">Inventory</button>
+    <button class="tab" data-tab="sales">Orders & Sales</button>
+    <button class="tab" data-tab="billing">Billing & Finance</button>
+    <button class="tab" data-tab="contacts">Contacts</button>
+    <button class="tab" data-tab="mining">Mining Ops</button>
+    <button class="tab" data-tab="settings">Settings</button>
+  </nav>
+
+  <main>
+    <section class="tab-pane active" id="dashboard">
+      <h2>Business Dashboard</h2>
+      <div id="alerts" class="alerts"></div>
+      <div class="kpis" id="kpis"></div>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Fast Moving Items</h3>
+          <div id="fastMoving"></div>
+        </div>
+        <div class="panel">
+          <h3>Out of Stock</h3>
+          <div id="outOfStock"></div>
+        </div>
+        <div class="panel">
+          <h3>Top Customers</h3>
+          <div id="topCustomers"></div>
+        </div>
+        <div class="panel">
+          <h3>Mining Trend (Monthly)</h3>
+          <div id="miningTrend"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-pane" id="procurement">
+      <h2>Procurement & Import</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Create Purchase Order</h3>
+          <form id="poForm" class="stack">
+            <label>Supplier
+              <select id="poSupplier" required></select>
+            </label>
+            <label>Expected Shipment Date
+              <input type="date" id="poExpectedDate" required />
+            </label>
+            <div class="line-item-controls">
+              <select id="poItem"></select>
+              <input type="number" id="poQty" min="1" placeholder="Qty" />
+              <input type="number" id="poPrice" min="0" step="0.01" placeholder="Unit Price" />
+              <button type="button" id="addPoLine">Add Line</button>
+            </div>
+            <div id="poLines" class="line-list"></div>
+            <button type="submit">Create PO</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3>PO List & Shipment Tracking</h3>
+          <div id="poTable"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Warehouse Receiving</h3>
+        <form id="receivingForm" class="stack">
+          <label>Purchase Order
+            <select id="receivingPo" required></select>
+          </label>
+          <div id="receivingLines" class="line-list"></div>
+          <button type="submit">Confirm Receiving & Update Inventory</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="tab-pane" id="inventory">
+      <h2>Inventory Management</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Add / Update Item</h3>
+          <form id="itemForm" class="stack">
+            <label>SKU
+              <input id="itemSku" required />
+            </label>
+            <label>Part Name
+              <input id="itemName" required />
+            </label>
+            <label>Category
+              <input id="itemCategory" placeholder="Drilling, Crushing..." required />
+            </label>
+            <label>Unit
+              <input id="itemUnit" placeholder="Piece, Set, Ton" required />
+            </label>
+            <label>Reorder Level
+              <input id="itemReorder" type="number" min="0" value="10" required />
+            </label>
+            <label>Unit Cost
+              <input id="itemCost" type="number" min="0" step="0.01" value="0" required />
+            </label>
+            <button type="submit">Save Item</button>
+          </form>
+        </div>
+        <div class="panel">
+          <h3>Stock Summary</h3>
+          <div id="inventoryTable"></div>
+          <div class="subtle" id="inventoryValuation"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-pane" id="sales">
+      <h2>Customer Orders & Sales</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Create Customer Order</h3>
+          <form id="orderForm" class="stack">
+            <label>Client
+              <select id="orderClient" required></select>
+            </label>
+            <label>Estimated Delivery Date
+              <input type="date" id="orderEta" required />
+            </label>
+            <label>Allow Override if Stock = 0
+              <input type="checkbox" id="orderOverride" />
+            </label>
+            <div class="line-item-controls">
+              <select id="orderItem"></select>
+              <input type="number" id="orderQty" min="1" placeholder="Qty" />
+              <input type="number" id="orderPrice" min="0" step="0.01" placeholder="Selling Price" />
+              <button type="button" id="addOrderLine">Add Line</button>
+            </div>
+            <div id="orderLines" class="line-list"></div>
+            <label>Deposit Paid
+              <input type="number" id="orderDeposit" min="0" step="0.01" value="0" />
+            </label>
+            <button type="submit">Create Order</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3>Orders</h3>
+          <div id="ordersTable"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-pane" id="billing">
+      <h2>Billing & Financials</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Record Payment</h3>
+          <form id="paymentForm" class="stack">
+            <label>Invoice
+              <select id="paymentInvoice" required></select>
+            </label>
+            <label>Amount
+              <input type="number" id="paymentAmount" min="0.01" step="0.01" required />
+            </label>
+            <label>Mode
+              <select id="paymentMode" required>
+                <option value="Cash">Cash</option>
+                <option value="Mobile Money">Mobile Money</option>
+                <option value="Bank">Bank</option>
+              </select>
+            </label>
+            <button type="submit">Record Payment & Generate Receipt</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3>Record Expense (Money Out)</h3>
+          <form id="expenseForm" class="stack">
+            <label>Type
+              <select id="expenseType" required>
+                <option value="Supplier Invoice">Supplier Invoice</option>
+                <option value="Logistics">Logistics</option>
+                <option value="Local Service">Local Service</option>
+              </select>
+            </label>
+            <label>Supplier (Optional)
+              <select id="expenseSupplier"></select>
+            </label>
+            <label>Amount
+              <input type="number" id="expenseAmount" min="0.01" step="0.01" required />
+            </label>
+            <label>Notes
+              <input id="expenseNotes" />
+            </label>
+            <button type="submit">Record Expense</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3>Invoices & Balances</h3>
+          <div id="invoiceTable"></div>
+        </div>
+
+        <div class="panel">
+          <h3>Receipts</h3>
+          <div id="receiptTable"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-pane" id="contacts">
+      <h2>Contact Management</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Suppliers</h3>
+          <form id="supplierForm" class="stack">
+            <label>Name
+              <input id="supplierName" required />
+            </label>
+            <label>Country
+              <select id="supplierCountry" required>
+                <option value="China">China</option>
+                <option value="Uganda">Uganda</option>
+                <option value="Local">Local</option>
+              </select>
+            </label>
+            <label>Contact Person
+              <input id="supplierContact" required />
+            </label>
+            <label>Payment Terms
+              <input id="supplierTerms" placeholder="30% deposit, 70% after shipping" required />
+            </label>
+            <button type="submit">Save Supplier</button>
+          </form>
+          <div id="supplierTable"></div>
+        </div>
+
+        <div class="panel">
+          <h3>Clients</h3>
+          <form id="clientForm" class="stack">
+            <label>Name
+              <input id="clientName" required />
+            </label>
+            <label>Phone
+              <input id="clientPhone" required />
+            </label>
+            <label>Email
+              <input id="clientEmail" type="email" required />
+            </label>
+            <label>Credit Limit
+              <input id="clientCredit" type="number" min="0" step="0.01" value="0" required />
+            </label>
+            <button type="submit">Save Client</button>
+          </form>
+          <div id="clientTable"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-pane" id="mining">
+      <h2>Mining Operations</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Daily Production Entry</h3>
+          <form id="miningForm" class="stack">
+            <label>Date
+              <input type="date" id="miningDate" required />
+            </label>
+            <label>Mineral Type
+              <input id="miningMineral" required />
+            </label>
+            <label>Quantity Produced
+              <input id="miningQty" type="number" min="0" step="0.01" required />
+            </label>
+            <label>Hours Worked
+              <input id="miningHours" type="number" min="0" step="0.01" required />
+            </label>
+            <label>Production Line
+              <input id="miningLine" required />
+            </label>
+            <label>Line Staff Count
+              <input id="miningStaff" type="number" min="0" required />
+            </label>
+            <label>Number of Expatriates
+              <input id="miningExpats" type="number" min="0" required />
+            </label>
+            <label>Labor Cost (UGX)
+              <input id="miningLaborCost" type="number" min="0" step="0.01" required />
+            </label>
+            <button type="submit">Save Production Entry</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3>Production Analysis</h3>
+          <div id="miningTable"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-pane" id="settings">
+      <h2>System Settings</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Business Profile</h3>
+          <form id="settingsForm" class="stack">
+            <label>Business Name
+              <input id="businessName" required />
+            </label>
+            <label>Business Address
+              <textarea id="businessAddress" rows="4" required></textarea>
+            </label>
+            <label>Upload Logo
+              <input id="businessLogo" type="file" accept="image/*" />
+            </label>
+            <button type="submit">Save Settings</button>
+          </form>
+          <p class="subtle">Invoices and receipts automatically use this information.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Document Templates Preview</h3>
+          <div id="documentPreview"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <template id="docTemplate">
+    <div class="doc-wrap">
+      <div class="doc-head">
+        <img class="doc-logo" />
+        <div>
+          <h2 class="doc-title"></h2>
+          <h3 class="doc-business"></h3>
+          <p class="doc-address"></p>
+        </div>
+      </div>
+      <div class="doc-body"></div>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

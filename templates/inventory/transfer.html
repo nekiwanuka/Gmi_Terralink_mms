@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Stock Transfer{% endblock %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+  <h2>Stock Transfer</h2>
+  <div style="display:flex;gap:.5rem">
+    <a href="/inventory/" class="btn btn-secondary btn-sm">Stock Items</a>
+    <a href="/inventory/locations/" class="btn btn-secondary btn-sm">Locations</a>
+    <a href="/inventory/movements/" class="btn btn-secondary btn-sm">Movements</a>
+  </div>
+</div>
+
+<div class="form-panel">
+<form method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group">
+      <label>Item</label>
+      <select name="item" required>
+        <option value="">— Select item —</option>
+        {% for it in items %}<option value="{{ it.pk }}">{{ it.sku }} — {{ it.name }} (on hand: {{ it.stock_on_hand }})</option>{% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Quantity</label>
+      <input type="number" name="quantity" min="1" required />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label>From (source)</label>
+      <select name="source" required>
+        <option value="">— Source location —</option>
+        {% for loc in locations %}<option value="{{ loc.pk }}">{{ loc.code }} ({{ loc.kind }})</option>{% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label>To (destination)</label>
+      <select name="destination" required>
+        <option value="">— Destination location —</option>
+        {% for loc in locations %}<option value="{{ loc.pk }}">{{ loc.code }} ({{ loc.kind }})</option>{% endfor %}
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Note</label>
+    <input name="note" placeholder="Reason / reference" />
+  </div>
+  <button class="btn btn-primary" type="submit">Record Transfer</button>
+</form>
+</div>
+{% endblock %}

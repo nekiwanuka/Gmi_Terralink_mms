@@ -1,0 +1,34 @@
+# cPanel / Apache + Passenger configuration for the Django app.
+# Place this file in the application root (next to passenger_wsgi.py).
+# cPanel's "Setup Python App" usually creates its own .htaccess in the
+# domain document root that points to this app — DO NOT delete that one.
+
+# Force HTTPS (uncomment if your cPanel provides SSL and you want to enforce it)
+# RewriteEngine On
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Cache static assets aggressively
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css                 "access plus 7 days"
+  ExpiresByType application/javascript   "access plus 7 days"
+  ExpiresByType image/png                "access plus 30 days"
+  ExpiresByType image/jpeg               "access plus 30 days"
+  ExpiresByType image/svg+xml            "access plus 30 days"
+  ExpiresByType image/webp               "access plus 30 days"
+  ExpiresByType font/woff2               "access plus 90 days"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Block access to sensitive files
+<FilesMatch "^(\.env|\.git|db\.sqlite3|manage\.py|passenger_wsgi\.py|requirements\.txt)$">
+  Require all denied
+</FilesMatch>
+
+<DirectoryMatch "(^|/)\.(git|venv|vscode)(/|$)">
+  Require all denied
+</DirectoryMatch>

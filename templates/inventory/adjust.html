@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Stock Adjustment{% endblock %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+  <h2>Stock Adjustment</h2>
+  <div style="display:flex;gap:.5rem">
+    <a href="/inventory/" class="btn btn-secondary btn-sm">Stock Items</a>
+    <a href="/inventory/locations/" class="btn btn-secondary btn-sm">Locations</a>
+    <a href="/inventory/movements/" class="btn btn-secondary btn-sm">Movements</a>
+  </div>
+</div>
+
+<div class="form-panel">
+<form method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group">
+      <label>Item</label>
+      <select name="item" required>
+        <option value="">— Select item —</option>
+        {% for it in items %}<option value="{{ it.pk }}">{{ it.sku }} — {{ it.name }} (on hand: {{ it.stock_on_hand }})</option>{% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Location</label>
+      <select name="location" required>
+        <option value="">— Location —</option>
+        {% for loc in locations %}<option value="{{ loc.pk }}">{{ loc.code }} ({{ loc.kind }})</option>{% endfor %}
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Direction</label>
+      <select name="direction" required>
+        <option value="add">Add (+)</option>
+        <option value="remove">Remove (−)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Quantity</label>
+      <input type="number" name="quantity" min="1" required />
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Reason (audit trail)</label>
+    <input name="reason" required placeholder="e.g. Damage, count correction, theft, found" />
+  </div>
+  <button class="btn btn-primary" type="submit">Record Adjustment</button>
+</form>
+</div>
+{% endblock %}

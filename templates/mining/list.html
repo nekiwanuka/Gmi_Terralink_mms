@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Mining — Production{% endblock %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+  <h2>Mining — Production Entries</h2>
+  <a href="/mining/new/" class="btn btn-primary">+ Log Entry</a>
+</div>
+
+<form method="get" style="margin-bottom:12px;display:flex;gap:8px;align-items:center">
+  <label class="form-label" style="margin-bottom:0">Filter Month:</label>
+  <input type="month" name="month" value="{{ month }}" />
+  <button type="submit" class="btn btn-secondary btn-sm">Filter</button>
+  {% if month %}<a href="/mining/" class="btn btn-secondary btn-sm">Clear</a>{% endif %}
+</form>
+
+<div class="kpis" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:16px">
+  <article>
+    <p style="font-size:.78rem;opacity:.8">Total Produced (t)</p>
+    <h3>{{ totals.total_produced|default:0|floatformat:2 }}</h3>
+  </article>
+  <article>
+    <p style="font-size:.78rem;opacity:.8">Total Hours</p>
+    <h3>{{ totals.total_hours|default:0|floatformat:1 }}</h3>
+  </article>
+</div>
+
+<div class="panel">
+<table>
+  <thead>
+    <tr>
+      <th>Date</th><th>Mineral</th><th>Line</th><th>Produced (t)</th>
+      <th>Hours</th><th>Output/Hr</th><th>Staff</th><th>Expats</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for e in entries %}
+    <tr>
+      <td>{{ e.date }}</td>
+      <td>{{ e.mineral_type }}</td>
+      <td>{{ e.production_line }}</td>
+      <td>{{ e.quantity_produced|floatformat:2 }}</td>
+      <td>{{ e.hours_worked|floatformat:1 }}</td>
+      <td>{{ e.output_per_hour|floatformat:3 }}</td>
+      <td>{{ e.line_staff_count }}</td>
+      <td>{{ e.expatriates_count }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="8" style="text-align:center;padding:20px">No entries found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

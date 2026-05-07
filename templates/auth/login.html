@@ -1,0 +1,44 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign in — GMI Inventory</title>
+  <link rel="stylesheet" href="/static/css/site.css" />
+</head>
+<body>
+  <div class="auth-shell">
+    <aside class="auth-hero">
+      <h1>GMI Inventory<br/>&amp; Operations</h1>
+      <p>Real-time stock visibility across warehouses and storefronts, fast POS, and clear daily reporting — built for mining-supply teams.</p>
+      <ul>
+        <li>Warehouse, store and transfer tracking</li>
+        <li>POS-grade sales terminal</li>
+        <li>Quotations, invoices and receipts</li>
+        <li>Role-based access for every team</li>
+      </ul>
+    </aside>
+    <main class="auth-form-wrap">
+      <div class="auth-form">
+        <h2>Welcome back</h2>
+        <p class="auth-sub">Sign in to continue to your workspace.</p>
+
+        {% if messages %}
+          {% for m in messages %}<div class="msg {% if m.tags == 'error' %}msg-error{% endif %}">{{ m }}</div>{% endfor %}
+        {% endif %}
+        {% if form.non_field_errors %}
+          <div class="msg msg-error">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        <form method="post">{% csrf_token %}
+          <label>Username</label>{{ form.username }}
+          <label>Password</label>{{ form.password }}
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+        <p class="auth-foot">© GMI Terralink · All rights reserved</p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

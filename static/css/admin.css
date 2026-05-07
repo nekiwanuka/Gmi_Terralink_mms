@@ -1,0 +1,157 @@
+:root {
+  --primary: #0b6b5f;
+  --secondary: #123d37;
+  --accent: #34b39f;
+  --primary-fg: #ffffff;
+  --body-bg: #f3f7f5;
+  --body-fg: #14231f;
+  --header-color: #ffffff;
+  --breadcrumbs-bg: #123d37;
+  --link-fg: #087467;
+  --link-selected-fg: #0b6b5f;
+  --hairline-color: #d9e5e1;
+  --border-color: #d9e5e1;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--body-bg);
+}
+
+#header {
+  min-height: 72px;
+  background: linear-gradient(135deg, #0b6b5f, #123d37);
+  box-shadow: 0 8px 24px rgba(11, 107, 95, 0.18);
+}
+
+.gmi-admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gmi-admin-mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #0b6b5f;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.gmi-admin-brand h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.15;
+}
+
+.gmi-admin-brand h1 a:link,
+.gmi-admin-brand h1 a:visited {
+  color: #ffffff;
+}
+
+.gmi-admin-brand p {
+  margin: 3px 0 0;
+  color: #d5eee8;
+  font-size: .78rem;
+}
+
+#user-tools {
+  font-size: .78rem;
+}
+
+#nav-global {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-left: 18px;
+}
+
+.gmi-admin-link:link,
+.gmi-admin-link:visited {
+  color: #e8fffb;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 8px;
+  padding: 6px 10px;
+  text-decoration: none;
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.gmi-admin-link:hover {
+  background: rgba(255,255,255,.12);
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+  background: #0b6b5f;
+  color: #ffffff;
+}
+
+.module,
+.inline-group,
+#content-related {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #d9e5e1;
+  box-shadow: 0 8px 20px rgba(18, 61, 55, 0.06);
+}
+
+.object-tools a:link,
+.object-tools a:visited,
+.button,
+input[type=submit],
+input[type=button],
+.submit-row input,
+a.button {
+  background: #0b6b5f;
+  border-radius: 8px;
+}
+
+.button.default,
+input[type=submit].default,
+.submit-row input.default {
+  background: #123d37;
+}
+
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+.submit-row input:hover,
+a.button:hover {
+  background: #087467;
+}
+
+#changelist-filter h2 {
+  background: #123d37;
+}
+
+#changelist table thead th {
+  background: #eef6f3;
+}
+
+.gmi-admin-thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #d9e5e1;
+  background: #fff;
+}
+
+@media (max-width: 900px) {
+  #header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #nav-global {
+    margin-left: 0;
+  }
+}

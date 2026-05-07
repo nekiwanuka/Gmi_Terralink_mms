@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | GMI Inventory Admin{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock %}
+
+{% block branding %}
+<div class="gmi-admin-brand">
+  <div class="gmi-admin-mark">GI</div>
+  <div>
+    <h1 id="site-name"><a href="{% url 'admin:index' %}">GMI Inventory Admin</a></h1>
+    <p>Warehouse, store front, sales and stock control</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block nav-global %}
+<a class="gmi-admin-link" href="/">Dashboard</a>
+<a class="gmi-admin-link" href="/inventory/">Inventory Ledger</a>
+<a class="gmi-admin-link" href="/sales/new/">POS</a>
+<a class="gmi-admin-link" href="/reports/">Reports</a>
+{% endblock %}

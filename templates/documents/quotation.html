@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Quotation {{ quote.code }} — {{ profile.business_name }}</title>
+  <link rel="stylesheet" href="/static/css/site.css" />
+</head>
+<body class="document">
+
+  <div class="doc-actions">
+    <button onclick="window.print()" class="btn btn-primary btn-sm">Print / Save PDF</button>
+    <a href="/quotations/{{ quote.pk }}/" class="btn btn-secondary btn-sm">Back</a>
+  </div>
+
+  <section class="doc-page">
+    {% if quote.status == 'Converted' %}<div class="doc-watermark">CONVERTED</div>
+    {% elif quote.status == 'Rejected' or quote.status == 'Expired' %}<div class="doc-watermark">{{ quote.status|upper }}</div>
+    {% else %}<div class="doc-watermark">QUOTATION</div>{% endif %}
+
+    <header class="doc-head">
+      <div class="brand-block">
+        {% if profile.logo %}<img src="{{ profile.logo.url }}" alt="Logo" />{% endif %}
+        <div>
+          <div class="biz-name">{{ profile.business_name }}</div>
+          <div class="biz-meta">
+            {{ profile.business_address|linebreaksbr }}<br/>
+            Tel: {{ profile.business_phone }}<br/>
+            Email: <a href="mailto:{{ profile.business_email }}">{{ profile.business_email }}</a><br/>
+            <a href="https://{{ profile.business_website }}" target="_blank">{{ profile.business_website }}</a>
+          </div>
+        </div>
+      </div>
+      <div class="doc-title-block">
+        <div class="doc-title">Quotation</div>
+        <div class="doc-code">No. {{ quote.code }}</div>
+        <div class="doc-code">Date: {{ quote.quote_date|date:"d M Y" }}</div>
+        {% if quote.valid_until %}<div class="doc-code">Valid Until: {{ quote.valid_until|date:"d M Y" }}</div>{% endif %}
+      </div>
+    </header>
+
+    <div class="doc-meta-grid">
+      <div class="meta-card">
+        <h4>Prepared For</h4>
+        <p><strong>{{ quote.client.name }}</strong></p>
+        {% if quote.client.phone %}<p>Tel: {{ quote.client.phone }}</p>{% endif %}
+        {% if quote.client.email %}<p>Email: {{ quote.client.email }}</p>{% endif %}
+      </div>
+      <div class="meta-card">
+        <h4>Quotation Status</h4>
+        <p><strong>Status:</strong> {{ quote.status }}</p>
+        <p><strong>Currency:</strong> {{ currency_code }}</p>
+        {% if quote.converted_sales_order %}<p><strong>Order:</strong> {{ quote.converted_sales_order.code }}</p>{% endif %}
+      </div>
+    </div>
+
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th style="width:48px">#</th>
+          <th>Description</th>
+          <th style="width:90px">Qty</th>
+          <th style="width:140px">Unit Price</th>
+          <th style="width:150px">Line Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for line in lines %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>
+              <strong>{{ line.item.name }}</strong><br/>
+              <span style="color:#4a5c58;font-size:.78rem">SKU: {{ line.item.sku }}</span>
+            </td>
+            <td>{{ line.quantity }} {{ line.item.unit }}</td>
+            <td>{{ currency_code }} {{ line.unit_price|floatformat:0 }}</td>
+            <td>{{ currency_code }} {{ line.line_total|floatformat:0 }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="doc-totals">
+      <div class="notes-box">
+        <strong>Terms &amp; Conditions:</strong><br/>
+        Prices quoted in {{ currency_code }}{% if quote.valid_until %} and valid until <strong>{{ quote.valid_until|date:"d M Y" }}</strong>{% endif %}.
+        Subject to stock availability at time of order. Acceptance of this quotation constitutes
+        a binding agreement to purchase from {{ profile.business_name }}.
+        {% if quote.notes %}<br/><br/><strong>Notes:</strong><br/>{{ quote.notes|linebreaksbr }}{% endif %}
+      </div>
+      <div class="totals-box">
+        <div class="row"><span>Subtotal</span><span>{{ currency_code }} {{ quote.subtotal|floatformat:0 }}</span></div>
+        <div class="row grand"><span>Total</span><span>{{ currency_code }} {{ quote.subtotal|floatformat:0 }}</span></div>
+      </div>
+    </div>
+
+    <footer class="doc-footer">
+      <div>
+        We look forward to serving you.<br/>
+        {{ profile.business_email }} · {{ profile.business_phone }}
+      </div>
+      <div class="stamp">Quotation</div>
+    </footer>
+  </section>
+
+</body>
+</html>

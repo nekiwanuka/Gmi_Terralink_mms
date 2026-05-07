@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Stock Requests{% endblock %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+  <h2>Stock Requests</h2>
+  <a href="{% url 'stock_request_create' %}" class="btn btn-primary">+ New Request</a>
+</div>
+<p class="muted" style="margin-bottom:14px">The shop floor (Store) requests stock from the Warehouse. Warehouse approves and fulfills as a transfer.</p>
+<div class="panel">
+<table>
+  <thead>
+    <tr>
+      <th>#</th><th>Item</th><th>Qty</th>
+      <th>From</th><th>To</th>
+      <th>Status</th><th>By</th><th>When</th>
+      <th style="width:300px">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in requests %}
+    <tr>
+      <td>REQ-{{ r.pk }}</td>
+      <td>{{ r.item.sku }} — {{ r.item.name }}</td>
+      <td>{{ r.quantity }}</td>
+      <td>{{ r.source.code }}</td>
+      <td>{{ r.destination.code }}</td>
+      <td><span class="status-pill status-{{ r.status|lower }}">{{ r.status }}</span></td>
+      <td>{{ r.requested_by|default:"-" }}</td>
+      <td>{{ r.created_at|date:"Y-m-d H:i" }}</td>
+      <td>
+        {% if r.status == "Pending" %}
+          <form method="post" action="{% url 'stock_request_decide' r.pk %}" style="display:inline">
+            {% csrf_token %}
+            <button name="action" value="approve" class="btn btn-primary btn-sm">Approve</button>
+            <button name="action" value="reject" class="btn btn-secondary btn-sm">Reject</button>
+          </form>
+          <form method="post" action="{% url 'stock_request_cancel' r.pk %}" style="display:inline">
+            {% csrf_token %}
+            <button class="btn btn-secondary btn-sm">Cancel</button>
+          </form>
+        {% elif r.status == "Approved" %}
+          <form method="post" action="{% url 'stock_request_fulfill' r.pk %}" style="display:inline">
+            {% csrf_token %}
+            <button class="btn btn-primary btn-sm">Fulfill (Transfer)</button>
+          </form>
+          <form method="post" action="{% url 'stock_request_cancel' r.pk %}" style="display:inline">
+            {% csrf_token %}
+            <button class="btn btn-secondary btn-sm">Cancel</button>
+          </form>
+        {% elif r.status == "Fulfilled" and r.fulfilled_movement_id %}
+          <span class="muted">MV-{{ r.fulfilled_movement_id }}</span>
+        {% else %}
+          <span class="muted">—</span>
+        {% endif %}
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="9" class="muted">No requests yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

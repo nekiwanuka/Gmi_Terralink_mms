@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Billing{% endblock %}
+{% block content %}
+<h2>Billing — Invoices</h2>
+<div class="kpis" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:16px">
+  <article><p style="font-size:.78rem;opacity:.8">Total Invoiced</p><h3>{{ currency_code }} {{ total_invoiced|floatformat:0 }}</h3></article>
+  <article><p style="font-size:.78rem;opacity:.8">Total Paid</p><h3>{{ currency_code }} {{ total_paid|floatformat:0 }}</h3></article>
+  <article><p style="font-size:.78rem;opacity:.8">Outstanding</p><h3>{{ currency_code }} {{ total_balance|floatformat:0 }}</h3></article>
+</div>
+
+<div class="panel">
+<table>
+  <thead>
+    <tr>
+      <th>Invoice</th><th>Client</th><th>Order</th><th>Total</th>
+      <th>Paid</th><th>Balance</th><th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for inv in invoices %}
+    <tr>
+      <td>{{ inv.code }}</td>
+      <td>{{ inv.client.name }}</td>
+      <td><a href="/sales/{{ inv.sales_order.pk }}/">{{ inv.sales_order.code }}</a></td>
+      <td>{{ currency_code }} {{ inv.total_amount|floatformat:0 }}</td>
+      <td>{{ currency_code }} {{ inv.paid_amount|floatformat:0 }}</td>
+      <td>
+        <span class="badge {% if inv.balance == 0 %}badge-green{% else %}badge-red{% endif %}">
+          {{ currency_code }} {{ inv.balance|floatformat:0 }}
+        </span>
+      </td>
+      <td>
+        <a href="/documents/invoice/{{ inv.pk }}/" class="btn btn-secondary btn-sm" target="_blank">Print</a>
+        {% if inv.balance > 0 %}
+        <form method="post" action="/billing/pay/{{ inv.pk }}/" class="inline-form" style="margin-top:4px">
+          {% csrf_token %}
+          <input type="number" name="amount" placeholder="Amount" min="0.01" step="0.01" style="width:120px" />
+          <select name="mode" style="width:auto">
+            {% for val, label in payment_modes %}<option value="{{ val }}">{{ label }}</option>{% endfor %}
+          </select>
+          <button type="submit" class="btn btn-primary btn-sm">Pay</button>
+        </form>
+        {% endif %}
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="7" style="text-align:center;padding:20px">No invoices yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

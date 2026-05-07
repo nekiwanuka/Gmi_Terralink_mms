@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}New Quotation{% endblock %}
+{% block content %}
+<h2>New Quotation</h2>
+<div class="panel form-panel">
+<form method="post">
+  {% csrf_token %}
+  <div class="form-row">
+    <div>
+      <label class="form-label">Client</label>
+      <select name="client" class="form-input">
+        <option value="">— select client —</option>
+        {% for c in clients %}
+          <option value="{{ c.pk }}" {% if form.client.value|stringformat:"s" == c.pk|stringformat:"s" %}selected{% endif %}>{{ c.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="form-label">Quote Date</label>
+      <input type="date" name="quote_date" class="form-input" value="{{ form.quote_date.value|default:'' }}" />
+    </div>
+    <div>
+      <label class="form-label">Valid Until</label>
+      <input type="date" name="valid_until" class="form-input" value="{{ form.valid_until.value|default:'' }}" />
+    </div>
+  </div>
+  <div class="form-row">
+    <div style="grid-column: 1 / -1">
+      <label class="form-label">Notes</label>
+      <textarea name="notes" rows="2" class="form-input">{{ form.notes.value|default:'' }}</textarea>
+    </div>
+  </div>
+
+  <h3 style="margin:14px 0 8px">Quotation Lines</h3>
+  <table class="lines-table">
+    <thead>
+      <tr><th>#</th><th>Item</th><th>Stock</th><th>Qty</th><th>Unit Price ({{ currency_code }})</th><th></th></tr>
+    </thead>
+    <tbody id="lines-body">
+      <tr>
+        <td>1</td>
+        <td>
+          <select name="line_0_item" id="item_0" onchange="updateStock(0)" class="form-input">
+            <option value="">— select item —</option>
+            {% for item in items %}
+            <option value="{{ item.pk }}">{{ item.sku }} — {{ item.name }}</option>
+            {% endfor %}
+          </select>
+        </td>
+        <td id="stock_0">—</td>
+        <td><input type="number" name="line_0_qty" min="1" value="1" style="width:70px" /></td>
+        <td><input type="number" name="line_0_price" step="0.01" min="0" id="price_0" value="0" style="width:110px" /></td>
+        <td><button type="button" class="btn btn-danger btn-sm" onclick="removeLine(this)">✕</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-secondary btn-sm" onclick="addLine()">+ Add Line</button>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Save Quotation</button>
+    <a href="/quotations/" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+const itemData = {
+  {% for item in items %}
+  {{ item.pk }}: { stock: {{ item.available_stock }}, price: "{{ item.unit_cost }}" },
+  {% endfor %}
+};
+const itemOptions = `<option value="">— select item —</option>` +
+  [{% for item in items %}
+    `<option value="{{ item.pk }}">{{ item.sku }} — {{ item.name|escapejs }}</option>`,
+  {% endfor %}].join('');
+
+let lineCount = 1;
+function updateStock(idx) {
+  const sel = document.getElementById(`item_${idx}`);
+  const pk = sel.value;
+  const stockEl = document.getElementById(`stock_${idx}`);
+  const priceEl = document.getElementById(`price_${idx}`);
+  if (pk && itemData[pk]) {
+    stockEl.textContent = itemData[pk].stock;
+    priceEl.value = itemData[pk].price;
+  } else {
+    stockEl.textContent = "—";
+  }
+}
+function addLine() {
+  const tbody = document.getElementById('lines-body');
+  const idx = lineCount++;
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td>${idx + 1}</td>
+    <td><select name="line_${idx}_item" id="item_${idx}" onchange="updateStock(${idx})" class="form-input">${itemOptions}</select></td>
+    <td id="stock_${idx}">—</td>
+    <td><input type="number" name="line_${idx}_qty" min="1" value="1" style="width:70px" /></td>
+    <td><input type="number" name="line_${idx}_price" step="0.01" min="0" id="price_${idx}" value="0" style="width:110px" /></td>
+    <td><button type="button" class="btn btn-danger btn-sm" onclick="removeLine(this)">✕</button></td>
+  `;
+  tbody.appendChild(tr);
+}
+function removeLine(btn) {
+  if (document.querySelectorAll('#lines-body tr').length > 1)
+    btn.closest('tr').remove();
+}
+</script>
+{% endblock %}

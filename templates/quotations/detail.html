@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block title %}Quotation {{ quote.code }}{% endblock %}
+{% block content %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+  <h2>Quotation {{ quote.code }}</h2>
+  <div style="display:flex;gap:6px">
+    <a href="/documents/quotation/{{ quote.pk }}/" class="btn btn-secondary btn-sm" target="_blank">Print</a>
+    <a href="/quotations/" class="btn btn-secondary btn-sm">← Back</a>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="panel">
+    <h3>Details</h3>
+    <table>
+      <tr><th>Client</th><td>{{ quote.client.name }}</td></tr>
+      <tr><th>Quote Date</th><td>{{ quote.quote_date|date:"Y-m-d" }}</td></tr>
+      <tr><th>Valid Until</th><td>{{ quote.valid_until|default:"—" }}</td></tr>
+      <tr><th>Status</th><td>
+        <span class="badge {% if quote.status == 'Converted' %}badge-green{% elif quote.status == 'Rejected' or quote.status == 'Expired' %}badge-grey{% else %}badge-yellow{% endif %}">{{ quote.status }}</span>
+      </td></tr>
+      {% if quote.converted_sales_order %}
+      <tr><th>Converted To</th><td><a href="/sales/{{ quote.converted_sales_order.pk }}/">{{ quote.converted_sales_order.code }}</a></td></tr>
+      {% endif %}
+      {% if quote.notes %}<tr><th>Notes</th><td>{{ quote.notes|linebreaksbr }}</td></tr>{% endif %}
+    </table>
+
+    {% if quote.status != 'Converted' and user_role in "Owner,Sales" %}
+    <h4 style="margin-top:14px">Update Status</h4>
+    <form method="post" action="/quotations/{{ quote.pk }}/status/" class="inline-form">
+      {% csrf_token %}
+      <select name="status">
+        {% for val, label in status_choices %}
+          {% if val != 'Converted' %}
+          <option value="{{ val }}" {% if val == quote.status %}selected{% endif %}>{{ label }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn btn-secondary btn-sm">Save</button>
+    </form>
+    {% endif %}
+  </div>
+
+  <div class="panel">
+    <h3>Line Items</h3>
+    <table>
+      <thead><tr><th>Item</th><th>Qty</th><th>Unit Price</th><th>Total</th></tr></thead>
+      <tbody>
+        {% for line in quote.lines.all %}
+        <tr>
+          <td>{{ line.item.sku }} — {{ line.item.name }}</td>
+          <td>{{ line.quantity }}</td>
+          <td>{{ line.unit_price|floatformat:0 }}</td>
+          <td>{{ line.line_total|floatformat:0 }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr><th colspan="3">Subtotal</th><th>{{ currency_code }} {{ quote.subtotal|floatformat:0 }}</th></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  {% if quote.is_convertible and user_role in "Owner,Sales,Finance" %}
+  <div class="panel">
+    <h3>Convert to Sales Order &amp; Invoice</h3>
+    <form method="post" action="/quotations/{{ quote.pk }}/convert/">
+      {% csrf_token %}
+      <div class="form-row">
+        <div>
+          <label class="form-label">Est. Delivery Date</label>
+          <input type="date" name="estimated_delivery_date" class="form-input" />
+        </div>
+        <div>
+          <label class="form-label">Deposit ({{ currency_code }})</label>
+          <input type="number" name="deposit" value="0" min="0" step="0.01" class="form-input" />
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:8px;padding-bottom:8px">
+          <input type="checkbox" name="allow_no_stock_override" id="ovr" style="width:auto" />
+          <label for="ovr" style="font-size:.88rem">Allow zero-stock override</label>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Convert to Invoice</button>
+      </div>
+    </form>
+  </div>
+  {% endif %}
+
+  <div class="panel">
+    <h3>Documents</h3>
+    <p class="muted" style="margin-bottom:10px">
+      The original quotation copy is always preserved, even after conversion.
+    </p>
+    <ul class="doc-list">
+      <li>
+        <div class="doc-list-info">
+          <span class="badge badge-yellow">Quotation</span>
+          <strong>{{ quote.code }}</strong>
+          <span class="muted">{{ quote.quote_date|date:"d M Y" }}</span>
+          <span class="badge {% if quote.status == 'Converted' %}badge-green{% else %}badge-grey{% endif %}">{{ quote.status }}</span>
+        </div>
+        <div class="doc-list-actions">
+          <a href="/documents/quotation/{{ quote.pk }}/" class="btn btn-secondary btn-sm" target="_blank">Preview</a>
+        </div>
+      </li>
+      {% if converted_invoice %}
+      <li>
+        <div class="doc-list-info">
+          <span class="badge badge-green">Invoice</span>
+          <strong>{{ converted_invoice.code }}</strong>
+          <span class="muted">{{ converted_invoice.created_at|date:"d M Y" }}</span>
+          {% if converted_invoice.is_locked %}<span class="badge badge-success">Paid · Locked</span>{% endif %}
+        </div>
+        <div class="doc-list-actions">
+          <a href="/sales/{{ quote.converted_sales_order.pk }}/" class="btn btn-secondary btn-sm">Open Order</a>
+          <a href="/documents/invoice/{{ converted_invoice.pk }}/" class="btn btn-secondary btn-sm" target="_blank">Preview</a>
+        </div>
+      </li>
+      {% endif %}
+      {% for r in converted_receipts %}
+      <li>
+        <div class="doc-list-info">
+          <span class="badge badge-green">Receipt</span>
+          <strong>{{ r.code }}</strong>
+          <span class="muted">{{ r.created_at|date:"d M Y" }} · {{ currency_code }} {{ r.payment.amount|floatformat:0 }} · {{ r.payment.mode }}</span>
+        </div>
+        <div class="doc-list-actions">
+          <a href="/documents/receipt/{{ r.pk }}/" class="btn btn-secondary btn-sm" target="_blank">Preview</a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

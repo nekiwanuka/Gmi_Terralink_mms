@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — GMI Inventory{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h2>Operations Dashboard</h2>
+    <p class="muted">Warehouse stock, storefront stock, transfers, and sales performance.</p>
+  </div>
+  <div class="quick-actions">
+    <a href="/inventory/new/" class="btn btn-primary btn-sm">Stock Warehouse</a>
+    <a href="/sales/new/" class="btn btn-secondary btn-sm">Open POS</a>
+  </div>
+</div>
+
+<div class="kpis">
+  <article>
+    <p style="font-size:.78rem;opacity:.8">Warehouse Units</p>
+    <h3>{{ warehouse_stock }}</h3>
+  </article>
+  <article>
+    <p style="font-size:.78rem;opacity:.8">Store Front Units</p>
+    <h3>{{ storefront_stock }}</h3>
+  </article>
+  <article>
+    <p style="font-size:.78rem;opacity:.8">Sales Today</p>
+    <h3>{{ currency_code }} {{ today_sales|floatformat:0 }}</h3>
+  </article>
+  <article>
+    <p style="font-size:.78rem;opacity:.8">Pending Requests</p>
+    <h3>{{ pending_requests }}</h3>
+  </article>
+  <article>
+    <p style="font-size:.78rem;opacity:.8">Month Sales</p>
+    <h3>{{ currency_code }} {{ month_sales|floatformat:0 }}</h3>
+  </article>
+  <article>
+    <p style="font-size:.78rem;opacity:.8">Low-Stock Items</p>
+    <h3>{{ low_stock_count }}</h3>
+  </article>
+  <article>
+    <p style="font-size:.78rem;opacity:.8">Outstanding</p>
+    <h3>{{ currency_code }} {{ outstanding|floatformat:0 }}</h3>
+  </article>
+  <article>
+    <p style="font-size:.78rem;opacity:.8">Supplier Dues</p>
+    <h3>{{ currency_code }} {{ supplier_dues|floatformat:0 }}</h3>
+  </article>
+</div>
+
+<div class="grid" style="margin-top:16px">
+  <div class="panel">
+    <h3>Alerts</h3>
+    <ul>{% for a in alerts %}<li>{{ a }}</li>{% endfor %}</ul>
+  </div>
+  <div class="panel">
+    <h3>Fast-Moving Products</h3>
+    <table>
+      <thead><tr><th>Product</th><th>Qty Sold</th><th>Revenue</th></tr></thead>
+      <tbody>
+        {% for p in top_products %}
+        <tr><td>{{ p.item__sku }} — {{ p.item__name }}</td><td>{{ p.qty }}</td><td>{{ currency_code }} {{ p.revenue|floatformat:0 }}</td></tr>
+        {% empty %}<tr><td colspan="3">No sales delivered yet</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="panel">
+    <h3>Recent Sales Orders</h3>
+    <table>
+      <thead><tr><th>Code</th><th>Client</th><th>Status</th></tr></thead>
+      <tbody>
+        {% for o in recent_orders %}
+        <tr>
+          <td><a href="/sales/{{ o.pk }}/">{{ o.code }}</a></td>
+          <td>{{ o.client.name }}</td>
+          <td>{{ o.status }}</td>
+        </tr>
+        {% empty %}<tr><td colspan="3">No orders yet</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="panel">
+    <h3>Recent Purchase Orders</h3>
+    <table>
+      <thead><tr><th>Code</th><th>Supplier</th><th>Status</th></tr></thead>
+      <tbody>
+        {% for p in recent_pos %}
+        <tr>
+          <td>{{ p.code }}</td>
+          <td>{{ p.supplier.name }}</td>
+          <td>{{ p.status }}</td>
+        </tr>
+        {% empty %}<tr><td colspan="3">No POs yet</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
