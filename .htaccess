@@ -3,6 +3,9 @@
 # cPanel's "Setup Python App" usually creates its own .htaccess in the
 # domain document root that points to this app — DO NOT delete that one.
 
+# Never expose directory listings if Passenger is not handling the request.
+Options -Indexes
+
 # Force HTTPS (uncomment if your cPanel provides SSL and you want to enforce it)
 # RewriteEngine On
 # RewriteCond %{HTTPS} !=on

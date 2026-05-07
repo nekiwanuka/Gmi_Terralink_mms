@@ -126,3 +126,4 @@ Then click **Restart** in Setup Python App.
 | `CSRF verification failed` | Add the full `https://...` origin to `DJANGO_CSRF_TRUSTED_ORIGINS`. |
 | Changes don't appear | You forgot to **Restart** the Python App. |
 | Old teal dashboard appears | Remove root-level `index.html`, `styles.css`, and `app.js` from the server, then restart the Python App. Those were legacy prototype files and are no longer in the repo. |
+| Directory listing appears | Apache is serving `/home/gmiterralink26/MIMS` directly instead of Passenger. In cPanel **Setup Python App**, confirm Application root is `MIMS`, Application URL is `mims.gmiterralink.com`, startup file is `passenger_wsgi.py`, and entry point is `application`; then click **Restart**. Also ensure `.htaccess` exists in `/home/gmiterralink26/MIMS` and includes `Options -Indexes`. |
