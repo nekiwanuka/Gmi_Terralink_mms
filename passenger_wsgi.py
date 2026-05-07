@@ -11,7 +11,7 @@ Steps in cPanel (summary):
    - Application URL: your domain / subdomain
    - Application startup file: passenger_wsgi.py
    - Application Entry point: application
-2. Add environment variables (see .env.example).
+2. Create a private .env file in the application root; do not commit it.
 3. Open the virtualenv terminal cPanel provides and run:
        pip install -r requirements.txt
        python manage.py migrate

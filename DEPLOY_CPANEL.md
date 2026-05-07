@@ -36,18 +36,41 @@ cPanel → **Setup Python App** → **Create Application**
 Click **Create**. cPanel will create a virtualenv and print an
 *"Enter to the virtual environment"* command — copy it.
 
-## 4. Configure environment variables
+## 4. Create the private `.env` file
 
-In the same screen click **Add Variable** and set these values:
+Create `/home/gmiterralink26/MIMS/.env` on the server. Do not commit this file
+and do not upload it to GitHub.
 
-- `DJANGO_SECRET_KEY` — generate with `python -c "import secrets; print(secrets.token_urlsafe(50))"`
-- `DJANGO_DEBUG=False`
-- `DJANGO_ALLOWED_HOSTS=yourdomain.com,www.yourdomain.com`
-- `DJANGO_CSRF_TRUSTED_ORIGINS=https://yourdomain.com,https://www.yourdomain.com`
-- `DB_ENGINE=django.db.backends.postgresql`
-- `DB_NAME`, `DB_USER`, `DB_PASSWORD` — exactly as cPanel shows them (typically prefixed with your cPanel username, e.g. `cpaneluser_gmi`)
-- `DB_HOST=localhost` (or the provider host)
-- `DB_PORT=5432`
+```bash
+source /home/gmiterralink26/virtualenv/MIMS/3.11/bin/activate
+cd /home/gmiterralink26/MIMS
+nano .env
+chmod 600 .env
+```
+
+Use this format, replacing the secret/database values with the real cPanel
+PostgreSQL credentials:
+
+```env
+DJANGO_SECRET_KEY=replace-with-generated-secret
+DJANGO_DEBUG=False
+DJANGO_ALLOWED_HOSTS=mms.gmiterralink.com
+DJANGO_CSRF_TRUSTED_ORIGINS=https://mms.gmiterralink.com
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=your_cpanel_db_name
+DB_USER=your_cpanel_db_user
+DB_PASSWORD=your_database_password
+DB_HOST=localhost
+DB_PORT=5432
+SESSION_COOKIE_SECURE=True
+CSRF_COOKIE_SECURE=True
+```
+
+Generate the secret with:
+
+```bash
+python -c "import secrets; print(secrets.token_urlsafe(50))"
+```
 
 `psycopg2-binary` is already in `requirements.txt` so no further driver setup is needed. SQLite is intended for **local development only** and is not used in production.
 
@@ -57,7 +80,8 @@ Open **cPanel → Terminal** (or SSH) and paste the *"Enter to the virtual envir
 command. Then:
 
 ```bash
-cd ~/gmi_inventory
+source /home/gmiterralink26/virtualenv/MIMS/3.11/bin/activate
+cd /home/gmiterralink26/MIMS
 pip install --upgrade pip
 pip install -r requirements.txt
 python manage.py migrate
@@ -75,8 +99,10 @@ Visit `https://yourdomain.com/` — you should see the redesigned login screen.
 After uploading new code:
 
 ```bash
-cd ~/gmi_inventory
-source ~/virtualenv/gmi_inventory/3.11/bin/activate    # or whatever cPanel printed
+source /home/gmiterralink26/virtualenv/MIMS/3.11/bin/activate
+cd /home/gmiterralink26/MIMS
+git fetch origin
+git reset --hard origin/main
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py collectstatic --noinput
