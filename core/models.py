@@ -793,6 +793,7 @@ class UserProfile(models.Model):
     ROLE_OWNER = "Owner"
     ROLE_ADMIN = "Admin"
     ROLE_GENERAL_MANAGER = "General Manager"
+    ROLE_PROCUREMENT = "Procurement"
     ROLE_FINANCE = "Finance"
     ROLE_WAREHOUSE = "Warehouse"
     ROLE_WAREHOUSE_MANAGER = "Warehouse Manager"
@@ -805,6 +806,7 @@ class UserProfile(models.Model):
         (ROLE_OWNER, "Owner"),
         (ROLE_ADMIN, "Admin"),
         (ROLE_GENERAL_MANAGER, "General Manager"),
+        (ROLE_PROCUREMENT, "Procurement"),
         (ROLE_FINANCE, "Finance"),
         (ROLE_WAREHOUSE, "Warehouse"),
         (ROLE_WAREHOUSE_MANAGER, "Warehouse Manager"),
@@ -823,6 +825,50 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.username} ({self.role})"
+
+
+class NoticeTask(TimeStampedModel):
+    target_role = models.CharField(max_length=20, choices=UserProfile.ROLE_CHOICES)
+    title = models.CharField(max_length=180)
+    details = models.TextField(blank=True)
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="notice_tasks_created",
+    )
+    completed_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="notice_tasks_completed",
+    )
+    completed_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["completed_at", "-created_at"]
+
+    @property
+    def is_done(self):
+        return self.completed_at is not None
+
+    @property
+    def target_label(self):
+        if self.target_role == UserProfile.ROLE_OWNER:
+            return "Director / Owner"
+        return self.get_target_role_display()
+
+    def mark_done(self, user):
+        if self.is_done:
+            return
+        self.completed_by = user
+        self.completed_at = timezone.now()
+        self.save(update_fields=["completed_by", "completed_at", "updated_at"])
+
+    def __str__(self):
+        return f"{self.title} -> {self.target_label}"
 
 
 # ─── Action Approvals ─────────────────────────────────────────────────────────

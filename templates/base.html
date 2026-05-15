@@ -54,6 +54,7 @@
   <nav class="sidebar">
     <span class="nav-section">Main</span>
     <a href="/" {% if request.resolver_match.url_name == 'dashboard' %}class="active"{% endif %}>Dashboard</a>
+    <a href="/notice-board/" {% if '/notice-board/' in request.path %}class="active"{% endif %}>Notice Board</a>
 
     {% if user_role in "Owner,Admin,General Manager,Sales,Sales Attendant,Store Manager,Finance" %}
     <span class="nav-section">Sales</span>
@@ -87,7 +88,7 @@
     <a href="/inventory/movements/" {% if 'movements' in request.path %}class="active"{% endif %}>Movements</a>
     {% endif %}
 
-    {% if user_role in "Owner,Admin,General Manager,Finance,Warehouse,Warehouse Manager" %}
+    {% if user_role in "Owner,Admin,General Manager,Procurement,Finance,Warehouse,Warehouse Manager" %}
     <span class="nav-section">Procurement</span>
     <a href="/procurement/" {% if '/procurement/' in request.path %}class="active"{% endif %}>Purchase Orders</a>
     {% endif %}

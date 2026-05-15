@@ -8,6 +8,7 @@ from .models import (
     InventoryItem,
     Location,
     MiningEntry,
+    NoticeTask,
     PayrollEntry,
     PurchaseOrder,
     PurchaseOrderLine,
@@ -176,4 +177,25 @@ class QuotationForm(_StyledMixin, forms.ModelForm):
             "quote_date": forms.DateInput(attrs={"type": "date"}, format="%Y-%m-%d"),
             "valid_until": forms.DateInput(attrs={"type": "date"}, format="%Y-%m-%d"),
             "notes": forms.Textarea(attrs={"rows": 3}),
+        }
+
+
+class NoticeTaskForm(_StyledMixin, forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["target_role"].choices = [
+            (value, "Director / Owner" if value == "Owner" else label)
+            for value, label in self.fields["target_role"].choices
+        ]
+
+    class Meta:
+        model = NoticeTask
+        fields = ["target_role", "title", "details"]
+        labels = {
+            "target_role": "Send to",
+            "title": "Task",
+            "details": "Details",
+        }
+        widgets = {
+            "details": forms.Textarea(attrs={"rows": 3}),
         }

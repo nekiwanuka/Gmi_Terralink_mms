@@ -11,6 +11,7 @@ from .models import (
     Invoice,
     Location,
     MiningEntry,
+    NoticeTask,
     PayrollEntry,
     Payment,
     PurchaseOrder,
@@ -363,6 +364,21 @@ class UserProfileAdmin(admin.ModelAdmin):
     list_display = ("user", "role")
     list_filter = ("role",)
     search_fields = ("user__username", "user__email", "role")
+
+
+@admin.register(NoticeTask)
+class NoticeTaskAdmin(ReadOnlyTimestampsMixin, admin.ModelAdmin):
+    list_display = (
+        "title",
+        "target_role",
+        "created_by",
+        "completed_by",
+        "completed_at",
+        "created_at",
+    )
+    list_filter = ("target_role", "completed_at", "created_by", "completed_by")
+    search_fields = ("title", "details", "created_by__username")
+    date_hierarchy = "created_at"
 
 
 @admin.register(PayrollEntry)

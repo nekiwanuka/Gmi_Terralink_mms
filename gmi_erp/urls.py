@@ -33,6 +33,8 @@ from core.views import (
     logout_view,
     mining_create,
     mining_list,
+    notice_board,
+    notice_task_done,
     payroll_create,
     payroll_list,
     procurement_create,
@@ -87,6 +89,9 @@ urlpatterns = [
     path("", dashboard, name="dashboard"),
     path("settings/", settings_page, name="settings"),
     path("settings/currency/", switch_currency, name="switch_currency"),
+    # Notice board
+    path("notice-board/", notice_board, name="notice_board"),
+    path("notice-board/<int:pk>/done/", notice_task_done, name="notice_task_done"),
     # Procurement
     path("procurement/", procurement_list, name="procurement_list"),
     path("procurement/new/", procurement_create, name="procurement_create"),

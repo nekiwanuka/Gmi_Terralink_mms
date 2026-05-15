@@ -18,6 +18,7 @@ from .forms import (
     ExpenseForm,
     InventoryItemForm,
     MiningEntryForm,
+    NoticeTaskForm,
     PayrollEntryForm,
     PurchaseOrderForm,
     PurchaseOrderStatusForm,
@@ -35,6 +36,7 @@ from .models import (
     Invoice,
     Location,
     MiningEntry,
+    NoticeTask,
     PayrollEntry,
     Payment,
     PurchaseOrder,
@@ -177,6 +179,41 @@ def _get_profile():
 get_profile = _get_profile
 
 
+def _current_user_role(request):
+    if not request.user.is_authenticated:
+        return None
+    if request.user.is_superuser:
+        return UserProfile.ROLE_OWNER
+    try:
+        return request.user.profile.role
+    except AttributeError:
+        return None
+
+
+def _effective_notice_roles(user_role):
+    effective_roles = {user_role} if user_role else set()
+    if user_role == UserProfile.ROLE_WAREHOUSE_MANAGER:
+        effective_roles.add(UserProfile.ROLE_WAREHOUSE)
+    if user_role == UserProfile.ROLE_SALES_ATTENDANT:
+        effective_roles.add(UserProfile.ROLE_SALES)
+    if user_role == UserProfile.ROLE_STORE_MANAGER:
+        effective_roles.update({UserProfile.ROLE_SALES, UserProfile.ROLE_OPERATIONS})
+    return effective_roles
+
+
+def _can_complete_notice_task(request, task):
+    if task.is_done:
+        return False
+    user_role = _current_user_role(request)
+    if request.user.is_superuser or user_role in (
+        UserProfile.ROLE_OWNER,
+        UserProfile.ROLE_ADMIN,
+        UserProfile.ROLE_GENERAL_MANAGER,
+    ):
+        return True
+    return task.target_role in _effective_notice_roles(user_role)
+
+
 def _build_alerts():
     alerts = []
     currency_code = _get_profile().currency_code
@@ -260,7 +297,7 @@ def access_denied(request):
 # ---------- Dashboard ----------
 
 
-@role_required("Owner", "Finance", "Warehouse", "Sales", "Operations")
+@role_required("Owner", "Procurement", "Finance", "Warehouse", "Sales", "Operations")
 def dashboard(request):
     total_invoiced = Invoice.objects.aggregate(x=Sum("total_amount")).get("x") or 0
     total_paid = Payment.objects.aggregate(x=Sum("amount")).get("x") or 0
@@ -423,10 +460,79 @@ def settings_page(request):
     )
 
 
+# ---------- Notice Board ----------
+
+
+@role_required(
+    "Owner",
+    "Admin",
+    "General Manager",
+    "Procurement",
+    "Finance",
+    "Warehouse",
+    "Warehouse Manager",
+    "Sales",
+    "Sales Attendant",
+    "Store Manager",
+    "Operations",
+)
+def notice_board(request):
+    form = NoticeTaskForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        task = form.save(commit=False)
+        task.created_by = request.user
+        task.save()
+        messages.success(request, f"Task sent to {task.target_role}.")
+        return redirect("notice_board")
+
+    tasks = list(
+        NoticeTask.objects.select_related("created_by", "completed_by").order_by(
+            "completed_at", "-created_at"
+        )[:200]
+    )
+    for task in tasks:
+        task.can_mark_done = _can_complete_notice_task(request, task)
+    user_role = _current_user_role(request)
+    my_open_count = sum(
+        1
+        for task in tasks
+        if not task.is_done and task.target_role in _effective_notice_roles(user_role)
+    )
+    return render(
+        request,
+        "notice_board.html",
+        {"form": form, "tasks": tasks, "my_open_count": my_open_count},
+    )
+
+
+@role_required(
+    "Owner",
+    "Admin",
+    "General Manager",
+    "Procurement",
+    "Finance",
+    "Warehouse",
+    "Warehouse Manager",
+    "Sales",
+    "Sales Attendant",
+    "Store Manager",
+    "Operations",
+)
+def notice_task_done(request, pk):
+    task = get_object_or_404(NoticeTask, pk=pk)
+    if request.method == "POST":
+        if _can_complete_notice_task(request, task):
+            task.mark_done(request.user)
+            messages.success(request, f"Task '{task.title}' marked done.")
+        else:
+            messages.error(request, "Only the receiving team can mark this task done.")
+    return redirect("notice_board")
+
+
 # ---------- Procurement ----------
 
 
-@role_required("Owner", "Warehouse", "Finance")
+@role_required("Owner", "Procurement", "Warehouse", "Finance")
 def procurement_list(request):
     status_filter = request.GET.get("status", "")
     pos = (
@@ -447,7 +553,7 @@ def procurement_list(request):
     )
 
 
-@role_required("Owner", "Warehouse")
+@role_required("Owner", "Procurement", "Warehouse")
 def procurement_create(request):
     items = InventoryItem.objects.all().order_by("name")
     form = PurchaseOrderForm(request.POST or None)
@@ -472,7 +578,7 @@ def procurement_create(request):
     return render(request, "procurement/create.html", {"form": form, "items": items})
 
 
-@role_required("Owner", "Warehouse")
+@role_required("Owner", "Procurement", "Warehouse")
 def procurement_update_status(request, pk):
     po = get_object_or_404(PurchaseOrder, pk=pk)
     if request.method == "POST":
@@ -483,7 +589,7 @@ def procurement_update_status(request, pk):
     return redirect("procurement_list")
 
 
-@role_required("Owner", "Warehouse")
+@role_required("Owner", "Procurement", "Warehouse")
 def warehouse_receive(request, pk):
     po = get_object_or_404(PurchaseOrder.objects.prefetch_related("lines__item"), pk=pk)
     if request.method == "POST":
