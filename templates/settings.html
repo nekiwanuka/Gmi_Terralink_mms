@@ -1,43 +1,44 @@
 {% extends "base.html" %}
-{% block title %}Settings — GMI ERP{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Settings" %} - GMI ERP{% endblock %}
 {% block content %}
-<h2>Settings</h2>
+<h2>{% trans "Settings" %}</h2>
 <div class="grid">
 
   <div class="panel form-panel">
-    <h3>Business Profile</h3>
+    <h3>{% trans "Business Profile" %}</h3>
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <input type="hidden" name="action" value="profile" />
       <div class="form-row">
         <div>
-          <label class="form-label">Business Name</label>
+          <label class="form-label">{% trans "Business Name" %}</label>
           <input name="business_name" value="{{ profile.business_name }}" />
         </div>
       </div>
       <div class="form-row">
         <div>
-          <label class="form-label">Business Address</label>
+          <label class="form-label">{% trans "Business Address" %}</label>
           <textarea name="business_address" rows="3">{{ profile.business_address }}</textarea>
         </div>
       </div>
       <div class="form-row">
         <div>
-          <label class="form-label">Phone</label>
+          <label class="form-label">{% trans "Phone" %}</label>
           <input name="business_phone" value="{{ profile.business_phone }}" />
         </div>
         <div>
-          <label class="form-label">Email</label>
+          <label class="form-label">{% trans "Email" %}</label>
           <input type="email" name="business_email" value="{{ profile.business_email }}" />
         </div>
         <div>
-          <label class="form-label">Website</label>
+          <label class="form-label">{% trans "Website" %}</label>
           <input name="business_website" value="{{ profile.business_website }}" />
         </div>
       </div>
       <div class="form-row">
         <div>
-          <label class="form-label">Currency</label>
+          <label class="form-label">{% trans "Currency" %}</label>
           <select name="currency_code">
             {% for value, label in currency_choices %}
               <option value="{{ value }}" {% if value == profile.currency_code %}selected{% endif %}>{{ label }}</option>
@@ -47,7 +48,7 @@
       </div>
       <div class="form-row">
         <div>
-          <label class="form-label">Logo</label>
+          <label class="form-label">{% trans "Logo" %}</label>
           <input type="file" name="logo" accept="image/*" />
           {% if profile.logo %}
             <img src="{{ profile.logo.url }}" class="logo-large" style="margin-top:8px" />
@@ -55,15 +56,15 @@
         </div>
       </div>
       <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Save Profile</button>
+        <button type="submit" class="btn btn-primary">{% trans "Save Profile" %}</button>
       </div>
     </form>
   </div>
 
   <div class="panel">
-    <h3>User Roles</h3>
+    <h3>{% trans "User Roles" %}</h3>
     <table>
-      <thead><tr><th>Username</th><th>Current Role</th><th>Change</th></tr></thead>
+      <thead><tr><th>{% trans "Username" %}</th><th>{% trans "Current Role" %}</th><th>{% trans "Change" %}</th></tr></thead>
       <tbody>
         {% for up in users %}
         <tr>
@@ -79,12 +80,12 @@
                   <option value="{{ val }}" {% if val == up.role %}selected{% endif %}>{{ label }}</option>
                 {% endfor %}
               </select>
-              <button type="submit" class="btn btn-primary btn-sm">Set</button>
+              <button type="submit" class="btn btn-primary btn-sm">{% trans "Set" %}</button>
             </form>
           </td>
         </tr>
         {% empty %}
-        <tr><td colspan="3">No users found</td></tr>
+        <tr><td colspan="3">{% trans "No users found" %}</td></tr>
         {% endfor %}
       </tbody>
     </table>

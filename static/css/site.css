@@ -123,10 +123,13 @@ a { color: var(--primary-600); }
 }
 .theme-toggle { font-size: .8rem; }
 
-/* ── Currency switcher ────────────────────────────────── */
-.currency-switcher { display: inline-flex; gap: 6px; align-items: center; margin: 0; }
-.currency-switcher label { font-size: .72rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
-.currency-switcher select { width: auto; padding: 5px 26px 5px 10px; border-radius: 8px; font-size: .82rem; }
+/* ── Topbar switchers ─────────────────────────────────── */
+.currency-switcher,
+.language-switcher { display: inline-flex; gap: 6px; align-items: center; margin: 0; }
+.currency-switcher label,
+.language-switcher label { font-size: .72rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.currency-switcher select,
+.language-switcher select { width: auto; padding: 5px 26px 5px 10px; border-radius: 8px; font-size: .82rem; }
 
 /* ── Layout / Sidebar ─────────────────────────────────── */
 .layout { display: flex; flex-direction: row; min-height: calc(100vh - 60px); }
@@ -674,6 +677,7 @@ body.theme-dark .msg-error { background: #3a1818; color: #f0a3a3; border-color: 
 .auth-form label { display: block; font-size: .78rem; font-weight: 600; color: var(--ink-2); margin-bottom: 5px; text-transform: uppercase; letter-spacing: .03em; }
 .auth-form input { width: 100%; margin-bottom: 14px; padding: 11px 12px; }
 .auth-form .btn-primary { width: 100%; padding: 12px; font-size: .95rem; justify-content: center; }
+.auth-language { justify-content: flex-end; margin-bottom: 18px; }
 .auth-footer {
   grid-column: 1 / -1;
   display: flex;

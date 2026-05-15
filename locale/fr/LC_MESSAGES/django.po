@@ -1,0 +1,238 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GMI Inventory System\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-15 00:00+0000\n"
+"PO-Revision-Date: 2026-05-15 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "English"
+msgstr "Anglais"
+
+msgid "French"
+msgstr "Francais"
+
+msgid "Chinese"
+msgstr "Chinois"
+
+msgid "GMI Inventory System"
+msgstr "Systeme d'inventaire GMI"
+
+msgid "GMI Inventory"
+msgstr "Inventaire GMI"
+
+msgid "Language"
+msgstr "Langue"
+
+msgid "Currency"
+msgstr "Devise"
+
+msgid "User"
+msgstr "Utilisateur"
+
+msgid "Toggle theme"
+msgstr "Changer le theme"
+
+msgid "Theme"
+msgstr "Theme"
+
+msgid "Log out"
+msgstr "Deconnexion"
+
+msgid "Log in"
+msgstr "Connexion"
+
+msgid "Main"
+msgstr "Principal"
+
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+msgid "Notice Board"
+msgstr "Tableau d'avis"
+
+msgid "Sales"
+msgstr "Ventes"
+
+msgid "Quotations"
+msgstr "Devis"
+
+msgid "POS Terminal"
+msgstr "Terminal POS"
+
+msgid "Sales History"
+msgstr "Historique des ventes"
+
+msgid "Billing"
+msgstr "Facturation"
+
+msgid "Invoices & Receipts"
+msgstr "Factures et recus"
+
+msgid "Expenses"
+msgstr "Depenses"
+
+msgid "Reports"
+msgstr "Rapports"
+
+msgid "Reports & Analytics"
+msgstr "Rapports et analyses"
+
+msgid "Warehouse"
+msgstr "Entrepot"
+
+msgid "Stocking Form"
+msgstr "Formulaire de stock"
+
+msgid "Inventory Ledger"
+msgstr "Registre d'inventaire"
+
+msgid "Locations"
+msgstr "Emplacements"
+
+msgid "Warehouse Transfer"
+msgstr "Transfert d'entrepot"
+
+msgid "Adjustments"
+msgstr "Ajustements"
+
+msgid "Store Front"
+msgstr "Boutique"
+
+msgid "Stock Requests"
+msgstr "Demandes de stock"
+
+msgid "Movements"
+msgstr "Mouvements"
+
+msgid "Procurement"
+msgstr "Approvisionnement"
+
+msgid "Purchase Orders"
+msgstr "Bons de commande"
+
+msgid "Contacts"
+msgstr "Contacts"
+
+msgid "Clients"
+msgstr "Clients"
+
+msgid "Suppliers"
+msgstr "Fournisseurs"
+
+msgid "Mining"
+msgstr "Exploitation miniere"
+
+msgid "Production"
+msgstr "Production"
+
+msgid "Payroll"
+msgstr "Paie"
+
+msgid "Role Pay"
+msgstr "Paie par role"
+
+msgid "System"
+msgstr "Systeme"
+
+msgid "Settings"
+msgstr "Parametres"
+
+msgid "Admin Panel"
+msgstr "Panneau d'administration"
+
+msgid "API Browser"
+msgstr "Navigateur API"
+
+msgid "Business Profile"
+msgstr "Profil de l'entreprise"
+
+msgid "Business Name"
+msgstr "Nom de l'entreprise"
+
+msgid "Business Address"
+msgstr "Adresse de l'entreprise"
+
+msgid "Phone"
+msgstr "Telephone"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Website"
+msgstr "Site web"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "Save Profile"
+msgstr "Enregistrer le profil"
+
+msgid "User Roles"
+msgstr "Roles des utilisateurs"
+
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+msgid "Current Role"
+msgstr "Role actuel"
+
+msgid "Change"
+msgstr "Modifier"
+
+msgid "Set"
+msgstr "Definir"
+
+msgid "No users found"
+msgstr "Aucun utilisateur trouve"
+
+msgid "Sign in"
+msgstr "Connexion"
+
+msgid "Mining Inventory"
+msgstr "Inventaire minier"
+
+msgid "Management System"
+msgstr "Systeme de gestion"
+
+msgid "Unified control for procurement, stock, sales, finance, payroll, mining operations and traceable business documents."
+msgstr "Controle unifie des achats, du stock, des ventes, des finances, de la paie, des operations minieres et des documents commerciaux tracables."
+
+msgid "operational access"
+msgstr "acces operationnel"
+
+msgid "Live"
+msgstr "En direct"
+
+msgid "stock visibility"
+msgstr "visibilite du stock"
+
+msgid "Secure"
+msgstr "Securise"
+
+msgid "role controls"
+msgstr "controles des roles"
+
+msgid "Authorized Access"
+msgstr "Acces autorise"
+
+msgid "Welcome back"
+msgstr "Bon retour"
+
+msgid "Sign in to continue to the GMI Terralink workspace."
+msgstr "Connectez-vous pour continuer vers l'espace de travail GMI Terralink."
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "System designed, managed and hosted by Devtown Technologies"
+msgstr "Systeme concu, gere et heberge par Devtown Technologies"

@@ -1,3 +1,6 @@
+from django.conf import settings
+from django.utils.translation import get_language
+
 from .models import BusinessProfile, UserProfile
 
 
@@ -19,4 +22,6 @@ def gmi_context(request):
         "user_role": user_role,
         "currency_code": currency_code,
         "currency_choices": BusinessProfile.CURRENCY_CHOICES,
+        "current_language": get_language(),
+        "language_choices": settings.LANGUAGES,
     }

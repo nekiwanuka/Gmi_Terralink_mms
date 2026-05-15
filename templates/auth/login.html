@@ -1,10 +1,10 @@
-{% load static %}
+{% load i18n static %}
 <!doctype html>
-<html lang="en">
+<html lang="{{ current_language|default:'en' }}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sign in — GMI Inventory</title>
+  <title>{% trans "Sign in" %} - {% trans "GMI Inventory" %}</title>
   <link rel="stylesheet" href="/static/css/site.css" />
 </head>
 <body>
@@ -12,19 +12,29 @@
     <aside class="auth-hero">
       <div class="auth-mark">GMI</div>
       <p class="auth-kicker">GMI Terralink</p>
-      <h1>Mining Inventory<br/>&amp; Management System</h1>
-      <p>Unified control for procurement, stock, sales, finance, payroll, mining operations and traceable business documents.</p>
+      <h1>{% trans "Mining Inventory" %}<br/>&amp; {% trans "Management System" %}</h1>
+      <p>{% trans "Unified control for procurement, stock, sales, finance, payroll, mining operations and traceable business documents." %}</p>
       <div class="auth-metrics">
-        <span><strong>24/7</strong> operational access</span>
-        <span><strong>Live</strong> stock visibility</span>
-        <span><strong>Secure</strong> role controls</span>
+        <span><strong>24/7</strong> {% trans "operational access" %}</span>
+        <span><strong>{% trans "Live" %}</strong> {% trans "stock visibility" %}</span>
+        <span><strong>{% trans "Secure" %}</strong> {% trans "role controls" %}</span>
       </div>
     </aside>
     <main class="auth-form-wrap">
       <div class="auth-form">
-        <p class="auth-kicker auth-kicker-dark">Authorized Access</p>
-        <h2>Welcome back</h2>
-        <p class="auth-sub">Sign in to continue to the GMI Terralink workspace.</p>
+        <form method="post" action="{% url 'set_language' %}" class="language-switcher auth-language">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+          <label for="login-language-code">{% trans "Language" %}</label>
+          <select id="login-language-code" name="language" onchange="this.form.submit()">
+            {% for value, label in language_choices %}
+              <option value="{{ value }}" {% if value == current_language %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+          </select>
+        </form>
+        <p class="auth-kicker auth-kicker-dark">{% trans "Authorized Access" %}</p>
+        <h2>{% trans "Welcome back" %}</h2>
+        <p class="auth-sub">{% trans "Sign in to continue to the GMI Terralink workspace." %}</p>
 
         {% if messages %}
           {% for m in messages %}<div class="msg {% if m.tags == 'error' %}msg-error{% endif %}">{{ m }}</div>{% endfor %}
@@ -34,21 +44,21 @@
         {% endif %}
 
         <form method="post">{% csrf_token %}
-          <label>Username</label>{{ form.username }}
-          <label>Password</label>{{ form.password }}
-          <button type="submit" class="btn btn-primary">Sign in</button>
+          <label>{% trans "Username" %}</label>{{ form.username }}
+          <label>{% trans "Password" %}</label>{{ form.password }}
+          <button type="submit" class="btn btn-primary">{% trans "Sign in" %}</button>
         </form>
       </div>
     </main>
     <footer class="auth-footer">
       <div>
-        <strong>Contact</strong>
+        <strong>{% trans "Contact" %}</strong>
         <span>Hamdeen Lwanga Close, Mitala Road &middot; Lower Residence, Plot 10/12, Muyenga, Kampala</span>
         <span>Tel: +256 768 049 940 &middot; CN: +86 177 0195 4464</span>
         <span>Email: <a href="mailto:gmiterralinkinfo@gmail.com">gmiterralinkinfo@gmail.com</a> &middot; <a href="https://www.gmi-terralink.com" target="_blank" rel="noopener">www.gmi-terralink.com</a></span>
       </div>
       <div>
-        <strong>System designed, managed and hosted by Devtown Technologies</strong>
+        <strong>{% trans "System designed, managed and hosted by Devtown Technologies" %}</strong>
         <span><a href="https://www.devtownhosting.com" target="_blank" rel="noopener">www.devtownhosting.com</a> &middot; Tel: +256 784 509 809</span>
       </div>
     </footer>

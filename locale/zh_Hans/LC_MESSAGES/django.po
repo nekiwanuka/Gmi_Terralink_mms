@@ -1,0 +1,238 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GMI Inventory System\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-15 00:00+0000\n"
+"PO-Revision-Date: 2026-05-15 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_Hans\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "English"
+msgstr "英语"
+
+msgid "French"
+msgstr "法语"
+
+msgid "Chinese"
+msgstr "中文"
+
+msgid "GMI Inventory System"
+msgstr "GMI 库存系统"
+
+msgid "GMI Inventory"
+msgstr "GMI 库存"
+
+msgid "Language"
+msgstr "语言"
+
+msgid "Currency"
+msgstr "货币"
+
+msgid "User"
+msgstr "用户"
+
+msgid "Toggle theme"
+msgstr "切换主题"
+
+msgid "Theme"
+msgstr "主题"
+
+msgid "Log out"
+msgstr "退出登录"
+
+msgid "Log in"
+msgstr "登录"
+
+msgid "Main"
+msgstr "主页"
+
+msgid "Dashboard"
+msgstr "仪表盘"
+
+msgid "Notice Board"
+msgstr "公告栏"
+
+msgid "Sales"
+msgstr "销售"
+
+msgid "Quotations"
+msgstr "报价"
+
+msgid "POS Terminal"
+msgstr "POS 终端"
+
+msgid "Sales History"
+msgstr "销售历史"
+
+msgid "Billing"
+msgstr "账单"
+
+msgid "Invoices & Receipts"
+msgstr "发票和收据"
+
+msgid "Expenses"
+msgstr "支出"
+
+msgid "Reports"
+msgstr "报表"
+
+msgid "Reports & Analytics"
+msgstr "报表与分析"
+
+msgid "Warehouse"
+msgstr "仓库"
+
+msgid "Stocking Form"
+msgstr "入库表单"
+
+msgid "Inventory Ledger"
+msgstr "库存台账"
+
+msgid "Locations"
+msgstr "库位"
+
+msgid "Warehouse Transfer"
+msgstr "仓库调拨"
+
+msgid "Adjustments"
+msgstr "库存调整"
+
+msgid "Store Front"
+msgstr "门店"
+
+msgid "Stock Requests"
+msgstr "库存申请"
+
+msgid "Movements"
+msgstr "库存流水"
+
+msgid "Procurement"
+msgstr "采购"
+
+msgid "Purchase Orders"
+msgstr "采购订单"
+
+msgid "Contacts"
+msgstr "联系人"
+
+msgid "Clients"
+msgstr "客户"
+
+msgid "Suppliers"
+msgstr "供应商"
+
+msgid "Mining"
+msgstr "采矿"
+
+msgid "Production"
+msgstr "生产"
+
+msgid "Payroll"
+msgstr "薪资"
+
+msgid "Role Pay"
+msgstr "岗位薪资"
+
+msgid "System"
+msgstr "系统"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Admin Panel"
+msgstr "管理后台"
+
+msgid "API Browser"
+msgstr "API 浏览器"
+
+msgid "Business Profile"
+msgstr "业务资料"
+
+msgid "Business Name"
+msgstr "企业名称"
+
+msgid "Business Address"
+msgstr "企业地址"
+
+msgid "Phone"
+msgstr "电话"
+
+msgid "Email"
+msgstr "电子邮箱"
+
+msgid "Website"
+msgstr "网站"
+
+msgid "Logo"
+msgstr "标志"
+
+msgid "Save Profile"
+msgstr "保存资料"
+
+msgid "User Roles"
+msgstr "用户角色"
+
+msgid "Username"
+msgstr "用户名"
+
+msgid "Current Role"
+msgstr "当前角色"
+
+msgid "Change"
+msgstr "更改"
+
+msgid "Set"
+msgstr "设置"
+
+msgid "No users found"
+msgstr "未找到用户"
+
+msgid "Sign in"
+msgstr "登录"
+
+msgid "Mining Inventory"
+msgstr "矿业库存"
+
+msgid "Management System"
+msgstr "管理系统"
+
+msgid "Unified control for procurement, stock, sales, finance, payroll, mining operations and traceable business documents."
+msgstr "统一管理采购、库存、销售、财务、薪资、采矿运营和可追溯业务文档。"
+
+msgid "operational access"
+msgstr "运营访问"
+
+msgid "Live"
+msgstr "实时"
+
+msgid "stock visibility"
+msgstr "库存可视化"
+
+msgid "Secure"
+msgstr "安全"
+
+msgid "role controls"
+msgstr "角色控制"
+
+msgid "Authorized Access"
+msgstr "授权访问"
+
+msgid "Welcome back"
+msgstr "欢迎回来"
+
+msgid "Sign in to continue to the GMI Terralink workspace."
+msgstr "登录以继续访问 GMI Terralink 工作区。"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Contact"
+msgstr "联系方式"
+
+msgid "System designed, managed and hosted by Devtown Technologies"
+msgstr "系统由 Devtown Technologies 设计、管理和托管"

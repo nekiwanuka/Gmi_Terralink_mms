@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en">
+{% load i18n %}
+<html lang="{{ current_language|default:'en' }}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{% block title %}GMI Inventory System{% endblock %}</title>
+  <title>{% block title %}{% trans "GMI Inventory System" %}{% endblock %}</title>
   <link rel="stylesheet" href="/static/css/site.css" />
   {% block extra_head %}{% endblock %}
 </head>
@@ -17,17 +18,28 @@
       <div class="logo" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0d0d0f,#c9a227);color:#fff;font-weight:700;border:0">G</div>
     {% endif %}
     <div class="brand-text">
-      <h1>GMI Inventory</h1>
+      <h1>{% trans "GMI Inventory" %}</h1>
       <p>{{ profile.business_name|default:"GMI TERRALINK" }}{% if profile.business_phone %} · {{ profile.business_phone }}{% endif %}</p>
     </div>
   </div>
   <div class="topbar-right">
+    <form method="post" action="{% url 'set_language' %}" class="language-switcher">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+      <label for="language-code">{% trans "Language" %}</label>
+      <select id="language-code" name="language" onchange="this.form.submit()">
+        {% for value, label in language_choices %}
+          <option value="{{ value }}" {% if value == current_language %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+    </form>
+    <span class="topbar-divider" aria-hidden="true"></span>
     {% if user.is_authenticated %}
       {% if user_role == "Owner" %}
         <form method="post" action="/settings/currency/" class="currency-switcher">
           {% csrf_token %}
           <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-          <label for="currency-code">Currency</label>
+          <label for="currency-code">{% trans "Currency" %}</label>
           <select id="currency-code" name="currency_code" onchange="this.form.submit()">
             {% for value, label in currency_choices %}
               <option value="{{ value }}" {% if value == currency_code %}selected{% endif %}>{{ value }}</option>
@@ -38,84 +50,84 @@
       {% endif %}
       <span class="user-chip">
         <span class="avatar">{{ user.username|slice:":1" }}</span>
-        <span class="role-badge">{{ user_role|default:"User" }}</span>
+        <span class="role-badge">{% if user_role %}{{ user_role }}{% else %}{% trans "User" %}{% endif %}</span>
         <span>{{ user.username }}</span>
       </span>
       <span class="topbar-divider" aria-hidden="true"></span>
-      <button type="button" class="theme-toggle btn btn-secondary btn-sm" aria-label="Toggle theme" onclick="toggleTheme()">Theme</button>
-      <a href="/logout/" class="btn btn-secondary btn-sm">Log out</a>
+      <button type="button" class="theme-toggle btn btn-secondary btn-sm" aria-label="{% trans 'Toggle theme' %}" onclick="toggleTheme()">{% trans "Theme" %}</button>
+      <a href="/logout/" class="btn btn-secondary btn-sm">{% trans "Log out" %}</a>
     {% else %}
-      <a href="/login/" class="btn btn-primary btn-sm">Log in</a>
+      <a href="/login/" class="btn btn-primary btn-sm">{% trans "Log in" %}</a>
     {% endif %}
   </div>
 </header>
 
 <div class="layout">
   <nav class="sidebar">
-    <span class="nav-section">Main</span>
-    <a href="/" {% if request.resolver_match.url_name == 'dashboard' %}class="active"{% endif %}>Dashboard</a>
-    <a href="/notice-board/" {% if '/notice-board/' in request.path %}class="active"{% endif %}>Notice Board</a>
+    <span class="nav-section">{% trans "Main" %}</span>
+    <a href="/" {% if request.resolver_match.url_name == 'dashboard' %}class="active"{% endif %}>{% trans "Dashboard" %}</a>
+    <a href="/notice-board/" {% if '/notice-board/' in request.path %}class="active"{% endif %}>{% trans "Notice Board" %}</a>
 
     {% if user_role in "Owner,Admin,General Manager,Sales,Sales Attendant,Store Manager,Finance" %}
-    <span class="nav-section">Sales</span>
-    <a href="/quotations/" {% if '/quotations/' in request.path %}class="active"{% endif %}>Quotations</a>
-    <a href="/sales/new/" {% if request.path == '/sales/new/' %}class="active"{% endif %}>POS Terminal</a>
-    <a href="/sales/" {% if request.path == '/sales/' %}class="active"{% endif %}>Sales History</a>
+    <span class="nav-section">{% trans "Sales" %}</span>
+    <a href="/quotations/" {% if '/quotations/' in request.path %}class="active"{% endif %}>{% trans "Quotations" %}</a>
+    <a href="/sales/new/" {% if request.path == '/sales/new/' %}class="active"{% endif %}>{% trans "POS Terminal" %}</a>
+    <a href="/sales/" {% if request.path == '/sales/' %}class="active"{% endif %}>{% trans "Sales History" %}</a>
     {% endif %}
 
     {% if user_role in "Owner,Admin,General Manager,Finance" %}
-    <span class="nav-section">Billing</span>
-    <a href="/billing/" {% if '/billing/' in request.path and 'expenses' not in request.path %}class="active"{% endif %}>Invoices &amp; Receipts</a>
-    <a href="/billing/expenses/" {% if 'expenses' in request.path %}class="active"{% endif %}>Expenses</a>
+    <span class="nav-section">{% trans "Billing" %}</span>
+    <a href="/billing/" {% if '/billing/' in request.path and 'expenses' not in request.path %}class="active"{% endif %}>{% trans "Invoices & Receipts" %}</a>
+    <a href="/billing/expenses/" {% if 'expenses' in request.path %}class="active"{% endif %}>{% trans "Expenses" %}</a>
     {% endif %}
 
     {% if user_role in "Owner,Admin,General Manager,Store Manager" %}
-    <span class="nav-section">Reports</span>
-    <a href="/reports/" {% if '/reports/' in request.path %}class="active"{% endif %}>Reports &amp; Analytics</a>
+    <span class="nav-section">{% trans "Reports" %}</span>
+    <a href="/reports/" {% if '/reports/' in request.path %}class="active"{% endif %}>{% trans "Reports & Analytics" %}</a>
     {% endif %}
 
     {% if user_role in "Owner,Admin,General Manager,Warehouse,Warehouse Manager,Sales,Sales Attendant,Operations,Store Manager" %}
-    <span class="nav-section">Warehouse</span>
-    <a href="/inventory/new/" {% if request.path == '/inventory/new/' %}class="active"{% endif %}>Stocking Form</a>
-    <a href="/inventory/" {% if request.path == '/inventory/' or '/inventory/' in request.path and 'locations' not in request.path and 'transfer' not in request.path and 'adjust' not in request.path and 'movements' not in request.path and 'requests' not in request.path %}class="active"{% endif %}>Inventory Ledger</a>
+    <span class="nav-section">{% trans "Warehouse" %}</span>
+    <a href="/inventory/new/" {% if request.path == '/inventory/new/' %}class="active"{% endif %}>{% trans "Stocking Form" %}</a>
+    <a href="/inventory/" {% if request.path == '/inventory/' or '/inventory/' in request.path and 'locations' not in request.path and 'transfer' not in request.path and 'adjust' not in request.path and 'movements' not in request.path and 'requests' not in request.path %}class="active"{% endif %}>{% trans "Inventory Ledger" %}</a>
     {% if user_role in "Owner,Admin,General Manager,Warehouse,Warehouse Manager,Operations" %}
-    <a href="/inventory/locations/" {% if 'locations' in request.path %}class="active"{% endif %}>Locations</a>
-    <a href="/inventory/transfer/" {% if 'transfer' in request.path %}class="active"{% endif %}>Warehouse Transfer</a>
-    <a href="/inventory/adjust/" {% if 'adjust' in request.path %}class="active"{% endif %}>Adjustments</a>
+    <a href="/inventory/locations/" {% if 'locations' in request.path %}class="active"{% endif %}>{% trans "Locations" %}</a>
+    <a href="/inventory/transfer/" {% if 'transfer' in request.path %}class="active"{% endif %}>{% trans "Warehouse Transfer" %}</a>
+    <a href="/inventory/adjust/" {% if 'adjust' in request.path %}class="active"{% endif %}>{% trans "Adjustments" %}</a>
     {% endif %}
-    <span class="nav-section">Store Front</span>
-    <a href="/inventory/requests/" {% if 'requests' in request.path %}class="active"{% endif %}>Stock Requests</a>
-    <a href="/inventory/movements/" {% if 'movements' in request.path %}class="active"{% endif %}>Movements</a>
+    <span class="nav-section">{% trans "Store Front" %}</span>
+    <a href="/inventory/requests/" {% if 'requests' in request.path %}class="active"{% endif %}>{% trans "Stock Requests" %}</a>
+    <a href="/inventory/movements/" {% if 'movements' in request.path %}class="active"{% endif %}>{% trans "Movements" %}</a>
     {% endif %}
 
     {% if user_role in "Owner,Admin,General Manager,Procurement,Finance,Warehouse,Warehouse Manager" %}
-    <span class="nav-section">Procurement</span>
-    <a href="/procurement/" {% if '/procurement/' in request.path %}class="active"{% endif %}>Purchase Orders</a>
+    <span class="nav-section">{% trans "Procurement" %}</span>
+    <a href="/procurement/" {% if '/procurement/' in request.path %}class="active"{% endif %}>{% trans "Purchase Orders" %}</a>
     {% endif %}
 
     {% if user_role in "Owner,Admin,General Manager,Sales,Sales Attendant,Store Manager,Finance" %}
-    <span class="nav-section">Contacts</span>
-    <a href="/contacts/clients/" {% if 'contacts/clients' in request.path %}class="active"{% endif %}>Clients</a>
-    <a href="/contacts/suppliers/" {% if 'contacts/suppliers' in request.path %}class="active"{% endif %}>Suppliers</a>
+    <span class="nav-section">{% trans "Contacts" %}</span>
+    <a href="/contacts/clients/" {% if 'contacts/clients' in request.path %}class="active"{% endif %}>{% trans "Clients" %}</a>
+    <a href="/contacts/suppliers/" {% if 'contacts/suppliers' in request.path %}class="active"{% endif %}>{% trans "Suppliers" %}</a>
     {% endif %}
 
     {% if user_role in "Owner,Operations" %}
-    <span class="nav-section">Mining</span>
-    <a href="/mining/" {% if '/mining/' in request.path %}class="active"{% endif %}>Production</a>
+    <span class="nav-section">{% trans "Mining" %}</span>
+    <a href="/mining/" {% if '/mining/' in request.path %}class="active"{% endif %}>{% trans "Production" %}</a>
     {% endif %}
 
     {% if user_role in "Owner,Finance,Operations" %}
-    <span class="nav-section">Payroll</span>
-    <a href="/payroll/" {% if '/payroll/' in request.path %}class="active"{% endif %}>Role Pay</a>
+    <span class="nav-section">{% trans "Payroll" %}</span>
+    <a href="/payroll/" {% if '/payroll/' in request.path %}class="active"{% endif %}>{% trans "Role Pay" %}</a>
     {% endif %}
 
     {% if user_role in "Owner,Admin,General Manager" %}
-    <span class="nav-section">System</span>
-    <a href="/settings/" {% if request.resolver_match.url_name == 'settings' %}class="active"{% endif %}>Settings</a>
+    <span class="nav-section">{% trans "System" %}</span>
+    <a href="/settings/" {% if request.resolver_match.url_name == 'settings' %}class="active"{% endif %}>{% trans "Settings" %}</a>
     {% if user_role in "Owner,Admin" %}
-    <a href="/admin/">Admin Panel</a>
+    <a href="/admin/">{% trans "Admin Panel" %}</a>
     {% endif %}
-    <a href="/api/">API Browser</a>
+    <a href="/api/">{% trans "API Browser" %}</a>
     {% endif %}
   </nav>
 
