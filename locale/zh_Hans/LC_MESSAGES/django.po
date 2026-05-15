@@ -236,3 +236,252 @@ msgstr "联系方式"
 
 msgid "System designed, managed and hosted by Devtown Technologies"
 msgstr "系统由 Devtown Technologies 设计、管理和托管"
+
+msgid "Go"
+msgstr "确定"
+
+msgid "Operations Dashboard"
+msgstr "运营仪表盘"
+
+msgid "Warehouse stock, storefront stock, transfers, and sales performance."
+msgstr "仓库库存、门店库存、调拨和销售表现。"
+
+msgid "Stock Warehouse"
+msgstr "仓库入库"
+
+msgid "Open POS"
+msgstr "打开 POS"
+
+msgid "Warehouse Units"
+msgstr "仓库数量"
+
+msgid "Store Front Units"
+msgstr "门店数量"
+
+msgid "Sales Today"
+msgstr "今日销售"
+
+msgid "Pending Requests"
+msgstr "待处理申请"
+
+msgid "Month Sales"
+msgstr "本月销售"
+
+msgid "Low-Stock Items"
+msgstr "低库存商品"
+
+msgid "Outstanding"
+msgstr "未结余额"
+
+msgid "Supplier Dues"
+msgstr "供应商应付款"
+
+msgid "Alerts"
+msgstr "提醒"
+
+msgid "Fast-Moving Products"
+msgstr "畅销商品"
+
+msgid "Product"
+msgstr "产品"
+
+msgid "Qty Sold"
+msgstr "已售数量"
+
+msgid "Revenue"
+msgstr "收入"
+
+msgid "No sales delivered yet"
+msgstr "暂无已交付销售"
+
+msgid "Recent Sales Orders"
+msgstr "最近销售订单"
+
+msgid "Code"
+msgstr "编号"
+
+msgid "Client"
+msgstr "客户"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "No orders yet"
+msgstr "暂无订单"
+
+msgid "Recent Purchase Orders"
+msgstr "最近采购订单"
+
+msgid "No POs yet"
+msgstr "暂无采购订单"
+
+msgid "Inventory"
+msgstr "库存"
+
+msgid "Warehouse stock is held separately from storefront stock for sales."
+msgstr "仓库库存与门店销售库存分开管理。"
+
+msgid "Search by name or SKU..."
+msgstr "按名称或 SKU 搜索..."
+
+msgid "Search"
+msgstr "搜索"
+
+msgid "Clear"
+msgstr "清除"
+
+msgid "Category"
+msgstr "类别"
+
+msgid "Brand"
+msgstr "品牌"
+
+msgid "Unit"
+msgstr "单位"
+
+msgid "Total"
+msgstr "总计"
+
+msgid "Reorder"
+msgstr "补货点"
+
+msgid "Cost"
+msgstr "成本"
+
+msgid "Price"
+msgstr "价格"
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "No items found."
+msgstr "未找到商品。"
+
+msgid "Sales Orders"
+msgstr "销售订单"
+
+msgid "New Order"
+msgstr "新订单"
+
+msgid "All Statuses"
+msgstr "所有状态"
+
+msgid "Payment"
+msgstr "付款"
+
+msgid "Est. Delivery"
+msgstr "预计交付"
+
+msgid "Actual Delivery"
+msgstr "实际交付"
+
+msgid "View"
+msgstr "查看"
+
+msgid "Preview invoice"
+msgstr "预览发票"
+
+msgid "Invoice"
+msgstr "发票"
+
+msgid "No orders yet."
+msgstr "暂无订单。"
+
+msgid "New PO"
+msgstr "新采购单"
+
+msgid "Expected Ship"
+msgstr "预计发货"
+
+msgid "Actions"
+msgstr "操作"
+
+msgid "Update"
+msgstr "更新"
+
+msgid "Receive"
+msgstr "收货"
+
+msgid "No purchase orders yet."
+msgstr "暂无采购订单。"
+
+msgid "Invoices"
+msgstr "发票"
+
+msgid "Total Invoiced"
+msgstr "发票总额"
+
+msgid "Total Paid"
+msgstr "已付总额"
+
+msgid "Order"
+msgstr "订单"
+
+msgid "Paid"
+msgstr "已付"
+
+msgid "Balance"
+msgstr "余额"
+
+msgid "Print"
+msgstr "打印"
+
+msgid "Amount"
+msgstr "金额"
+
+msgid "Pay"
+msgstr "付款"
+
+msgid "No invoices yet."
+msgstr "暂无发票。"
+
+msgid "Available"
+msgstr "可用"
+
+msgid "In Stock"
+msgstr "有库存"
+
+msgid "Low Stock"
+msgstr "库存不足"
+
+msgid "Damaged"
+msgstr "损坏"
+
+msgid "Expired"
+msgstr "过期"
+
+msgid "Pending"
+msgstr "待处理"
+
+msgid "Delivered"
+msgstr "已交付"
+
+msgid "Cancelled"
+msgstr "已取消"
+
+msgid "Unpaid"
+msgstr "未付"
+
+msgid "Partial"
+msgstr "部分付款"
+
+msgid "Arrived"
+msgstr "已到达"
+
+msgid "Ordered"
+msgstr "已下单"
+
+msgid "Shipped"
+msgstr "已发货"
+
+msgid "Cash"
+msgstr "现金"
+
+msgid "Mobile Money"
+msgstr "移动支付"
+
+msgid "Bank"
+msgstr "银行"
+
+msgid "Credit"
+msgstr "赊账"

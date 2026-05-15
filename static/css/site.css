@@ -130,6 +130,7 @@ a { color: var(--primary-600); }
 .language-switcher label { font-size: .72rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
 .currency-switcher select,
 .language-switcher select { width: auto; padding: 5px 26px 5px 10px; border-radius: 8px; font-size: .82rem; }
+.language-switcher .btn { padding: 5px 10px; }
 
 /* ── Layout / Sidebar ─────────────────────────────────── */
 .layout { display: flex; flex-direction: row; min-height: calc(100vh - 60px); }

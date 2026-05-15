@@ -1,19 +1,20 @@
 {% extends "base.html" %}
-{% block title %}Purchase Orders{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Purchase Orders" %}{% endblock %}
 {% block content %}
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-  <h2>Purchase Orders</h2>
+  <h2>{% trans "Purchase Orders" %}</h2>
   {% if user_role in "Owner,Procurement,Warehouse" %}
-  <a href="/procurement/new/" class="btn btn-primary">+ New PO</a>
+  <a href="/procurement/new/" class="btn btn-primary">+ {% trans "New PO" %}</a>
   {% endif %}
 </div>
 
 <div style="margin-bottom:10px">
   <form method="get" class="inline-form">
     <select name="status" onchange="this.form.submit()">
-      <option value="">All Statuses</option>
+      <option value="">{% trans "All Statuses" %}</option>
       {% for val, label in status_choices %}
-        <option value="{{ val }}" {% if val == current_status %}selected{% endif %}>{{ label }}</option>
+        <option value="{{ val }}" {% if val == current_status %}selected{% endif %}>{% trans label %}</option>
       {% endfor %}
     </select>
   </form>
@@ -23,8 +24,8 @@
 <table>
   <thead>
     <tr>
-      <th>Code</th><th>Supplier</th><th>Expected Ship</th><th>Status</th>
-      <th>Total</th><th>Actions</th>
+      <th>{% trans "Code" %}</th><th>{% trans "Supplier" %}</th><th>{% trans "Expected Ship" %}</th><th>{% trans "Status" %}</th>
+      <th>{% trans "Total" %}</th><th>{% trans "Actions" %}</th>
     </tr>
   </thead>
   <tbody>
@@ -35,7 +36,7 @@
       <td>{{ po.expected_shipment_date }}</td>
       <td>
         <span class="badge {% if po.status == 'Arrived' %}badge-green{% elif po.status == 'Pending' %}badge-grey{% else %}badge-yellow{% endif %}">
-          {{ po.status }}
+          {% trans po.status %}
         </span>
       </td>
       <td>{{ currency_code }} {{ po.total_amount|floatformat:0 }}</td>
@@ -45,19 +46,19 @@
           {% csrf_token %}
           <select name="status">
             {% for val, label in status_choices %}
-              <option value="{{ val }}" {% if val == po.status %}selected{% endif %}>{{ label }}</option>
+              <option value="{{ val }}" {% if val == po.status %}selected{% endif %}>{% trans label %}</option>
             {% endfor %}
           </select>
-          <button type="submit" class="btn btn-secondary btn-sm">Update</button>
+          <button type="submit" class="btn btn-secondary btn-sm">{% trans "Update" %}</button>
         </form>
         {% if po.status != 'Arrived' or not po.received_at %}
-          &nbsp;<a href="/procurement/{{ po.pk }}/receive/" class="btn btn-primary btn-sm">Receive</a>
+          &nbsp;<a href="/procurement/{{ po.pk }}/receive/" class="btn btn-primary btn-sm">{% trans "Receive" %}</a>
         {% endif %}
         {% endif %}
       </td>
     </tr>
     {% empty %}
-    <tr><td colspan="6" style="text-align:center;padding:20px">No purchase orders yet.</td></tr>
+    <tr><td colspan="6" style="text-align:center;padding:20px">{% trans "No purchase orders yet." %}</td></tr>
     {% endfor %}
   </tbody>
 </table>

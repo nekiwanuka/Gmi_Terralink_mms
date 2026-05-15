@@ -26,11 +26,12 @@
           {% csrf_token %}
           <input type="hidden" name="next" value="{{ request.get_full_path }}" />
           <label for="login-language-code">{% trans "Language" %}</label>
-          <select id="login-language-code" name="language" onchange="this.form.submit()">
+          <select id="login-language-code" name="language">
             {% for value, label in language_choices %}
               <option value="{{ value }}" {% if value == current_language %}selected{% endif %}>{{ label }}</option>
             {% endfor %}
           </select>
+          <button type="submit" class="btn btn-secondary btn-sm">{% trans "Go" %}</button>
         </form>
         <p class="auth-kicker auth-kicker-dark">{% trans "Authorized Access" %}</p>
         <h2>{% trans "Welcome back" %}</h2>

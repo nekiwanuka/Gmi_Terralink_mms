@@ -236,3 +236,252 @@ msgstr "Contact"
 
 msgid "System designed, managed and hosted by Devtown Technologies"
 msgstr "Systeme concu, gere et heberge par Devtown Technologies"
+
+msgid "Go"
+msgstr "Aller"
+
+msgid "Operations Dashboard"
+msgstr "Tableau de bord des operations"
+
+msgid "Warehouse stock, storefront stock, transfers, and sales performance."
+msgstr "Stock de l'entrepot, stock de la boutique, transferts et performance des ventes."
+
+msgid "Stock Warehouse"
+msgstr "Stocker l'entrepot"
+
+msgid "Open POS"
+msgstr "Ouvrir le POS"
+
+msgid "Warehouse Units"
+msgstr "Unites en entrepot"
+
+msgid "Store Front Units"
+msgstr "Unites en boutique"
+
+msgid "Sales Today"
+msgstr "Ventes du jour"
+
+msgid "Pending Requests"
+msgstr "Demandes en attente"
+
+msgid "Month Sales"
+msgstr "Ventes du mois"
+
+msgid "Low-Stock Items"
+msgstr "Articles en stock faible"
+
+msgid "Outstanding"
+msgstr "Solde impaye"
+
+msgid "Supplier Dues"
+msgstr "Dettes fournisseurs"
+
+msgid "Alerts"
+msgstr "Alertes"
+
+msgid "Fast-Moving Products"
+msgstr "Produits a rotation rapide"
+
+msgid "Product"
+msgstr "Produit"
+
+msgid "Qty Sold"
+msgstr "Qte vendue"
+
+msgid "Revenue"
+msgstr "Revenu"
+
+msgid "No sales delivered yet"
+msgstr "Aucune vente livree pour le moment"
+
+msgid "Recent Sales Orders"
+msgstr "Commandes clients recentes"
+
+msgid "Code"
+msgstr "Code"
+
+msgid "Client"
+msgstr "Client"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "No orders yet"
+msgstr "Aucune commande pour le moment"
+
+msgid "Recent Purchase Orders"
+msgstr "Bons de commande recents"
+
+msgid "No POs yet"
+msgstr "Aucun bon de commande pour le moment"
+
+msgid "Inventory"
+msgstr "Inventaire"
+
+msgid "Warehouse stock is held separately from storefront stock for sales."
+msgstr "Le stock de l'entrepot est separe du stock de la boutique pour les ventes."
+
+msgid "Search by name or SKU..."
+msgstr "Rechercher par nom ou SKU..."
+
+msgid "Search"
+msgstr "Rechercher"
+
+msgid "Clear"
+msgstr "Effacer"
+
+msgid "Category"
+msgstr "Categorie"
+
+msgid "Brand"
+msgstr "Marque"
+
+msgid "Unit"
+msgstr "Unite"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Reorder"
+msgstr "Reapprovisionnement"
+
+msgid "Cost"
+msgstr "Cout"
+
+msgid "Price"
+msgstr "Prix"
+
+msgid "Edit"
+msgstr "Modifier"
+
+msgid "No items found."
+msgstr "Aucun article trouve."
+
+msgid "Sales Orders"
+msgstr "Commandes clients"
+
+msgid "New Order"
+msgstr "Nouvelle commande"
+
+msgid "All Statuses"
+msgstr "Tous les statuts"
+
+msgid "Payment"
+msgstr "Paiement"
+
+msgid "Est. Delivery"
+msgstr "Livraison estimee"
+
+msgid "Actual Delivery"
+msgstr "Livraison reelle"
+
+msgid "View"
+msgstr "Voir"
+
+msgid "Preview invoice"
+msgstr "Apercu de la facture"
+
+msgid "Invoice"
+msgstr "Facture"
+
+msgid "No orders yet."
+msgstr "Aucune commande pour le moment."
+
+msgid "New PO"
+msgstr "Nouveau BC"
+
+msgid "Expected Ship"
+msgstr "Expedition prevue"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Update"
+msgstr "Mettre a jour"
+
+msgid "Receive"
+msgstr "Recevoir"
+
+msgid "No purchase orders yet."
+msgstr "Aucun bon de commande pour le moment."
+
+msgid "Invoices"
+msgstr "Factures"
+
+msgid "Total Invoiced"
+msgstr "Total facture"
+
+msgid "Total Paid"
+msgstr "Total paye"
+
+msgid "Order"
+msgstr "Commande"
+
+msgid "Paid"
+msgstr "Paye"
+
+msgid "Balance"
+msgstr "Solde"
+
+msgid "Print"
+msgstr "Imprimer"
+
+msgid "Amount"
+msgstr "Montant"
+
+msgid "Pay"
+msgstr "Payer"
+
+msgid "No invoices yet."
+msgstr "Aucune facture pour le moment."
+
+msgid "Available"
+msgstr "Disponible"
+
+msgid "In Stock"
+msgstr "En stock"
+
+msgid "Low Stock"
+msgstr "Stock faible"
+
+msgid "Damaged"
+msgstr "Endommage"
+
+msgid "Expired"
+msgstr "Expire"
+
+msgid "Pending"
+msgstr "En attente"
+
+msgid "Delivered"
+msgstr "Livre"
+
+msgid "Cancelled"
+msgstr "Annule"
+
+msgid "Unpaid"
+msgstr "Impaye"
+
+msgid "Partial"
+msgstr "Partiel"
+
+msgid "Arrived"
+msgstr "Arrive"
+
+msgid "Ordered"
+msgstr "Commande"
+
+msgid "Shipped"
+msgstr "Expedie"
+
+msgid "Cash"
+msgstr "Especes"
+
+msgid "Mobile Money"
+msgstr "Mobile Money"
+
+msgid "Bank"
+msgstr "Banque"
+
+msgid "Credit"
+msgstr "Credit"

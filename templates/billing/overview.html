@@ -1,19 +1,20 @@
 {% extends "base.html" %}
-{% block title %}Billing{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Billing" %}{% endblock %}
 {% block content %}
-<h2>Billing — Invoices</h2>
+<h2>{% trans "Billing" %} - {% trans "Invoices" %}</h2>
 <div class="kpis" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:16px">
-  <article><p style="font-size:.78rem;opacity:.8">Total Invoiced</p><h3>{{ currency_code }} {{ total_invoiced|floatformat:0 }}</h3></article>
-  <article><p style="font-size:.78rem;opacity:.8">Total Paid</p><h3>{{ currency_code }} {{ total_paid|floatformat:0 }}</h3></article>
-  <article><p style="font-size:.78rem;opacity:.8">Outstanding</p><h3>{{ currency_code }} {{ total_balance|floatformat:0 }}</h3></article>
+  <article><p style="font-size:.78rem;opacity:.8">{% trans "Total Invoiced" %}</p><h3>{{ currency_code }} {{ total_invoiced|floatformat:0 }}</h3></article>
+  <article><p style="font-size:.78rem;opacity:.8">{% trans "Total Paid" %}</p><h3>{{ currency_code }} {{ total_paid|floatformat:0 }}</h3></article>
+  <article><p style="font-size:.78rem;opacity:.8">{% trans "Outstanding" %}</p><h3>{{ currency_code }} {{ total_balance|floatformat:0 }}</h3></article>
 </div>
 
 <div class="panel">
 <table>
   <thead>
     <tr>
-      <th>Invoice</th><th>Client</th><th>Order</th><th>Total</th>
-      <th>Paid</th><th>Balance</th><th>Actions</th>
+      <th>{% trans "Invoice" %}</th><th>{% trans "Client" %}</th><th>{% trans "Order" %}</th><th>{% trans "Total" %}</th>
+      <th>{% trans "Paid" %}</th><th>{% trans "Balance" %}</th><th>{% trans "Actions" %}</th>
     </tr>
   </thead>
   <tbody>
@@ -30,21 +31,21 @@
         </span>
       </td>
       <td>
-        <a href="/documents/invoice/{{ inv.pk }}/" class="btn btn-secondary btn-sm" target="_blank">Print</a>
+        <a href="/documents/invoice/{{ inv.pk }}/" class="btn btn-secondary btn-sm" target="_blank">{% trans "Print" %}</a>
         {% if inv.balance > 0 %}
         <form method="post" action="/billing/pay/{{ inv.pk }}/" class="inline-form" style="margin-top:4px">
           {% csrf_token %}
-          <input type="number" name="amount" placeholder="Amount" min="0.01" step="0.01" style="width:120px" />
+          <input type="number" name="amount" placeholder="{% trans 'Amount' %}" min="0.01" step="0.01" style="width:120px" />
           <select name="mode" style="width:auto">
-            {% for val, label in payment_modes %}<option value="{{ val }}">{{ label }}</option>{% endfor %}
+            {% for val, label in payment_modes %}<option value="{{ val }}">{% trans label %}</option>{% endfor %}
           </select>
-          <button type="submit" class="btn btn-primary btn-sm">Pay</button>
+          <button type="submit" class="btn btn-primary btn-sm">{% trans "Pay" %}</button>
         </form>
         {% endif %}
       </td>
     </tr>
     {% empty %}
-    <tr><td colspan="7" style="text-align:center;padding:20px">No invoices yet.</td></tr>
+    <tr><td colspan="7" style="text-align:center;padding:20px">{% trans "No invoices yet." %}</td></tr>
     {% endfor %}
   </tbody>
 </table>
