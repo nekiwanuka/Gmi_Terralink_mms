@@ -178,6 +178,20 @@ class PurchaseOrder(TimeStampedModel):
     ]
 
     code = models.CharField(max_length=30, unique=True)
+    parent_order = models.ForeignKey(
+        "self",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="split_orders",
+    )
+    split_from_line = models.ForeignKey(
+        "PurchaseOrderLine",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="split_orders",
+    )
     supplier = models.ForeignKey(
         Supplier, on_delete=models.PROTECT, related_name="purchase_orders"
     )
@@ -197,6 +211,10 @@ class PurchaseOrder(TimeStampedModel):
                 output_field=models.DecimalField(max_digits=14, decimal_places=2),
             )
         ).get("total") or Decimal("0")
+
+    @property
+    def is_split(self):
+        return bool(self.parent_order_id and self.split_from_line_id)
 
     def __str__(self):
         return self.code
@@ -564,6 +582,92 @@ class MiningEntry(TimeStampedModel):
 
 def generate_code(prefix):
     return f"{prefix}-{timezone.now().strftime('%y%m%d%H%M%S%f')[-10:]}"
+
+
+@transaction.atomic
+def split_purchase_order_line(*, parent_line, supplier, quantity):
+    parent_line = (
+        PurchaseOrderLine.objects.select_for_update()
+        .select_related("purchase_order", "item")
+        .get(pk=parent_line.pk)
+    )
+    quantity = int(quantity)
+
+    if parent_line.purchase_order.received_at:
+        raise ValidationError("Received purchase orders cannot be split.")
+    if parent_line.purchase_order.is_split:
+        raise ValidationError("Split purchase orders cannot be split again.")
+    if supplier.pk == parent_line.purchase_order.supplier_id:
+        raise ValidationError("Choose a different supplier for the split quantity.")
+    if parent_line.quantity <= 2:
+        raise ValidationError(
+            "A PO line can only be split when its quantity is more than 2."
+        )
+    if quantity <= 0:
+        raise ValidationError("Split quantity must be at least 1.")
+    if quantity >= parent_line.quantity:
+        raise ValidationError("Split quantity must leave a balance on the main PO.")
+
+    parent_order = parent_line.purchase_order
+    split_po = PurchaseOrder.objects.create(
+        code=generate_code("PO"),
+        parent_order=parent_order,
+        split_from_line=parent_line,
+        supplier=supplier,
+        expected_shipment_date=parent_order.expected_shipment_date,
+        status=parent_order.status,
+        bill_of_lading=parent_order.bill_of_lading,
+        tracking_details=parent_order.tracking_details,
+    )
+    PurchaseOrderLine.objects.create(
+        purchase_order=split_po,
+        item=parent_line.item,
+        quantity=quantity,
+        unit_price=parent_line.unit_price,
+    )
+
+    parent_line.quantity -= quantity
+    parent_line.save(update_fields=["quantity"])
+    return split_po
+
+
+@transaction.atomic
+def update_purchase_order_split_quantity(*, split_po, quantity):
+    split_po = (
+        PurchaseOrder.objects.select_for_update()
+        .select_related("parent_order", "split_from_line")
+        .get(pk=split_po.pk)
+    )
+    if not split_po.is_split:
+        raise ValidationError(
+            "Only split purchase orders can have their split quantity edited."
+        )
+    if split_po.received_at or split_po.parent_order.received_at:
+        raise ValidationError(
+            "Received purchase orders cannot have split quantities edited."
+        )
+
+    split_line = split_po.lines.select_for_update().get()
+    parent_line = PurchaseOrderLine.objects.select_for_update().get(
+        pk=split_po.split_from_line_id
+    )
+    quantity = int(quantity)
+    total_remaining_for_this_split = parent_line.quantity + split_line.quantity
+
+    if quantity <= 0:
+        raise ValidationError("Split quantity must be at least 1.")
+    if total_remaining_for_this_split <= 2:
+        raise ValidationError(
+            "A PO line can only be split when its quantity is more than 2."
+        )
+    if quantity >= total_remaining_for_this_split:
+        raise ValidationError("Split quantity must leave a balance on the main PO.")
+
+    parent_line.quantity = total_remaining_for_this_split - quantity
+    split_line.quantity = quantity
+    parent_line.save(update_fields=["quantity"])
+    split_line.save(update_fields=["quantity"])
+    return split_po
 
 
 def get_stock_quantity(item, location):

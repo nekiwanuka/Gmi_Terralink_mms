@@ -61,6 +61,8 @@ from .models import (
     get_stock_quantity,
     receive_purchase_order,
     record_stock_movement,
+    split_purchase_order_line,
+    update_purchase_order_split_quantity,
 )
 from .models import StockRequest
 from .serializers import (
@@ -536,8 +538,8 @@ def notice_task_done(request, pk):
 def procurement_list(request):
     status_filter = request.GET.get("status", "")
     pos = (
-        PurchaseOrder.objects.select_related("supplier")
-        .prefetch_related("lines")
+        PurchaseOrder.objects.select_related("supplier", "parent_order")
+        .prefetch_related("lines__item")
         .order_by("-id")
     )
     if status_filter:
@@ -547,6 +549,7 @@ def procurement_list(request):
         "procurement/list.html",
         {
             "pos": pos,
+            "suppliers": Supplier.objects.order_by("name"),
             "status_choices": PurchaseOrder.STATUS_CHOICES,
             "current_status": status_filter,
         },
@@ -586,6 +589,50 @@ def procurement_update_status(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, f"{po.code} updated.")
+    return redirect("procurement_list")
+
+
+@role_required("Owner", "Procurement", "Warehouse")
+def procurement_split_line(request, pk):
+    line = get_object_or_404(
+        PurchaseOrderLine.objects.select_related("purchase_order", "item"), pk=pk
+    )
+    if request.method == "POST":
+        try:
+            supplier = Supplier.objects.get(pk=request.POST.get("supplier"))
+            split_po = split_purchase_order_line(
+                parent_line=line,
+                supplier=supplier,
+                quantity=request.POST.get("quantity", 0),
+            )
+            messages.success(
+                request,
+                f"Created split PO {split_po.code}; main PO balance was updated.",
+            )
+        except Supplier.DoesNotExist:
+            messages.error(request, "Choose a supplier for the split quantity.")
+        except (ValidationError, ValueError) as e:
+            messages.error(request, str(e))
+    return redirect("procurement_list")
+
+
+@role_required("Owner", "Procurement", "Warehouse")
+def procurement_update_split_quantity(request, pk):
+    split_po = get_object_or_404(PurchaseOrder, pk=pk)
+    if request.method == "POST":
+        try:
+            update_purchase_order_split_quantity(
+                split_po=split_po,
+                quantity=request.POST.get("quantity", 0),
+            )
+            messages.success(request, f"Split quantity for {split_po.code} updated.")
+        except (
+            PurchaseOrderLine.DoesNotExist,
+            PurchaseOrderLine.MultipleObjectsReturned,
+            ValidationError,
+            ValueError,
+        ) as e:
+            messages.error(request, str(e))
     return redirect("procurement_list")
 
 

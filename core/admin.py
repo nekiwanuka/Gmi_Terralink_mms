@@ -120,6 +120,7 @@ class PurchaseOrderAdmin(admin.ModelAdmin):
     list_display = (
         "code",
         "supplier",
+        "parent_order",
         "status",
         "expected_shipment_date",
         "received_at",

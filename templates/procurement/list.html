@@ -32,7 +32,12 @@
     {% for po in pos %}
     <tr>
       <td>{{ po.code }}</td>
-      <td>{{ po.supplier.name }}</td>
+      <td>
+        {{ po.supplier.name }}
+        {% if po.is_split %}
+          <div class="muted">Split from {{ po.parent_order.code }}</div>
+        {% endif %}
+      </td>
       <td>{{ po.expected_shipment_date }}</td>
       <td>
         <span class="badge {% if po.status == 'Arrived' %}badge-green{% elif po.status == 'Pending' %}badge-grey{% else %}badge-yellow{% endif %}">
@@ -55,6 +60,58 @@
           &nbsp;<a href="/procurement/{{ po.pk }}/receive/" class="btn btn-primary btn-sm">{% trans "Receive" %}</a>
         {% endif %}
         {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="6" style="background:#fafafa">
+        <table class="lines-table" style="margin:0">
+          <thead>
+            <tr>
+              <th>{% trans "Item" %}</th>
+              <th>{% trans "Qty" %}</th>
+              <th>{% trans "Unit Price" %}</th>
+              <th>{% trans "Split" %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for line in po.lines.all %}
+            <tr>
+              <td>{{ line.item.sku }} — {{ line.item.name }}</td>
+              <td>{{ line.quantity }}</td>
+              <td>{{ currency_code }} {{ line.unit_price|floatformat:0 }}</td>
+              <td>
+                {% if po.is_split %}
+                  {% if po.status != 'Arrived' and not po.received_at %}
+                  <form method="post" action="{% url 'procurement_update_split_quantity' po.pk %}" class="inline-form">
+                    {% csrf_token %}
+                    <input type="number" name="quantity" min="1" value="{{ line.quantity }}" style="width:80px" />
+                    <button type="submit" class="btn btn-secondary btn-sm">{% trans "Update Qty" %}</button>
+                  </form>
+                  {% else %}
+                    <span class="muted">{% trans "Received" %}</span>
+                  {% endif %}
+                {% elif line.quantity > 2 and po.status != 'Arrived' and not po.received_at %}
+                  <form method="post" action="{% url 'procurement_split_line' line.pk %}" class="inline-form">
+                    {% csrf_token %}
+                    <select name="supplier" required>
+                      <option value="">{% trans "Supplier" %}</option>
+                      {% for supplier in suppliers %}
+                        {% if supplier.pk != po.supplier.pk %}
+                        <option value="{{ supplier.pk }}">{{ supplier.name }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                    <input type="number" name="quantity" min="1" max="{{ line.quantity|add:'-1' }}" value="1" style="width:80px" />
+                    <button type="submit" class="btn btn-secondary btn-sm">{% trans "Split Qty" %}</button>
+                  </form>
+                {% else %}
+                  <span class="muted">{% trans "Not available" %}</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </td>
     </tr>
     {% empty %}

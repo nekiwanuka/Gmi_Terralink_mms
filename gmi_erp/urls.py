@@ -39,7 +39,9 @@ from core.views import (
     payroll_list,
     procurement_create,
     procurement_list,
+    procurement_split_line,
     procurement_update_status,
+    procurement_update_split_quantity,
     quotation_convert,
     quotation_create,
     quotation_detail,
@@ -96,6 +98,16 @@ urlpatterns = [
     # Procurement
     path("procurement/", procurement_list, name="procurement_list"),
     path("procurement/new/", procurement_create, name="procurement_create"),
+    path(
+        "procurement/lines/<int:pk>/split/",
+        procurement_split_line,
+        name="procurement_split_line",
+    ),
+    path(
+        "procurement/splits/<int:pk>/quantity/",
+        procurement_update_split_quantity,
+        name="procurement_update_split_quantity",
+    ),
     path(
         "procurement/<int:pk>/status/",
         procurement_update_status,
