@@ -42,6 +42,9 @@ msgstr "添加行"
 msgid "Add Location"
 msgstr "添加位置"
 
+msgid "Add New Item"
+msgstr "新增库存商品"
+
 msgid "Add Supplier"
 msgstr "添加供应商"
 
@@ -327,6 +330,9 @@ msgstr "EUR - Euro"
 msgid "Edit"
 msgstr "编辑"
 
+msgid "Edit %(sku)s"
+msgstr "编辑 %(sku)s"
+
 msgid "Edit Client"
 msgstr "编辑客户"
 
@@ -364,10 +370,13 @@ msgid "Expense Records"
 msgstr "支出记录"
 
 msgid "Expense Records (Total: %(currency_code)s %(total_amount)s)"
-msgstr "Expense Records (Total: %(currency_code)s %(total_amount)s)"
+msgstr "支出记录（合计：%(currency_code)s %(total_amount)s）"
 
 msgid "Expense Records by Supplier"
 msgstr "按供应商的支出记录"
+
+msgid "Expense recorded."
+msgstr "支出已记录。"
 
 msgid "Expenses"
 msgstr "支出"
@@ -376,10 +385,10 @@ msgid "Expenses Recorded"
 msgstr "已记录支出"
 
 msgid "Expenses and payroll are not deducted"
-msgstr "Expenses and payroll are not deducted"
+msgstr "支出和工资不会扣除"
 
 msgid "Expenses are tracked for record keeping only. They are not deducted from sales or net sales reports."
-msgstr "Expenses are tracked for record keeping only. They are not deducted from sales or net sales reports."
+msgstr "支出仅用于记录保存。它们不会从销售额或净销售报表中扣除。"
 
 msgid "Expenses by Type"
 msgstr "按类型支出"
@@ -424,7 +433,7 @@ msgid "GMI Inventory"
 msgstr "GMI 库存"
 
 msgid "GMI Inventory Admin"
-msgstr "GMI Inventory Admin"
+msgstr "GMI 库存管理"
 
 msgid "GMI Inventory System"
 msgstr "GMI 库存系统"
@@ -451,7 +460,7 @@ msgid "Inventory Valuation"
 msgstr "库存估值"
 
 msgid "Inventory, transfers, sales, mining production, payroll records, and expense tracking."
-msgstr "Inventory, transfers, sales, mining production, payroll records, and expense tracking."
+msgstr "库存、调拨、销售、矿业生产、工资记录和支出跟踪。"
 
 msgid "Invoice"
 msgstr "发票"
@@ -473,6 +482,12 @@ msgstr "开具"
 
 msgid "Item"
 msgstr "商品"
+
+msgid "Item %(sku)s added with %(qty)s units stocked."
+msgstr "商品 %(sku)s 已添加，入库 %(qty)s 件。"
+
+msgid "Item %(sku)s updated."
+msgstr "商品 %(sku)s 已更新。"
 
 msgid "Item Description"
 msgstr "商品描述"
@@ -1057,7 +1072,7 @@ msgid "Record Worker Pay"
 msgstr "记录员工薪资"
 
 msgid "Record keeping only"
-msgstr "Record keeping only"
+msgstr "仅用于记录"
 
 msgid "Reference"
 msgstr "参考"
@@ -1264,10 +1279,10 @@ msgid "Subtotal"
 msgstr "小计"
 
 msgid "Supplier"
-msgstr "Supplier"
+msgstr "供应商"
 
 msgid "Supplier (optional)"
-msgstr "Supplier (optional)"
+msgstr "供应商（可选）"
 
 msgid "Supplier Dues"
 msgstr "供应商应付款"

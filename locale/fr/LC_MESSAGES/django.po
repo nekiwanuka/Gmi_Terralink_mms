@@ -42,6 +42,9 @@ msgstr "Ajouter une ligne"
 msgid "Add Location"
 msgstr "Ajouter un emplacement"
 
+msgid "Add New Item"
+msgstr "Nouvel article"
+
 msgid "Add Supplier"
 msgstr "Ajouter un fournisseur"
 
@@ -327,6 +330,9 @@ msgstr "EUR - Euro"
 msgid "Edit"
 msgstr "Modifier"
 
+msgid "Edit %(sku)s"
+msgstr "Modifier %(sku)s"
+
 msgid "Edit Client"
 msgstr "Modifier le client"
 
@@ -364,10 +370,13 @@ msgid "Expense Records"
 msgstr "Enregistrements de depenses"
 
 msgid "Expense Records (Total: %(currency_code)s %(total_amount)s)"
-msgstr "Expense Records (Total: %(currency_code)s %(total_amount)s)"
+msgstr "Enregistrements de depenses (total : %(currency_code)s %(total_amount)s)"
 
 msgid "Expense Records by Supplier"
 msgstr "Depenses par fournisseur"
+
+msgid "Expense recorded."
+msgstr "Depense enregistree."
 
 msgid "Expenses"
 msgstr "Depenses"
@@ -376,10 +385,10 @@ msgid "Expenses Recorded"
 msgstr "Depenses enregistrees"
 
 msgid "Expenses and payroll are not deducted"
-msgstr "Expenses and payroll are not deducted"
+msgstr "Les depenses et la paie ne sont pas deduites"
 
 msgid "Expenses are tracked for record keeping only. They are not deducted from sales or net sales reports."
-msgstr "Expenses are tracked for record keeping only. They are not deducted from sales or net sales reports."
+msgstr "Les depenses sont suivies uniquement pour la tenue des registres. Elles ne sont pas deduites des ventes ni des rapports de ventes nettes."
 
 msgid "Expenses by Type"
 msgstr "Depenses par type"
@@ -424,7 +433,7 @@ msgid "GMI Inventory"
 msgstr "Inventaire GMI"
 
 msgid "GMI Inventory Admin"
-msgstr "GMI Inventory Admin"
+msgstr "Administration de l'inventaire GMI"
 
 msgid "GMI Inventory System"
 msgstr "Systeme d'inventaire GMI"
@@ -451,7 +460,7 @@ msgid "Inventory Valuation"
 msgstr "Valorisation du stock"
 
 msgid "Inventory, transfers, sales, mining production, payroll records, and expense tracking."
-msgstr "Inventory, transfers, sales, mining production, payroll records, and expense tracking."
+msgstr "Inventaire, transferts, ventes, production miniere, paie et suivi des depenses."
 
 msgid "Invoice"
 msgstr "Facture"
@@ -473,6 +482,12 @@ msgstr "Emise"
 
 msgid "Item"
 msgstr "Article"
+
+msgid "Item %(sku)s added with %(qty)s units stocked."
+msgstr "Article %(sku)s ajoute avec %(qty)s unites en stock."
+
+msgid "Item %(sku)s updated."
+msgstr "Article %(sku)s mis a jour."
 
 msgid "Item Description"
 msgstr "Description de l'article"
@@ -592,7 +607,7 @@ msgid "Mobile Money"
 msgstr "Mobile Money"
 
 msgid "Mode"
-msgstr "Mode"
+msgstr "Moyen"
 
 msgid "Month Sales"
 msgstr "Ventes du mois"
@@ -1057,7 +1072,7 @@ msgid "Record Worker Pay"
 msgstr "Enregistrer paie travailleur"
 
 msgid "Record keeping only"
-msgstr "Tenue de registre uniquement"
+msgstr "Tenue des registres uniquement"
 
 msgid "Reference"
 msgstr "Reference"
@@ -1216,7 +1231,7 @@ msgid "Status"
 msgstr "Statut"
 
 msgid "Stock"
-msgstr "Stock"
+msgstr "Inventaire"
 
 msgid "Stock Adjustment"
 msgstr "Ajustement de stock"
@@ -1264,10 +1279,10 @@ msgid "Subtotal"
 msgstr "Subtotal"
 
 msgid "Supplier"
-msgstr "Supplier"
+msgstr "Fournisseur"
 
 msgid "Supplier (optional)"
-msgstr "Supplier (optional)"
+msgstr "Fournisseur (facultatif)"
 
 msgid "Supplier Dues"
 msgstr "Dettes fournisseurs"
@@ -1375,7 +1390,7 @@ msgid "Transfer"
 msgstr "Transfer"
 
 msgid "Type"
-msgstr "Type"
+msgstr "Categorie"
 
 msgid "UGX - Ugandan Shilling"
 msgstr "UGX - Ugandan Shilling"
@@ -1438,7 +1453,7 @@ msgid "Warehouse"
 msgstr "Entrepot"
 
 msgid "Warehouse Location"
-msgstr "Warehouse Location"
+msgstr "Emplacement d'entrepot"
 
 msgid "Warehouse Transfer"
 msgstr "Transfert d'entrepot"

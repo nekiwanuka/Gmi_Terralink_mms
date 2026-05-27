@@ -8,6 +8,7 @@ from django.db import transaction
 from django.db.models import Count, DecimalField, ExpressionWrapper, F, Sum
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
+from django.utils.translation import gettext as _
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -712,10 +713,14 @@ def inventory_create(request):
                 note="Warehouse stocking form",
                 user=request.user if request.user.is_authenticated else None,
             )
-        messages.success(request, f"Item {item.sku} added with {qty} units stocked.")
+        messages.success(
+            request,
+            _("Item %(sku)s added with %(qty)s units stocked.")
+            % {"sku": item.sku, "qty": qty},
+        )
         return redirect("inventory_list")
     return render(
-        request, "inventory/form.html", {"form": form, "title": "Add New Item"}
+        request, "inventory/form.html", {"form": form, "title": _("Add New Item")}
     )
 
 
@@ -737,14 +742,14 @@ def inventory_edit(request, pk):
                 note="Additional warehouse stock",
                 user=request.user if request.user.is_authenticated else None,
             )
-        messages.success(request, f"Item {item.sku} updated.")
+        messages.success(request, _("Item %(sku)s updated.") % {"sku": item.sku})
         return redirect("inventory_list")
     return render(
         request,
         "inventory/form.html",
         {
             "form": form,
-            "title": f"Edit {item.sku}",
+            "title": _("Edit %(sku)s") % {"sku": item.sku},
             "item": item,
         },
     )
@@ -950,7 +955,7 @@ def billing_expenses(request):
     form = ExpenseForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         form.save()
-        messages.success(request, "Expense recorded.")
+        messages.success(request, _("Expense recorded."))
         return redirect("billing_expenses")
     expenses = Expense.objects.select_related("supplier").order_by("-id")
     total = expenses.aggregate(x=Sum("amount")).get("x") or 0
