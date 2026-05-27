@@ -50,8 +50,8 @@
         <div>
           <label class="form-label">{% trans "Logo" %}</label>
           <input type="file" name="logo" accept="image/*" />
-          {% if profile.logo %}
-            <img src="{{ profile.logo.url }}" class="logo-large" style="margin-top:8px" />
+          {% if profile_logo_url %}
+            <img src="{{ profile_logo_url }}" class="logo-large" style="margin-top:8px" />
           {% endif %}
         </div>
       </div>
