@@ -1,25 +1,26 @@
 {% extends "base.html" %}
-{% block title %}Mining — Production{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Mining" %} — {% trans "Production" %}{% endblock %}
 {% block content %}
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-  <h2>Mining — Production Entries</h2>
-  <a href="/mining/new/" class="btn btn-primary">+ Log Entry</a>
+  <h2>{% trans "Mining" %} — {% trans "Production Entries" %}</h2>
+  <a href="/mining/new/" class="btn btn-primary">+ {% trans "Log Entry" %}</a>
 </div>
 
 <form method="get" style="margin-bottom:12px;display:flex;gap:8px;align-items:center">
-  <label class="form-label" style="margin-bottom:0">Filter Month:</label>
+  <label class="form-label" style="margin-bottom:0">{% trans "Filter Month" %}:</label>
   <input type="month" name="month" value="{{ month }}" />
-  <button type="submit" class="btn btn-secondary btn-sm">Filter</button>
-  {% if month %}<a href="/mining/" class="btn btn-secondary btn-sm">Clear</a>{% endif %}
+  <button type="submit" class="btn btn-secondary btn-sm">{% trans "Filter" %}</button>
+  {% if month %}<a href="/mining/" class="btn btn-secondary btn-sm">{% trans "Clear" %}</a>{% endif %}
 </form>
 
 <div class="kpis" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:16px">
   <article>
-    <p style="font-size:.78rem;opacity:.8">Total Produced (t)</p>
+    <p style="font-size:.78rem;opacity:.8">{% trans "Total Produced (t)" %}</p>
     <h3>{{ totals.total_produced|default:0|floatformat:2 }}</h3>
   </article>
   <article>
-    <p style="font-size:.78rem;opacity:.8">Total Hours</p>
+    <p style="font-size:.78rem;opacity:.8">{% trans "Total Hours" %}</p>
     <h3>{{ totals.total_hours|default:0|floatformat:1 }}</h3>
   </article>
 </div>
@@ -28,8 +29,8 @@
 <table>
   <thead>
     <tr>
-      <th>Date</th><th>Mineral</th><th>Line</th><th>Produced (t)</th>
-      <th>Hours</th><th>Output/Hr</th><th>Staff</th><th>Expats</th>
+      <th>{% trans "Date" %}</th><th>{% trans "Mineral" %}</th><th>{% trans "Line" %}</th><th>{% trans "Produced (t)" %}</th>
+      <th>{% trans "Hours" %}</th><th>{% trans "Output/Hr" %}</th><th>{% trans "Staff" %}</th><th>{% trans "Expats" %}</th>
     </tr>
   </thead>
   <tbody>
@@ -45,7 +46,7 @@
       <td>{{ e.expatriates_count }}</td>
     </tr>
     {% empty %}
-    <tr><td colspan="8" style="text-align:center;padding:20px">No entries found.</td></tr>
+    <tr><td colspan="8" style="text-align:center;padding:20px">{% trans "No entries found." %}</td></tr>
     {% endfor %}
   </tbody>
 </table>

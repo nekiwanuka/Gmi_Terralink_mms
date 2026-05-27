@@ -51,7 +51,7 @@
       {% endif %}
       <span class="user-chip">
         <span class="avatar">{{ user.username|slice:":1" }}</span>
-        <span class="role-badge">{% if user_role %}{{ user_role }}{% else %}{% trans "User" %}{% endif %}</span>
+        <span class="role-badge">{% if user_role %}{% trans user_role %}{% else %}{% trans "User" %}{% endif %}</span>
         <span>{{ user.username }}</span>
       </span>
       <span class="topbar-divider" aria-hidden="true"></span>

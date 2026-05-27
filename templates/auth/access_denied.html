@@ -1,9 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Access Denied — GMI ERP{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Access Denied" %} — GMI ERP{% endblock %}
 {% block content %}
 <div class="panel" style="max-width:500px;margin:60px auto;text-align:center">
-  <h2 style="color:#b53b3b">&#128274; Access Denied</h2>
-  <p style="margin-top:10px">You do not have permission to view this page.</p>
-  <a href="/" class="btn btn-primary" style="margin-top:16px">Back to Dashboard</a>
+  <h2 style="color:#b53b3b">&#128274; {% trans "Access Denied" %}</h2>
+  <p style="margin-top:10px">{% trans "You do not have permission to view this page." %}</p>
+  <a href="/" class="btn btn-primary" style="margin-top:16px">{% trans "Back to Dashboard" %}</a>
 </div>
 {% endblock %}

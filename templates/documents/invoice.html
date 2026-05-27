@@ -1,19 +1,20 @@
 <!doctype html>
-<html lang="en">
+{% load i18n %}
+<html lang="{{ current_language|default:'en' }}">
 <head>
   <meta charset="utf-8" />
-  <title>Invoice {{ invoice.code }} — {{ profile.business_name }}</title>
+  <title>{% trans "Invoice" %} {{ invoice.code }} — {{ profile.business_name }}</title>
   <link rel="stylesheet" href="/static/css/site.css" />
 </head>
 <body class="document">
 
   <div class="doc-actions">
-    <button onclick="window.print()" class="btn btn-primary btn-sm">Print / Save PDF</button>
-    <a href="/sales/{{ order.pk }}/" class="btn btn-secondary btn-sm">Back</a>
+    <button onclick="window.print()" class="btn btn-primary btn-sm">{% trans "Print / Save PDF" %}</button>
+    <a href="/sales/{{ order.pk }}/" class="btn btn-secondary btn-sm">{% trans "Back" %}</a>
   </div>
 
   <section class="doc-page">
-    {% if invoice.balance <= 0 %}<div class="doc-watermark">PAID</div>{% endif %}
+    {% if invoice.balance <= 0 %}<div class="doc-watermark">{% trans "PAID" %}</div>{% endif %}
 
     <header class="doc-head">
       <div class="brand-block">
@@ -22,32 +23,32 @@
           <div class="biz-name">{{ profile.business_name }}</div>
           <div class="biz-meta">
             {{ profile.business_address|linebreaksbr }}<br/>
-            Tel: {{ profile.business_phone }}<br/>
-            Email: <a href="mailto:{{ profile.business_email }}">{{ profile.business_email }}</a><br/>
+            {% trans "Tel" %}: {{ profile.business_phone }}<br/>
+            {% trans "Email" %}: <a href="mailto:{{ profile.business_email }}">{{ profile.business_email }}</a><br/>
             <a href="https://{{ profile.business_website }}" target="_blank">{{ profile.business_website }}</a>
           </div>
         </div>
       </div>
       <div class="doc-title-block">
-        <div class="doc-title">Invoice</div>
-        <div class="doc-code">No. {{ invoice.code }}</div>
-        <div class="doc-code">Date: {{ invoice.created_at|date:"d M Y" }}</div>
+        <div class="doc-title">{% trans "Invoice" %}</div>
+        <div class="doc-code">{% trans "No." %} {{ invoice.code }}</div>
+        <div class="doc-code">{% trans "Date" %}: {{ invoice.created_at|date:"d M Y" }}</div>
       </div>
     </header>
 
     <div class="doc-meta-grid">
       <div class="meta-card">
-        <h4>Bill To</h4>
+        <h4>{% trans "Bill To" %}</h4>
         <p><strong>{{ invoice.client.name }}</strong></p>
-        {% if invoice.client.phone %}<p>Tel: {{ invoice.client.phone }}</p>{% endif %}
-        {% if invoice.client.email %}<p>Email: {{ invoice.client.email }}</p>{% endif %}
+        {% if invoice.client.phone %}<p>{% trans "Tel" %}: {{ invoice.client.phone }}</p>{% endif %}
+        {% if invoice.client.email %}<p>{% trans "Email" %}: {{ invoice.client.email }}</p>{% endif %}
       </div>
       <div class="meta-card">
-        <h4>Order Reference</h4>
-        <p><strong>SO:</strong> {{ order.code }}</p>
-        <p><strong>Status:</strong> {{ order.status }}</p>
-        {% if order.estimated_delivery_date %}<p><strong>Est. Delivery:</strong> {{ order.estimated_delivery_date|date:"d M Y" }}</p>{% endif %}
-        <p><strong>Payment:</strong> {{ order.payment_status }}</p>
+        <h4>{% trans "Order Reference" %}</h4>
+        <p><strong>{% trans "SO" %}:</strong> {{ order.code }}</p>
+        <p><strong>{% trans "Status" %}:</strong> {% trans order.status %}</p>
+        {% if order.estimated_delivery_date %}<p><strong>{% trans "Est. Delivery" %}:</strong> {{ order.estimated_delivery_date|date:"d M Y" }}</p>{% endif %}
+        <p><strong>{% trans "Payment" %}:</strong> {% trans order.payment_status %}</p>
       </div>
     </div>
 
@@ -55,10 +56,10 @@
       <thead>
         <tr>
           <th style="width:48px">#</th>
-          <th>Description</th>
-          <th style="width:90px">Qty</th>
-          <th style="width:140px">Unit Price</th>
-          <th style="width:150px">Line Total</th>
+          <th>{% trans "Description" %}</th>
+          <th style="width:90px">{% trans "Qty" %}</th>
+          <th style="width:140px">{% trans "Unit Price" %}</th>
+          <th style="width:150px">{% trans "Line Total" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -67,7 +68,7 @@
             <td>{{ forloop.counter }}</td>
             <td>
               <strong>{{ line.item.name }}</strong><br/>
-              <span style="color:#4a5c58;font-size:.78rem">SKU: {{ line.item.sku }}</span>
+              <span style="color:#4a5c58;font-size:.78rem">{% trans "SKU" %}: {{ line.item.sku }}</span>
             </td>
             <td>{{ line.quantity }} {{ line.item.unit }}</td>
             <td>{{ currency_code }} {{ line.unit_price|floatformat:0 }}</td>
@@ -79,24 +80,22 @@
 
     <div class="doc-totals">
       <div class="notes-box">
-        <strong>Payment Instructions:</strong><br/>
-        Please pay by bank transfer, mobile money, or cash to {{ profile.business_name }}.
-        Quote invoice number <strong>{{ invoice.code }}</strong> as the reference.
-        Goods remain the property of {{ profile.business_name }} until paid in full.
+        <strong>{% trans "Payment Instructions" %}:</strong><br/>
+        {% blocktrans with business_name=profile.business_name invoice_code=invoice.code %}Please pay by bank transfer, mobile money, or cash to {{ business_name }}. Quote invoice number <strong>{{ invoice_code }}</strong> as the reference. Goods remain the property of {{ business_name }} until paid in full.{% endblocktrans %}
       </div>
       <div class="totals-box">
-        <div class="row"><span>Subtotal</span><span>{{ currency_code }} {{ invoice.total_amount|floatformat:0 }}</span></div>
-        <div class="row"><span>Paid</span><span>{{ currency_code }} {{ invoice.paid_amount|floatformat:0 }}</span></div>
-        <div class="row grand"><span>Balance Due</span><span>{{ currency_code }} {{ invoice.balance|floatformat:0 }}</span></div>
+        <div class="row"><span>{% trans "Subtotal" %}</span><span>{{ currency_code }} {{ invoice.total_amount|floatformat:0 }}</span></div>
+        <div class="row"><span>{% trans "Paid" %}</span><span>{{ currency_code }} {{ invoice.paid_amount|floatformat:0 }}</span></div>
+        <div class="row grand"><span>{% trans "Balance Due" %}</span><span>{{ currency_code }} {{ invoice.balance|floatformat:0 }}</span></div>
       </div>
     </div>
 
     <footer class="doc-footer">
       <div>
-        Thank you for your business.<br/>
-        For queries: {{ profile.business_email }} · {{ profile.business_phone }}
+        {% trans "Thank you for your business." %}<br/>
+        {% trans "For queries" %}: {{ profile.business_email }} · {{ profile.business_phone }}
       </div>
-      <div class="stamp">{% if invoice.balance <= 0 %}Paid in Full{% else %}Original{% endif %}</div>
+      <div class="stamp">{% if invoice.balance <= 0 %}{% trans "Paid in Full" %}{% else %}{% trans "Original" %}{% endif %}</div>
     </footer>
   </section>
 

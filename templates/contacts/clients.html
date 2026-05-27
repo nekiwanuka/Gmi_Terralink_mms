@@ -1,30 +1,31 @@
 {% extends "base.html" %}
-{% block title %}Clients{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Clients" %}{% endblock %}
 {% block content %}
-<h2>Clients</h2>
+<h2>{% trans "Clients" %}</h2>
 <div class="grid">
   <div class="panel form-panel">
-    <h3>Add Client</h3>
+    <h3>{% trans "Add Client" %}</h3>
     <form method="post">
       {% csrf_token %}
       <div class="form-row">
-        <div><label class="form-label">Name</label>{{ form.name }}</div>
-        <div><label class="form-label">Phone</label>{{ form.phone }}</div>
+        <div><label class="form-label">{% trans "Name" %}</label>{{ form.name }}</div>
+        <div><label class="form-label">{% trans "Phone" %}</label>{{ form.phone }}</div>
       </div>
       <div class="form-row">
-        <div><label class="form-label">Email</label>{{ form.email }}</div>
-        <div><label class="form-label">Credit Limit ({{ currency_code }})</label>{{ form.credit_limit }}</div>
+        <div><label class="form-label">{% trans "Email" %}</label>{{ form.email }}</div>
+        <div><label class="form-label">{% trans "Credit Limit" %} ({{ currency_code }})</label>{{ form.credit_limit }}</div>
       </div>
       <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Add Client</button>
+        <button type="submit" class="btn btn-primary">{% trans "Add Client" %}</button>
       </div>
     </form>
   </div>
 
   <div class="panel">
-    <h3>All Clients</h3>
+    <h3>{% trans "All Clients" %}</h3>
     <table>
-      <thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>Credit Limit</th><th>Outstanding</th><th></th></tr></thead>
+      <thead><tr><th>{% trans "Name" %}</th><th>{% trans "Phone" %}</th><th>{% trans "Email" %}</th><th>{% trans "Credit Limit" %}</th><th>{% trans "Outstanding" %}</th><th></th></tr></thead>
       <tbody>
         {% for c in clients %}
         <tr>
@@ -33,10 +34,10 @@
           <td>{{ c.email }}</td>
           <td>{{ currency_code }} {{ c.credit_limit|floatformat:0 }}</td>
           <td>{{ currency_code }} {{ c.outstanding_balance|floatformat:0 }}</td>
-          <td><a href="/contacts/clients/{{ c.pk }}/edit/" class="btn btn-secondary btn-sm">Edit</a></td>
+          <td><a href="/contacts/clients/{{ c.pk }}/edit/" class="btn btn-secondary btn-sm">{% trans "Edit" %}</a></td>
         </tr>
         {% empty %}
-        <tr><td colspan="6">No clients yet.</td></tr>
+        <tr><td colspan="6">{% trans "No clients yet." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>

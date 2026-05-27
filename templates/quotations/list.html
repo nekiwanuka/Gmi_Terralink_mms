@@ -1,18 +1,19 @@
 {% extends "base.html" %}
-{% block title %}Quotations{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Quotations" %}{% endblock %}
 {% block content %}
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-  <h2>Quotations</h2>
+  <h2>{% trans "Quotations" %}</h2>
   {% if user_role in "Owner,Sales" %}
-  <a href="/quotations/new/" class="btn btn-primary">+ New Quotation</a>
+  <a href="/quotations/new/" class="btn btn-primary">+ {% trans "New Quotation" %}</a>
   {% endif %}
 </div>
 
 <form method="get" style="margin-bottom:10px">
   <select name="status" onchange="this.form.submit()">
-    <option value="">All Statuses</option>
+    <option value="">{% trans "All Statuses" %}</option>
     {% for val, label in status_choices %}
-      <option value="{{ val }}" {% if val == current_status %}selected{% endif %}>{{ label }}</option>
+      <option value="{{ val }}" {% if val == current_status %}selected{% endif %}>{% trans label %}</option>
     {% endfor %}
   </select>
 </form>
@@ -21,8 +22,8 @@
 <table>
   <thead>
     <tr>
-      <th>Code</th><th>Client</th><th>Date</th><th>Valid Until</th>
-      <th>Status</th><th>Total ({{ currency_code }})</th><th>Converted To</th><th></th>
+      <th>{% trans "Code" %}</th><th>{% trans "Client" %}</th><th>{% trans "Date" %}</th><th>{% trans "Valid Until" %}</th>
+      <th>{% trans "Status" %}</th><th>{% trans "Total" %} ({{ currency_code }})</th><th>{% trans "Converted To" %}</th><th></th>
     </tr>
   </thead>
   <tbody>
@@ -34,7 +35,7 @@
       <td>{{ q.valid_until|default:"—" }}</td>
       <td>
         <span class="badge {% if q.status == 'Converted' %}badge-green{% elif q.status == 'Rejected' or q.status == 'Expired' %}badge-grey{% else %}badge-yellow{% endif %}">
-          {{ q.status }}
+          {% trans q.status %}
         </span>
       </td>
       <td>{{ q.subtotal|floatformat:0 }}</td>
@@ -45,13 +46,13 @@
       </td>
       <td>
         <div style="display:inline-flex;gap:4px">
-          <a href="/quotations/{{ q.pk }}/" class="btn btn-secondary btn-sm">View</a>
-          <a href="/documents/quotation/{{ q.pk }}/" class="btn btn-secondary btn-sm" target="_blank" title="Preview / Print">Preview</a>
+          <a href="/quotations/{{ q.pk }}/" class="btn btn-secondary btn-sm">{% trans "View" %}</a>
+          <a href="/documents/quotation/{{ q.pk }}/" class="btn btn-secondary btn-sm" target="_blank" title="{% trans 'Preview / Print' %}">{% trans "Preview" %}</a>
         </div>
       </td>
     </tr>
     {% empty %}
-    <tr><td colspan="8" style="text-align:center;padding:20px">No quotations yet.</td></tr>
+    <tr><td colspan="8" style="text-align:center;padding:20px">{% trans "No quotations yet." %}</td></tr>
     {% endfor %}
   </tbody>
 </table>

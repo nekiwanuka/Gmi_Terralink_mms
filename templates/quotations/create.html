@@ -1,47 +1,48 @@
 {% extends "base.html" %}
-{% block title %}New Quotation{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "New Quotation" %}{% endblock %}
 {% block content %}
-<h2>New Quotation</h2>
+<h2>{% trans "New Quotation" %}</h2>
 <div class="panel form-panel">
 <form method="post">
   {% csrf_token %}
   <div class="form-row">
     <div>
-      <label class="form-label">Client</label>
+      <label class="form-label">{% trans "Client" %}</label>
       <select name="client" class="form-input">
-        <option value="">— select client —</option>
+        <option value="">— {% trans "select client" %} —</option>
         {% for c in clients %}
           <option value="{{ c.pk }}" {% if form.client.value|stringformat:"s" == c.pk|stringformat:"s" %}selected{% endif %}>{{ c.name }}</option>
         {% endfor %}
       </select>
     </div>
     <div>
-      <label class="form-label">Quote Date</label>
+      <label class="form-label">{% trans "Quote Date" %}</label>
       <input type="date" name="quote_date" class="form-input" value="{{ form.quote_date.value|default:'' }}" />
     </div>
     <div>
-      <label class="form-label">Valid Until</label>
+      <label class="form-label">{% trans "Valid Until" %}</label>
       <input type="date" name="valid_until" class="form-input" value="{{ form.valid_until.value|default:'' }}" />
     </div>
   </div>
   <div class="form-row">
     <div style="grid-column: 1 / -1">
-      <label class="form-label">Notes</label>
+      <label class="form-label">{% trans "Notes" %}</label>
       <textarea name="notes" rows="2" class="form-input">{{ form.notes.value|default:'' }}</textarea>
     </div>
   </div>
 
-  <h3 style="margin:14px 0 8px">Quotation Lines</h3>
+  <h3 style="margin:14px 0 8px">{% trans "Quotation Lines" %}</h3>
   <table class="lines-table">
     <thead>
-      <tr><th>#</th><th>Item</th><th>Stock</th><th>Qty</th><th>Unit Price ({{ currency_code }})</th><th></th></tr>
+      <tr><th>#</th><th>{% trans "Item" %}</th><th>{% trans "Stock" %}</th><th>{% trans "Qty" %}</th><th>{% trans "Unit Price" %} ({{ currency_code }})</th><th></th></tr>
     </thead>
     <tbody id="lines-body">
       <tr>
         <td>1</td>
         <td>
           <select name="line_0_item" id="item_0" onchange="updateStock(0)" class="form-input">
-            <option value="">— select item —</option>
+            <option value="">— {% trans "select item" %} —</option>
             {% for item in items %}
             <option value="{{ item.pk }}">{{ item.sku }} — {{ item.name }}</option>
             {% endfor %}
@@ -54,11 +55,11 @@
       </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-secondary btn-sm" onclick="addLine()">+ Add Line</button>
+  <button type="button" class="btn btn-secondary btn-sm" onclick="addLine()">+ {% trans "Add Line" %}</button>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary">Save Quotation</button>
-    <a href="/quotations/" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-primary">{% trans "Save Quotation" %}</button>
+    <a href="/quotations/" class="btn btn-secondary">{% trans "Cancel" %}</a>
   </div>
 </form>
 </div>
@@ -70,7 +71,7 @@ const itemData = {
   {{ item.pk }}: { stock: {{ item.available_stock }}, price: "{{ item.unit_cost }}" },
   {% endfor %}
 };
-const itemOptions = `<option value="">— select item —</option>` +
+const itemOptions = `<option value="">— {% trans "select item" %} —</option>` +
   [{% for item in items %}
     `<option value="{{ item.pk }}">{{ item.sku }} — {{ item.name|escapejs }}</option>`,
   {% endfor %}].join('');

@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.db import models, transaction
 from django.db.models import Sum
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 
 class TimeStampedModel(models.Model):
@@ -26,14 +27,14 @@ class BusinessProfile(models.Model):
     CURRENCY_CNY = "CNY"
 
     CURRENCY_CHOICES = [
-        (CURRENCY_UGX, "UGX - Ugandan Shilling"),
-        (CURRENCY_USD, "USD - US Dollar"),
-        (CURRENCY_EUR, "EUR - Euro"),
-        (CURRENCY_GBP, "GBP - British Pound"),
-        (CURRENCY_KES, "KES - Kenyan Shilling"),
-        (CURRENCY_TZS, "TZS - Tanzanian Shilling"),
-        (CURRENCY_RWF, "RWF - Rwandan Franc"),
-        (CURRENCY_CNY, "CNY - Chinese Yuan"),
+        (CURRENCY_UGX, _("UGX - Ugandan Shilling")),
+        (CURRENCY_USD, _("USD - US Dollar")),
+        (CURRENCY_EUR, _("EUR - Euro")),
+        (CURRENCY_GBP, _("GBP - British Pound")),
+        (CURRENCY_KES, _("KES - Kenyan Shilling")),
+        (CURRENCY_TZS, _("TZS - Tanzanian Shilling")),
+        (CURRENCY_RWF, _("RWF - Rwandan Franc")),
+        (CURRENCY_CNY, _("CNY - Chinese Yuan")),
     ]
 
     business_name = models.CharField(max_length=200, default="GMI TERRALINK")
@@ -55,9 +56,9 @@ class BusinessProfile(models.Model):
 
 class Supplier(TimeStampedModel):
     COUNTRY_CHOICES = [
-        ("China", "China"),
-        ("Uganda", "Uganda"),
-        ("Local", "Local"),
+        ("China", _("China")),
+        ("Uganda", _("Uganda")),
+        ("Local", _("Local")),
     ]
 
     name = models.CharField(max_length=200)
@@ -90,10 +91,10 @@ class InventoryItem(TimeStampedModel):
     STATUS_EXPIRED = "Expired"
     STATUS_RESERVED = "Reserved"
     STATUS_CHOICES = [
-        (STATUS_AVAILABLE, STATUS_AVAILABLE),
-        (STATUS_DAMAGED, STATUS_DAMAGED),
-        (STATUS_EXPIRED, STATUS_EXPIRED),
-        (STATUS_RESERVED, STATUS_RESERVED),
+        (STATUS_AVAILABLE, _("Available")),
+        (STATUS_DAMAGED, _("Damaged")),
+        (STATUS_EXPIRED, _("Expired")),
+        (STATUS_RESERVED, _("Reserved")),
     ]
 
     sku = models.CharField(max_length=80, unique=True)
@@ -171,10 +172,10 @@ class PurchaseOrder(TimeStampedModel):
     STATUS_ARRIVED = "Arrived"
 
     STATUS_CHOICES = [
-        (STATUS_PENDING, STATUS_PENDING),
-        (STATUS_SHIPPED, STATUS_SHIPPED),
-        (STATUS_TRANSIT, STATUS_TRANSIT),
-        (STATUS_ARRIVED, STATUS_ARRIVED),
+        (STATUS_PENDING, _("Pending")),
+        (STATUS_SHIPPED, _("Shipped")),
+        (STATUS_TRANSIT, _("In Transit")),
+        (STATUS_ARRIVED, _("Arrived")),
     ]
 
     code = models.CharField(max_length=30, unique=True)
@@ -253,21 +254,21 @@ class SalesOrder(TimeStampedModel):
     MODE_BANK = "Bank"
 
     MODE_CHOICES = [
-        (MODE_CASH, MODE_CASH),
-        (MODE_MOBILE, MODE_MOBILE),
-        (MODE_BANK, MODE_BANK),
+        (MODE_CASH, _("Cash")),
+        (MODE_MOBILE, _("Mobile Money")),
+        (MODE_BANK, _("Bank")),
     ]
 
     STATUS_CHOICES = [
-        (STATUS_PENDING, STATUS_PENDING),
-        (STATUS_PROCESSING, STATUS_PROCESSING),
-        (STATUS_AWAITING, STATUS_AWAITING),
-        (STATUS_DELIVERED, STATUS_DELIVERED),
+        (STATUS_PENDING, _("Pending")),
+        (STATUS_PROCESSING, _("Processing")),
+        (STATUS_AWAITING, _("Awaiting Stock")),
+        (STATUS_DELIVERED, _("Delivered")),
     ]
 
     PAYMENT_CHOICES = [
-        (PAYMENT_PARTIAL, PAYMENT_PARTIAL),
-        (PAYMENT_PAID, PAYMENT_PAID),
+        (PAYMENT_PARTIAL, _("Partially Paid")),
+        (PAYMENT_PAID, _("Paid")),
     ]
 
     code = models.CharField(max_length=30, unique=True)
@@ -352,12 +353,12 @@ class Quotation(TimeStampedModel):
     STATUS_EXPIRED = "Expired"
 
     STATUS_CHOICES = [
-        (STATUS_DRAFT, STATUS_DRAFT),
-        (STATUS_SENT, STATUS_SENT),
-        (STATUS_ACCEPTED, STATUS_ACCEPTED),
-        (STATUS_REJECTED, STATUS_REJECTED),
-        (STATUS_CONVERTED, STATUS_CONVERTED),
-        (STATUS_EXPIRED, STATUS_EXPIRED),
+        (STATUS_DRAFT, _("Draft")),
+        (STATUS_SENT, _("Sent")),
+        (STATUS_ACCEPTED, _("Accepted")),
+        (STATUS_REJECTED, _("Rejected")),
+        (STATUS_CONVERTED, _("Converted")),
+        (STATUS_EXPIRED, _("Expired")),
     ]
 
     code = models.CharField(max_length=30, unique=True)
@@ -455,9 +456,9 @@ class Payment(TimeStampedModel):
     MODE_BANK = "Bank"
 
     MODE_CHOICES = [
-        (MODE_CASH, MODE_CASH),
-        (MODE_MOBILE, MODE_MOBILE),
-        (MODE_BANK, MODE_BANK),
+        (MODE_CASH, _("Cash")),
+        (MODE_MOBILE, _("Mobile Money")),
+        (MODE_BANK, _("Bank")),
     ]
 
     invoice = models.ForeignKey(
@@ -523,9 +524,9 @@ class Expense(TimeStampedModel):
     TYPE_SERVICE = "Local Service"
 
     TYPE_CHOICES = [
-        (TYPE_SUPPLIER, TYPE_SUPPLIER),
-        (TYPE_LOGISTICS, TYPE_LOGISTICS),
-        (TYPE_SERVICE, TYPE_SERVICE),
+        (TYPE_SUPPLIER, _("Supplier Invoice")),
+        (TYPE_LOGISTICS, _("Logistics")),
+        (TYPE_SERVICE, _("Local Service")),
     ]
 
     expense_type = models.CharField(max_length=30, choices=TYPE_CHOICES)
@@ -544,8 +545,8 @@ class PayrollEntry(TimeStampedModel):
     DEPARTMENT_MINING = "Mining"
     DEPARTMENT_PAYROLL = "Payroll"
     DEPARTMENT_CHOICES = [
-        (DEPARTMENT_MINING, DEPARTMENT_MINING),
-        (DEPARTMENT_PAYROLL, DEPARTMENT_PAYROLL),
+        (DEPARTMENT_MINING, _("Mining")),
+        (DEPARTMENT_PAYROLL, _("Payroll")),
     ]
 
     date = models.DateField()

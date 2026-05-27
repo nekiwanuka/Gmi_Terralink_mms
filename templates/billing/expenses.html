@@ -1,42 +1,43 @@
 {% extends "base.html" %}
-{% block title %}Expenses{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Expenses" %}{% endblock %}
 {% block content %}
-<h2>Expense Records</h2>
-<p class="muted" style="margin-bottom:12px">Expenses are tracked for record keeping only. They are not deducted from sales or net sales reports.</p>
+<h2>{% trans "Expense Records" %}</h2>
+<p class="muted" style="margin-bottom:12px">{% trans "Expenses are tracked for record keeping only. They are not deducted from sales or net sales reports." %}</p>
 <div class="grid">
   <div class="panel form-panel">
-    <h3>Record Expense</h3>
+    <h3>{% trans "Record Expense" %}</h3>
     <form method="post">
       {% csrf_token %}
       <div class="form-row">
-        <div><label class="form-label">Type</label>{{ form.expense_type }}</div>
-        <div><label class="form-label">Supplier (optional)</label>{{ form.supplier }}</div>
+        <div><label class="form-label">{% trans "Type" %}</label>{{ form.expense_type }}</div>
+        <div><label class="form-label">{% trans "Supplier (optional)" %}</label>{{ form.supplier }}</div>
       </div>
       <div class="form-row">
-        <div><label class="form-label">Amount ({{ currency_code }})</label>{{ form.amount }}</div>
-        <div><label class="form-label">Notes</label>{{ form.notes }}</div>
+        <div><label class="form-label">{% trans "Amount" %} ({{ currency_code }})</label>{{ form.amount }}</div>
+        <div><label class="form-label">{% trans "Notes" %}</label>{{ form.notes }}</div>
       </div>
       <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Save Expense</button>
+        <button type="submit" class="btn btn-primary">{% trans "Save Expense" %}</button>
       </div>
     </form>
   </div>
 
   <div class="panel">
-    <h3>Expense Records (Total: {{ currency_code }} {{ total|floatformat:0 }})</h3>
+    <h3>{% blocktrans with total_amount=total|floatformat:0 %}Expense Records (Total: {{ currency_code }} {{ total_amount }}){% endblocktrans %}</h3>
     <table>
-      <thead><tr><th>Date</th><th>Type</th><th>Supplier</th><th>Amount</th><th>Notes</th></tr></thead>
+      <thead><tr><th>{% trans "Date" %}</th><th>{% trans "Type" %}</th><th>{% trans "Supplier" %}</th><th>{% trans "Amount" %}</th><th>{% trans "Notes" %}</th></tr></thead>
       <tbody>
         {% for e in expenses %}
         <tr>
           <td>{{ e.created_at|date:"d/m/Y" }}</td>
-          <td>{{ e.expense_type }}</td>
+          <td>{% trans e.expense_type %}</td>
           <td>{{ e.supplier.name|default:"—" }}</td>
           <td>{{ currency_code }} {{ e.amount|floatformat:0 }}</td>
           <td>{{ e.notes|default:"—" }}</td>
         </tr>
         {% empty %}
-        <tr><td colspan="5">No expenses yet.</td></tr>
+        <tr><td colspan="5">{% trans "No expenses yet." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>

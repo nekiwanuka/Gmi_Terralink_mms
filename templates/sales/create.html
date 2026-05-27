@@ -1,63 +1,64 @@
 {% extends "base.html" %}
-{% block title %}POS Terminal{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "POS Terminal" %}{% endblock %}
 {% block content %}
 <div class="page-header">
   <div>
-    <h2>Point of Sale</h2>
-    <p class="muted">Sales are fulfilled from storefront inventory only.</p>
+    <h2>{% trans "Point of Sale" %}</h2>
+    <p class="muted">{% trans "Sales are fulfilled from storefront inventory only." %}</p>
   </div>
-  <a href="/inventory/requests/new/" class="btn btn-secondary btn-sm">Request Store Stock</a>
+  <a href="/inventory/requests/new/" class="btn btn-secondary btn-sm">{% trans "Request Store Stock" %}</a>
 </div>
 <div class="panel pos-panel">
 <form method="post">
   {% csrf_token %}
   <div class="form-row">
     <div>
-      <label class="form-label">Customer</label>
+      <label class="form-label">{% trans "Customer" %}</label>
       <select name="client" class="form-input">
-        <option value="">Walk-in customer</option>
+        <option value="">{% trans "Walk-in customer" %}</option>
         {% for c in clients %}
           <option value="{{ c.pk }}">{{ c.name }}</option>
         {% endfor %}
       </select>
     </div>
     <div>
-      <label class="form-label">Payment Method</label>
+      <label class="form-label">{% trans "Payment Method" %}</label>
       <select name="payment_method">
-        {% for value, label in payment_modes %}<option value="{{ value }}">{{ label }}</option>{% endfor %}
+        {% for value, label in payment_modes %}<option value="{{ value }}">{% trans label %}</option>{% endfor %}
       </select>
     </div>
   </div>
   <div class="form-row">
     <div>
-      <label class="form-label">Amount Paid ({{ currency_code }})</label>
+      <label class="form-label">{% trans "Amount Paid" %} ({{ currency_code }})</label>
       <input type="number" name="deposit" value="0" min="0" step="0.01" />
     </div>
     <div>
-      <label class="form-label">Discount ({{ currency_code }})</label>
+      <label class="form-label">{% trans "Discount" %} ({{ currency_code }})</label>
       <input type="number" name="discount" id="discount" value="0" min="0" step="0.01" oninput="updateTotals()" />
     </div>
     <div>
-      <label class="form-label">Tax ({{ currency_code }})</label>
+      <label class="form-label">{% trans "Tax" %} ({{ currency_code }})</label>
       <input type="number" name="tax" id="tax" value="0" min="0" step="0.01" oninput="updateTotals()" />
     </div>
     <div style="display:flex;align-items:flex-end;gap:8px;padding-bottom:2px">
       <input type="checkbox" name="allow_no_stock_override" id="override" style="width:auto" />
-      <label for="override" style="font-size:.88rem">Allow backorder</label>
+      <label for="override" style="font-size:.88rem">{% trans "Allow backorder" %}</label>
     </div>
   </div>
 
-  <h3 style="margin:14px 0 8px">Cart</h3>
+  <h3 style="margin:14px 0 8px">{% trans "Cart" %}</h3>
   <table class="lines-table">
     <thead>
-      <tr><th>#</th><th>Product Search / Barcode</th><th>Store Stock</th><th>Qty</th><th>Unit Price ({{ currency_code }})</th><th>Line Total</th><th></th></tr>
+      <tr><th>#</th><th>{% trans "Product Search / Barcode" %}</th><th>{% trans "Store Stock" %}</th><th>{% trans "Qty" %}</th><th>{% trans "Unit Price" %} ({{ currency_code }})</th><th>{% trans "Line Total" %}</th><th></th></tr>
     </thead>
     <tbody id="lines-body">
       <tr>
         <td>1</td>
         <td>
           <select name="line_0_item" id="item_0" onchange="updateStock(0); updateTotals();" class="form-input">
-            <option value="">— select item —</option>
+            <option value="">— {% trans "select item" %} —</option>
             {% for item in items %}
             <option value="{{ item.pk }}" data-stock="{{ item.store_stock }}" data-price="{{ item.selling_price }}">
               {{ item.sku }}{% if item.barcode %} / {{ item.barcode }}{% endif %} — {{ item.name }}
@@ -73,18 +74,18 @@
       </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-secondary btn-sm" id="add-line" onclick="addLine()">+ Add Line</button>
+  <button type="button" class="btn btn-secondary btn-sm" id="add-line" onclick="addLine()">+ {% trans "Add Line" %}</button>
 
   <div class="pos-summary">
-    <div><span>Subtotal</span><strong>{{ currency_code }} <b id="subtotal">0</b></strong></div>
-    <div><span>Discount</span><strong>{{ currency_code }} <b id="discount_total">0</b></strong></div>
-    <div><span>Tax</span><strong>{{ currency_code }} <b id="tax_total">0</b></strong></div>
-    <div class="summary-total"><span>Total</span><strong>{{ currency_code }} <b id="grand_total">0</b></strong></div>
+    <div><span>{% trans "Subtotal" %}</span><strong>{{ currency_code }} <b id="subtotal">0</b></strong></div>
+    <div><span>{% trans "Discount" %}</span><strong>{{ currency_code }} <b id="discount_total">0</b></strong></div>
+    <div><span>{% trans "Tax" %}</span><strong>{{ currency_code }} <b id="tax_total">0</b></strong></div>
+    <div class="summary-total"><span>{% trans "Total" %}</span><strong>{{ currency_code }} <b id="grand_total">0</b></strong></div>
   </div>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary">Complete Sale &amp; Generate Receipt</button>
-    <a href="/sales/" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-primary">{% trans "Complete Sale & Generate Receipt" %}</button>
+    <a href="/sales/" class="btn btn-secondary">{% trans "Cancel" %}</a>
   </div>
 </form>
 </div>
@@ -96,7 +97,7 @@ const itemData = {
   {{ item.pk }}: { stock: {{ item.store_stock }}, price: "{{ item.selling_price }}" },
   {% endfor %}
 };
-const itemOptions = `<option value="">— select item —</option>` +
+const itemOptions = `<option value="">— {% trans "select item" %} —</option>` +
   [{% for item in items %}
     `<option value="{{ item.pk }}" data-stock="{{ item.store_stock }}" data-price="{{ item.selling_price }}">{{ item.sku }}{% if item.barcode %} / {{ item.barcode }}{% endif %} — {{ item.name|escapejs }}</option>`,
   {% endfor %}].join('');

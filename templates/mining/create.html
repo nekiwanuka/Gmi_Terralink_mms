@@ -1,28 +1,29 @@
 {% extends "base.html" %}
-{% block title %}Log Production Entry{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Log Production Entry" %}{% endblock %}
 {% block content %}
-<h2>Log Production Entry</h2>
+<h2>{% trans "Log Production Entry" %}</h2>
 <div class="panel form-panel">
 <form method="post">
   {% csrf_token %}
   <div class="form-row">
-    <div><label class="form-label">Date</label>{{ form.date }}</div>
-    <div><label class="form-label">Mineral Type</label>{{ form.mineral_type }}</div>
+    <div><label class="form-label">{% trans "Date" %}</label>{{ form.date }}</div>
+    <div><label class="form-label">{% trans "Mineral Type" %}</label>{{ form.mineral_type }}</div>
   </div>
   <div class="form-row">
-    <div><label class="form-label">Production Line</label>{{ form.production_line }}</div>
-    <div><label class="form-label">Quantity Produced (t)</label>{{ form.quantity_produced }}</div>
+    <div><label class="form-label">{% trans "Production Line" %}</label>{{ form.production_line }}</div>
+    <div><label class="form-label">{% trans "Quantity Produced (t)" %}</label>{{ form.quantity_produced }}</div>
   </div>
   <div class="form-row">
-    <div><label class="form-label">Hours Worked</label>{{ form.hours_worked }}</div>
-    <div><label class="form-label">Line Staff Count</label>{{ form.line_staff_count }}</div>
+    <div><label class="form-label">{% trans "Hours Worked" %}</label>{{ form.hours_worked }}</div>
+    <div><label class="form-label">{% trans "Line Staff Count" %}</label>{{ form.line_staff_count }}</div>
   </div>
   <div class="form-row">
-    <div><label class="form-label">Expatriates Count</label>{{ form.expatriates_count }}</div>
+    <div><label class="form-label">{% trans "Expatriates Count" %}</label>{{ form.expatriates_count }}</div>
   </div>
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary">Save Entry</button>
-    <a href="/mining/" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-primary">{% trans "Save Entry" %}</button>
+    <a href="/mining/" class="btn btn-secondary">{% trans "Cancel" %}</a>
   </div>
 </form>
 </div>

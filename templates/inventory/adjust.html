@@ -1,12 +1,13 @@
 {% extends "base.html" %}
-{% block title %}Stock Adjustment{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Stock Adjustment" %}{% endblock %}
 {% block content %}
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-  <h2>Stock Adjustment</h2>
+  <h2>{% trans "Stock Adjustment" %}</h2>
   <div style="display:flex;gap:.5rem">
-    <a href="/inventory/" class="btn btn-secondary btn-sm">Stock Items</a>
-    <a href="/inventory/locations/" class="btn btn-secondary btn-sm">Locations</a>
-    <a href="/inventory/movements/" class="btn btn-secondary btn-sm">Movements</a>
+    <a href="/inventory/" class="btn btn-secondary btn-sm">{% trans "Stock Items" %}</a>
+    <a href="/inventory/locations/" class="btn btn-secondary btn-sm">{% trans "Locations" %}</a>
+    <a href="/inventory/movements/" class="btn btn-secondary btn-sm">{% trans "Movements" %}</a>
   </div>
 </div>
 
@@ -15,38 +16,38 @@
   {% csrf_token %}
   <div class="form-row">
     <div class="form-group">
-      <label>Item</label>
+      <label>{% trans "Item" %}</label>
       <select name="item" required>
-        <option value="">— Select item —</option>
-        {% for it in items %}<option value="{{ it.pk }}">{{ it.sku }} — {{ it.name }} (on hand: {{ it.stock_on_hand }})</option>{% endfor %}
+        <option value="">— {% trans "Select item" %} —</option>
+        {% for it in items %}<option value="{{ it.pk }}">{{ it.sku }} — {{ it.name }} ({% trans "on hand" %}: {{ it.stock_on_hand }})</option>{% endfor %}
       </select>
     </div>
     <div class="form-group">
-      <label>Location</label>
+      <label>{% trans "Location" %}</label>
       <select name="location" required>
-        <option value="">— Location —</option>
+        <option value="">— {% trans "Location" %} —</option>
         {% for loc in locations %}<option value="{{ loc.pk }}">{{ loc.code }} ({{ loc.kind }})</option>{% endfor %}
       </select>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group">
-      <label>Direction</label>
+      <label>{% trans "Direction" %}</label>
       <select name="direction" required>
-        <option value="add">Add (+)</option>
-        <option value="remove">Remove (−)</option>
+        <option value="add">{% trans "Add" %} (+)</option>
+        <option value="remove">{% trans "Remove" %} (−)</option>
       </select>
     </div>
     <div class="form-group">
-      <label>Quantity</label>
+      <label>{% trans "Quantity" %}</label>
       <input type="number" name="quantity" min="1" required />
     </div>
   </div>
   <div class="form-group">
-    <label>Reason (audit trail)</label>
-    <input name="reason" required placeholder="e.g. Damage, count correction, theft, found" />
+    <label>{% trans "Reason (audit trail)" %}</label>
+    <input name="reason" required placeholder="{% trans 'e.g. Damage, count correction, theft, found' %}" />
   </div>
-  <button class="btn btn-primary" type="submit">Record Adjustment</button>
+  <button class="btn btn-primary" type="submit">{% trans "Record Adjustment" %}</button>
 </form>
 </div>
 {% endblock %}

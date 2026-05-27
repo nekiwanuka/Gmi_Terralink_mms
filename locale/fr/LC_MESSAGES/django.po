@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMI Inventory System\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-15 00:00+0000\n"
-"PO-Revision-Date: 2026-05-15 00:00+0000\n"
+"POT-Creation-Date: 2026-05-27 00:00+0000\n"
+"PO-Revision-Date: 2026-05-27 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -12,71 +12,1070 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-msgid "English"
-msgstr "Anglais"
+msgid "API Browser"
+msgstr "Navigateur API"
 
-msgid "French"
-msgstr "Francais"
+msgid "Accepted"
+msgstr "Accepte"
 
-msgid "Chinese"
-msgstr "Chinois"
+msgid "Access Denied"
+msgstr "Acces refuse"
 
-msgid "GMI Inventory System"
-msgstr "Systeme d'inventaire GMI"
+msgid "Action"
+msgstr "Action"
 
-msgid "GMI Inventory"
-msgstr "Inventaire GMI"
+msgid "Actions"
+msgstr "Actions"
 
-msgid "Language"
-msgstr "Langue"
+msgid "Actual Delivery"
+msgstr "Livraison reelle"
 
-msgid "Currency"
-msgstr "Devise"
+msgid "Add"
+msgstr "Ajouter"
 
-msgid "User"
-msgstr "Utilisateur"
+msgid "Add Client"
+msgstr "Ajouter un client"
 
-msgid "Toggle theme"
-msgstr "Changer le theme"
+msgid "Add Line"
+msgstr "Ajouter une ligne"
 
-msgid "Theme"
-msgstr "Theme"
+msgid "Add Location"
+msgstr "Ajouter un emplacement"
 
-msgid "Log out"
-msgstr "Deconnexion"
+msgid "Add Supplier"
+msgstr "Ajouter un fournisseur"
 
-msgid "Log in"
-msgstr "Connexion"
+msgid "Adjust"
+msgstr "Ajuster"
 
-msgid "Main"
-msgstr "Principal"
+msgid "Adjustments"
+msgstr "Ajustements"
 
-msgid "Dashboard"
-msgstr "Tableau de bord"
+msgid "Admin Panel"
+msgstr "Panneau d'administration"
 
-msgid "Notice Board"
-msgstr "Tableau d'avis"
+msgid "After"
+msgstr "Apres"
 
-msgid "Sales"
-msgstr "Ventes"
+msgid "Alerts"
+msgstr "Alertes"
 
-msgid "Quotations"
-msgstr "Devis"
+msgid "All Clients"
+msgstr "Tous les clients"
 
-msgid "POS Terminal"
-msgstr "Terminal POS"
+msgid "All Statuses"
+msgstr "Tous les statuts"
 
-msgid "Sales History"
-msgstr "Historique des ventes"
+msgid "All Suppliers"
+msgstr "Tous les fournisseurs"
+
+msgid "All historical documents are preserved. Even after a quotation has been converted, its original copy remains available below."
+msgstr "Tous les documents historiques sont conserves. Meme apres conversion d'un devis, sa copie originale reste disponible ci-dessous."
+
+msgid "All received stock lands in the <strong>Main Warehouse</strong>. Set or update the item's classification and prices below."
+msgstr "Tout le stock recu arrive dans le <strong>Main Warehouse</strong>. Definissez ou mettez a jour la classification et les prix de l'article ci-dessous."
+
+msgid "Allow backorder"
+msgstr "Autoriser les commandes en attente"
+
+msgid "Allow zero-stock override"
+msgstr "Autoriser le depassement de stock zero"
+
+msgid "Amount"
+msgstr "Montant"
+
+msgid "Amount Paid"
+msgstr "Montant paye"
+
+msgid "Apply"
+msgstr "Appliquer"
+
+msgid "Approve"
+msgstr "Approuver"
+
+msgid "Arrived"
+msgstr "Arrive"
+
+msgid "Authorized Access"
+msgstr "Acces autorise"
+
+msgid "Available"
+msgstr "Disponible"
+
+msgid "Awaiting Stock"
+msgstr "En attente de stock"
+
+msgid "Back"
+msgstr "Retour"
+
+msgid "Back to Dashboard"
+msgstr "Retour au tableau de bord"
+
+msgid "Balance"
+msgstr "Solde"
+
+msgid "Balance Due"
+msgstr "Solde du"
+
+msgid "Bank"
+msgstr "Banque"
+
+msgid "Barcode"
+msgstr "Code-barres"
+
+msgid "Batch Number"
+msgstr "Numero de lot"
+
+msgid "Bill To"
+msgstr "Facturer a"
+
+msgid "Bill of Lading"
+msgstr "Connaissement"
 
 msgid "Billing"
 msgstr "Facturation"
 
-msgid "Invoices & Receipts"
-msgstr "Factures et recus"
+msgid "Box"
+msgstr "Boite"
+
+msgid "Brand"
+msgstr "Marque"
+
+msgid "Business Address"
+msgstr "Adresse de l'entreprise"
+
+msgid "Business Name"
+msgstr "Nom de l'entreprise"
+
+msgid "Business Profile"
+msgstr "Profil de l'entreprise"
+
+msgid "Buy @"
+msgstr "Achat @"
+
+msgid "By"
+msgstr "Par"
+
+msgid "CNY - Chinese Yuan"
+msgstr "CNY - Yuan chinois"
+
+msgid "CONVERTED"
+msgstr "CONVERTI"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Cart"
+msgstr "Panier"
+
+msgid "Cash"
+msgstr "Especes"
+
+msgid "Category"
+msgstr "Categorie"
+
+msgid "Category Record"
+msgstr "Fiche categorie"
+
+msgid "Change"
+msgstr "Modifier"
+
+msgid "China"
+msgstr "Chine"
+
+msgid "Chinese"
+msgstr "Chinois"
+
+msgid "Classification"
+msgstr "Classification"
+
+msgid "Clear"
+msgstr "Effacer"
+
+msgid "Client"
+msgstr "Client"
+
+msgid "Clients"
+msgstr "Clients"
+
+msgid "Code"
+msgstr "Code"
+
+msgid "Collected"
+msgstr "Encaisse"
+
+msgid "Complete Sale & Generate Receipt"
+msgstr "Finaliser la vente et generer le recu"
+
+msgid "Confirm Receiving"
+msgstr "Confirmer la reception"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Contact Person"
+msgstr "Personne de contact"
+
+msgid "Contacts"
+msgstr "Contacts"
+
+msgid "Convert to Invoice"
+msgstr "Convertir en facture"
+
+msgid "Convert to Sales Order & Invoice"
+msgstr "Convertir en commande client et facture"
+
+msgid "Converted"
+msgstr "Converti"
+
+msgid "Converted To"
+msgstr "Converti en"
+
+msgid "Cost"
+msgstr "Cout"
+
+msgid "Count"
+msgstr "Nombre"
+
+msgid "Country"
+msgstr "Pays"
+
+msgid "Create Purchase Order"
+msgstr "Creer un bon de commande"
+
+msgid "Credit Limit"
+msgstr "Limite de credit"
+
+msgid "Currency"
+msgstr "Devise"
+
+msgid "Current Role"
+msgstr "Role actuel"
+
+msgid "Current Storefront Stock"
+msgstr "Stock actuel de la boutique"
+
+msgid "Current Warehouse Stock"
+msgstr "Stock actuel de l'entrepot"
+
+msgid "Customer"
+msgstr "Client"
+
+msgid "Damaged"
+msgstr "Endommage"
+
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Date of Stock"
+msgstr "Date de stock"
+
+msgid "Dead Stock"
+msgstr "Stock dormant"
+
+msgid "Default"
+msgstr "Par defaut"
+
+msgid "Default WH"
+msgstr "Entrepot par defaut"
+
+msgid "Delivered"
+msgstr "Livre"
+
+msgid "Department"
+msgstr "Departement"
+
+msgid "Deposit"
+msgstr "Acompte"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Destination location"
+msgstr "Emplacement de destination"
+
+msgid "Details"
+msgstr "Details"
+
+msgid "Direction"
+msgstr "Sens"
+
+msgid "Director / Owner"
+msgstr "Directeur / Proprietaire"
+
+msgid "Discount"
+msgstr "Remise"
+
+msgid "Documents"
+msgstr "Documents"
+
+msgid "Done"
+msgstr "Termine"
+
+msgid "Done by %(completed_by)s on %(completed_at)s"
+msgstr "Done by %(completed_by)s on %(completed_at)s"
+
+msgid "Draft"
+msgstr "Brouillon"
+
+msgid "EUR - Euro"
+msgstr "EUR - Euro"
+
+msgid "Edit"
+msgstr "Modifier"
+
+msgid "Edit Client"
+msgstr "Modifier le client"
+
+msgid "Edit Supplier"
+msgstr "Modifier le fournisseur"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "English"
+msgstr "Anglais"
+
+msgid "Entries"
+msgstr "Entrees"
+
+msgid "Est. Delivery"
+msgstr "Livraison estimee"
+
+msgid "Est. Delivery Date"
+msgstr "Date de livraison estimee"
+
+msgid "Expatriates Count"
+msgstr "Nombre d'expatries"
+
+msgid "Expats"
+msgstr "Expatries"
+
+msgid "Expected Ship"
+msgstr "Expedition prevue"
+
+msgid "Expected Shipment Date"
+msgstr "Date d'expedition prevue"
+
+msgid "Expense Records"
+msgstr "Enregistrements de depenses"
+
+msgid "Expense Records (Total: %(currency_code)s %(total_amount)s)"
+msgstr "Expense Records (Total: %(currency_code)s %(total_amount)s)"
+
+msgid "Expense Records by Supplier"
+msgstr "Depenses par fournisseur"
 
 msgid "Expenses"
 msgstr "Depenses"
+
+msgid "Expenses Recorded"
+msgstr "Depenses enregistrees"
+
+msgid "Expenses and payroll are not deducted"
+msgstr "Expenses and payroll are not deducted"
+
+msgid "Expenses are tracked for record keeping only. They are not deducted from sales or net sales reports."
+msgstr "Expenses are tracked for record keeping only. They are not deducted from sales or net sales reports."
+
+msgid "Expenses by Type"
+msgstr "Depenses par type"
+
+msgid "Expired"
+msgstr "Expire"
+
+msgid "Expiry Date"
+msgstr "Date d'expiration"
+
+msgid "Fast-Moving Items"
+msgstr "Articles a rotation rapide"
+
+msgid "Fast-Moving Products"
+msgstr "Produits a rotation rapide"
+
+msgid "Filter"
+msgstr "Filtrer"
+
+msgid "Filter Month"
+msgstr "Filtrer par mois"
+
+msgid "For queries"
+msgstr "Pour les questions"
+
+msgid "French"
+msgstr "Francais"
+
+msgid "From"
+msgstr "De"
+
+msgid "From (source)"
+msgstr "Depuis (source)"
+
+msgid "Fulfill (Transfer)"
+msgstr "Executer (transfert)"
+
+msgid "GBP - British Pound"
+msgstr "GBP - British Pound"
+
+msgid "GMI Inventory"
+msgstr "Inventaire GMI"
+
+msgid "GMI Inventory Admin"
+msgstr "GMI Inventory Admin"
+
+msgid "GMI Inventory System"
+msgstr "Systeme d'inventaire GMI"
+
+msgid "Go"
+msgstr "Aller"
+
+msgid "Hours"
+msgstr "Heures"
+
+msgid "Hours Worked"
+msgstr "Heures travaillees"
+
+msgid "In Transit"
+msgstr "En transit"
+
+msgid "Inventory"
+msgstr "Inventaire"
+
+msgid "Inventory Ledger"
+msgstr "Registre d'inventaire"
+
+msgid "Inventory Valuation"
+msgstr "Valorisation du stock"
+
+msgid "Inventory, transfers, sales, mining production, payroll records, and expense tracking."
+msgstr "Inventory, transfers, sales, mining production, payroll records, and expense tracking."
+
+msgid "Invoice"
+msgstr "Facture"
+
+msgid "Invoice Total"
+msgstr "Total facture"
+
+msgid "Invoiced"
+msgstr "Facture"
+
+msgid "Invoices"
+msgstr "Factures"
+
+msgid "Invoices & Receipts"
+msgstr "Factures et recus"
+
+msgid "Issued"
+msgstr "Emise"
+
+msgid "Item"
+msgstr "Article"
+
+msgid "Item Description"
+msgstr "Description de l'article"
+
+msgid "Item Name"
+msgstr "Nom de l'article"
+
+msgid "KES - Kenyan Shilling"
+msgstr "KES - Kenyan Shilling"
+
+msgid "Kg"
+msgstr "Kg"
+
+msgid "Kind"
+msgstr "Type"
+
+msgid "Language"
+msgstr "Langue"
+
+msgid "Line"
+msgstr "Ligne"
+
+msgid "Line Items"
+msgstr "Lignes"
+
+msgid "Line Staff Count"
+msgstr "Nombre de personnel de ligne"
+
+msgid "Line Total"
+msgstr "Total ligne"
+
+msgid "Litre"
+msgstr "Litre"
+
+msgid "Live"
+msgstr "En direct"
+
+msgid "Local"
+msgstr "Local"
+
+msgid "Local Service"
+msgstr "Service local"
+
+msgid "Location"
+msgstr "Emplacement"
+
+msgid "Locations"
+msgstr "Emplacements"
+
+msgid "Locked"
+msgstr "Verrouille"
+
+msgid "Log Entry"
+msgstr "Enregistrer une entree"
+
+msgid "Log Production Entry"
+msgstr "Enregistrer une production"
+
+msgid "Log in"
+msgstr "Connexion"
+
+msgid "Log out"
+msgstr "Deconnexion"
+
+msgid "Logistics"
+msgstr "Logistique"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "Low Stock Items"
+msgstr "Articles en stock faible"
+
+msgid "Low-Stock Items"
+msgstr "Articles en stock faible"
+
+msgid "Main"
+msgstr "Principal"
+
+msgid "Main Warehouse"
+msgstr "Entrepot principal"
+
+msgid "Management System"
+msgstr "Systeme de gestion"
+
+msgid "Mark Done"
+msgstr "Marquer termine"
+
+msgid "Mark as Delivered"
+msgstr "Marquer comme livre"
+
+msgid "Metre"
+msgstr "Metre"
+
+msgid "Mineral"
+msgstr "Mineral"
+
+msgid "Mineral Type"
+msgstr "Type de mineral"
+
+msgid "Mining"
+msgstr "Exploitation miniere"
+
+msgid "Mining Activity"
+msgstr "Activite miniere"
+
+msgid "Mining Inventory"
+msgstr "Inventaire minier"
+
+msgid "Mining Production"
+msgstr "Production miniere"
+
+msgid "Missing"
+msgstr "Manquant"
+
+msgid "Mobile Money"
+msgstr "Mobile Money"
+
+msgid "Mode"
+msgstr "Mode"
+
+msgid "Month Sales"
+msgstr "Ventes du mois"
+
+msgid "Movement"
+msgstr "Mouvement"
+
+msgid "Movements"
+msgstr "Mouvements"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Net Sales Collected"
+msgstr "Ventes nettes encaissees"
+
+msgid "New Order"
+msgstr "Nouvelle commande"
+
+msgid "New PO"
+msgstr "Nouveau BC"
+
+msgid "New Purchase Order"
+msgstr "Nouveau bon de commande"
+
+msgid "New Quotation"
+msgstr "Nouveau devis"
+
+msgid "New Request"
+msgstr "Nouvelle demande"
+
+msgid "New Stock Request"
+msgstr "Nouvelle demande de stock"
+
+msgid "New Task"
+msgstr "Nouvelle tache"
+
+msgid "No POs yet"
+msgstr "Aucun bon de commande pour le moment"
+
+msgid "No clients yet."
+msgstr "Aucun client pour le moment."
+
+msgid "No dead stock detected."
+msgstr "Aucun stock dormant detecte."
+
+msgid "No entries found."
+msgstr "Aucune entree trouvee."
+
+msgid "No expenses in this window."
+msgstr "Aucune depense sur cette periode."
+
+msgid "No expenses yet."
+msgstr "Aucune depense pour le moment."
+
+msgid "No invoices yet."
+msgstr "Aucune facture pour le moment."
+
+msgid "No invoices."
+msgstr "Aucune facture."
+
+msgid "No items found."
+msgstr "Aucun article trouve."
+
+msgid "No locations yet."
+msgstr "Aucun emplacement pour le moment."
+
+msgid "No low stock items."
+msgstr "Aucun article en stock faible."
+
+msgid "No mining entries."
+msgstr "Aucune entree miniere."
+
+msgid "No movements recorded yet."
+msgstr "Aucun mouvement enregistre."
+
+msgid "No orders yet"
+msgstr "Aucune commande pour le moment"
+
+msgid "No orders yet."
+msgstr "Aucune commande pour le moment."
+
+msgid "No outstanding invoices."
+msgstr "Aucune facture impayee."
+
+msgid "No payments in this window."
+msgstr "Aucun paiement sur cette periode."
+
+msgid "No payments yet."
+msgstr "Aucun paiement pour le moment."
+
+msgid "No payroll entries found."
+msgstr "Aucune entree de paie trouvee."
+
+msgid "No payroll entries."
+msgstr "Aucune entree de paie."
+
+msgid "No purchase orders yet."
+msgstr "Aucun bon de commande pour le moment."
+
+msgid "No quotations yet."
+msgstr "Aucun devis pour le moment."
+
+msgid "No requests yet."
+msgstr "Aucune demande pour le moment."
+
+msgid "No sales delivered yet"
+msgstr "Aucune vente livree pour le moment"
+
+msgid "No sales in this window."
+msgstr "Aucune vente sur cette periode."
+
+msgid "No storefront stock."
+msgstr "Aucun stock boutique."
+
+msgid "No supplier expenses."
+msgstr "Aucune depense fournisseur."
+
+msgid "No supplier purchases in this window."
+msgstr "Aucun achat fournisseur sur cette periode."
+
+msgid "No supplier selected"
+msgstr "Aucun fournisseur selectionne"
+
+msgid "No suppliers yet."
+msgstr "Aucun fournisseur pour le moment."
+
+msgid "No tasks posted yet."
+msgstr "Aucune tache publiee."
+
+msgid "No transfers in this window."
+msgstr "Aucun transfert sur cette periode."
+
+msgid "No users found"
+msgstr "Aucun utilisateur trouve"
+
+msgid "No warehouse stock."
+msgstr "Aucun stock entrepot."
+
+msgid "No."
+msgstr "No"
+
+msgid "None"
+msgstr "Aucun"
+
+msgid "Not available"
+msgstr "Non disponible"
+
+msgid "Note"
+msgstr "Note"
+
+msgid "Note (optional)"
+msgstr "Note (facultative)"
+
+msgid "Notes"
+msgstr "Notes"
+
+msgid "Notice Board"
+msgstr "Tableau d'avis"
+
+msgid "On Hand"
+msgstr "En main"
+
+msgid "Open"
+msgstr "Ouvert"
+
+msgid "Open Order"
+msgstr "Ouvrir la commande"
+
+msgid "Open POS"
+msgstr "Ouvrir le POS"
+
+msgid "Operations Dashboard"
+msgstr "Tableau de bord des operations"
+
+msgid "Order"
+msgstr "Commande"
+
+msgid "Order Details"
+msgstr "Details de la commande"
+
+msgid "Order Lines"
+msgstr "Lignes de commande"
+
+msgid "Order Reference"
+msgstr "Reference commande"
+
+msgid "Ordered"
+msgstr "Commande"
+
+msgid "Original"
+msgstr "Original"
+
+msgid "Output/Hr"
+msgstr "Production/h"
+
+msgid "Outstanding"
+msgstr "Solde impaye"
+
+msgid "Outstanding Invoices (top 20 by balance)"
+msgstr "Factures impayees (20 plus grands soldes)"
+
+msgid "Overdue >30 days"
+msgstr "En retard >30 jours"
+
+msgid "PAID"
+msgstr "PAYE"
+
+msgid "PAID - LOCKED"
+msgstr "PAYE - VERROUILLE"
+
+msgid "POS Terminal"
+msgstr "Terminal POS"
+
+msgid "Pack"
+msgstr "Pack"
+
+msgid "Paid"
+msgstr "Paye"
+
+msgid "Paid in Full"
+msgstr "Entierement paye"
+
+msgid "Parent"
+msgstr "Parent"
+
+msgid "Parent (optional)"
+msgstr "Parent (facultatif)"
+
+msgid "Partially Paid"
+msgstr "Partiellement paye"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Pay"
+msgstr "Payer"
+
+msgid "Payment"
+msgstr "Paiement"
+
+msgid "Payment Details"
+msgstr "Details du paiement"
+
+msgid "Payment History"
+msgstr "Historique des paiements"
+
+msgid "Payment Instructions"
+msgstr "Instructions de paiement"
+
+msgid "Payment Method"
+msgstr "Mode de paiement"
+
+msgid "Payment Terms"
+msgstr "Conditions de paiement"
+
+msgid "Payment received against invoice <strong>%(invoice_code)s</strong>"
+msgstr "Paiement recu pour la facture <strong>%(invoice_code)s</strong>"
+
+msgid "Payments by Mode"
+msgstr "Paiements par mode"
+
+msgid "Payroll"
+msgstr "Paie"
+
+msgid "Payroll Recorded"
+msgstr "Paie enregistree"
+
+msgid "Payroll by Department"
+msgstr "Paie par departement"
+
+msgid "Payroll by Role"
+msgstr "Paie par role"
+
+msgid "Payroll by Worker"
+msgstr "Paie par travailleur"
+
+msgid "Payroll is a separate record-keeping department for mining activity worker payments. These amounts are not deducted from sales reports."
+msgstr "La paie est un registre separe pour les paiements des travailleurs miniers. Ces montants ne sont pas deduits des rapports de ventes."
+
+msgid "Payroll is tracked separately for mining activities and is not deducted from sales totals."
+msgstr "La paie est suivie separement pour les activites minieres et n'est pas deduite des totaux de ventes."
+
+msgid "Pending"
+msgstr "En attente"
+
+msgid "Pending Requests"
+msgstr "Demandes en attente"
+
+msgid "Phone"
+msgstr "Telephone"
+
+msgid "Piece"
+msgstr "Piece"
+
+msgid "Please pay by bank transfer, mobile money, or cash to %(business_name)s. Quote invoice number <strong>%(invoice_code)s</strong> as the reference. Goods remain the property of %(business_name)s until paid in full."
+msgstr "Veuillez payer par virement bancaire, mobile money ou especes a %(business_name)s. Indiquez la facture <strong>%(invoice_code)s</strong> comme reference. Les biens restent la propriete de %(business_name)s jusqu'au paiement complet."
+
+msgid "Point of Sale"
+msgstr "Point de vente"
+
+msgid "Post tasks between departments and mark them done when completed."
+msgstr "Publiez des taches entre departements et marquez-les comme terminees une fois achevees."
+
+msgid "Prepared For"
+msgstr "Prepare pour"
+
+msgid "Preview"
+msgstr "Apercu"
+
+msgid "Preview / Print"
+msgstr "Apercu / Imprimer"
+
+msgid "Preview invoice"
+msgstr "Apercu de la facture"
+
+msgid "Price"
+msgstr "Prix"
+
+msgid "Prices quoted in %(currency_code)s are subject to stock availability at time of order. Acceptance of this quotation constitutes a binding agreement to purchase from %(business_name)s."
+msgstr "Les prix indiques en %(currency_code)s dependent de la disponibilite du stock au moment de la commande. L'acceptation de ce devis constitue un accord d'achat aupres de %(business_name)s."
+
+msgid "Pricing & Stock"
+msgstr "Prix et stock"
+
+msgid "Print"
+msgstr "Imprimer"
+
+msgid "Print / Save PDF"
+msgstr "Imprimer / Enregistrer PDF"
+
+msgid "Print Invoice"
+msgstr "Imprimer la facture"
+
+msgid "Processing"
+msgstr "En traitement"
+
+msgid "Procurement"
+msgstr "Approvisionnement"
+
+msgid "Produced (t)"
+msgstr "Produit (t)"
+
+msgid "Product"
+msgstr "Produit"
+
+msgid "Product Identity"
+msgstr "Identite du produit"
+
+msgid "Product Image"
+msgstr "Image du produit"
+
+msgid "Product Search / Barcode"
+msgstr "Recherche produit / code-barres"
+
+msgid "Production"
+msgstr "Production"
+
+msgid "Production Entries"
+msgstr "Entrees de production"
+
+msgid "Production Line"
+msgstr "Ligne de production"
+
+msgid "Purchase Cost"
+msgstr "Cout d'achat"
+
+msgid "Purchase Orders"
+msgstr "Bons de commande"
+
+msgid "QUOTATION"
+msgstr "DEVIS"
+
+msgid "Qty"
+msgstr "Qty"
+
+msgid "Qty Ordered"
+msgstr "Qty Ordered"
+
+msgid "Qty Sold"
+msgstr "Qte vendue"
+
+msgid "Quantity"
+msgstr "Quantite"
+
+msgid "Quantity Produced (t)"
+msgstr "Quantite produite (t)"
+
+msgid "Quantity Stocked"
+msgstr "Quantite stockee"
+
+msgid "Quotation"
+msgstr "Quotation"
+
+msgid "Quotation Lines"
+msgstr "Lignes du devis"
+
+msgid "Quotation Status"
+msgstr "Statut du devis"
+
+msgid "Quotations"
+msgstr "Devis"
+
+msgid "Quote Date"
+msgstr "Date du devis"
+
+msgid "RECEIPT"
+msgstr "RECU"
+
+msgid "RWF - Rwandan Franc"
+msgstr "RWF - Rwandan Franc"
+
+msgid "Raise Request"
+msgstr "Soumettre la demande"
+
+msgid "Reason (audit trail)"
+msgstr "Raison (journal d'audit)"
+
+msgid "Reason / reference"
+msgstr "Raison / reference"
+
+msgid "Receipt"
+msgstr "Receipt"
+
+msgid "Receivables (AR)"
+msgstr "Creances (AR)"
+
+msgid "Receive"
+msgstr "Recevoir"
+
+msgid "Receive PO"
+msgstr "Recevoir BC"
+
+msgid "Received"
+msgstr "Recu"
+
+msgid "Received From"
+msgstr "Recu de"
+
+msgid "Received With Thanks"
+msgstr "Recu avec remerciements"
+
+msgid "Recent Purchase Orders"
+msgstr "Bons de commande recents"
+
+msgid "Recent Sales Orders"
+msgstr "Commandes clients recentes"
+
+msgid "Record Adjustment"
+msgstr "Enregistrer ajustement"
+
+msgid "Record Expense"
+msgstr "Enregistrer depense"
+
+msgid "Record Payment"
+msgstr "Enregistrer paiement"
+
+msgid "Record Transfer"
+msgstr "Enregistrer transfert"
+
+msgid "Record Worker Pay"
+msgstr "Enregistrer paie travailleur"
+
+msgid "Record keeping only"
+msgstr "Tenue de registre uniquement"
+
+msgid "Reference"
+msgstr "Reference"
+
+msgid "Reject"
+msgstr "Rejeter"
+
+msgid "Rejected"
+msgstr "Rejete"
+
+msgid "Remove"
+msgstr "Retirer"
+
+msgid "Reorder"
+msgstr "Reapprovisionnement"
+
+msgid "Reorder Level"
+msgstr "Niveau de reapprovisionnement"
 
 msgid "Reports"
 msgstr "Rapports"
@@ -84,329 +1083,275 @@ msgstr "Rapports"
 msgid "Reports & Analytics"
 msgstr "Rapports et analyses"
 
-msgid "Warehouse"
-msgstr "Entrepot"
+msgid "Request Stock from Warehouse"
+msgstr "Demander du stock a l'entrepot"
 
-msgid "Stocking Form"
-msgstr "Formulaire de stock"
+msgid "Request Store Stock"
+msgstr "Demander du stock boutique"
 
-msgid "Inventory Ledger"
-msgstr "Registre d'inventaire"
-
-msgid "Locations"
-msgstr "Emplacements"
-
-msgid "Warehouse Transfer"
-msgstr "Transfert d'entrepot"
-
-msgid "Adjustments"
-msgstr "Ajustements"
-
-msgid "Store Front"
-msgstr "Boutique"
-
-msgid "Stock Requests"
-msgstr "Demandes de stock"
-
-msgid "Movements"
-msgstr "Mouvements"
-
-msgid "Procurement"
-msgstr "Approvisionnement"
-
-msgid "Purchase Orders"
-msgstr "Bons de commande"
-
-msgid "Contacts"
-msgstr "Contacts"
-
-msgid "Clients"
-msgstr "Clients"
-
-msgid "Suppliers"
-msgstr "Fournisseurs"
-
-msgid "Mining"
-msgstr "Exploitation miniere"
-
-msgid "Production"
-msgstr "Production"
-
-msgid "Payroll"
-msgstr "Paie"
-
-msgid "Role Pay"
-msgstr "Paie par role"
-
-msgid "System"
-msgstr "Systeme"
-
-msgid "Settings"
-msgstr "Parametres"
-
-msgid "Admin Panel"
-msgstr "Panneau d'administration"
-
-msgid "API Browser"
-msgstr "Navigateur API"
-
-msgid "Business Profile"
-msgstr "Profil de l'entreprise"
-
-msgid "Business Name"
-msgstr "Nom de l'entreprise"
-
-msgid "Business Address"
-msgstr "Adresse de l'entreprise"
-
-msgid "Phone"
-msgstr "Telephone"
-
-msgid "Email"
-msgstr "E-mail"
-
-msgid "Website"
-msgstr "Site web"
-
-msgid "Logo"
-msgstr "Logo"
-
-msgid "Save Profile"
-msgstr "Enregistrer le profil"
-
-msgid "User Roles"
-msgstr "Roles des utilisateurs"
-
-msgid "Username"
-msgstr "Nom d'utilisateur"
-
-msgid "Current Role"
-msgstr "Role actuel"
-
-msgid "Change"
-msgstr "Modifier"
-
-msgid "Set"
-msgstr "Definir"
-
-msgid "No users found"
-msgstr "Aucun utilisateur trouve"
-
-msgid "Sign in"
-msgstr "Connexion"
-
-msgid "Mining Inventory"
-msgstr "Inventaire minier"
-
-msgid "Management System"
-msgstr "Systeme de gestion"
-
-msgid "Unified control for procurement, stock, sales, finance, payroll, mining operations and traceable business documents."
-msgstr "Controle unifie des achats, du stock, des ventes, des finances, de la paie, des operations minieres et des documents commerciaux tracables."
-
-msgid "operational access"
-msgstr "acces operationnel"
-
-msgid "Live"
-msgstr "En direct"
-
-msgid "stock visibility"
-msgstr "visibilite du stock"
-
-msgid "Secure"
-msgstr "Securise"
-
-msgid "role controls"
-msgstr "controles des roles"
-
-msgid "Authorized Access"
-msgstr "Acces autorise"
-
-msgid "Welcome back"
-msgstr "Bon retour"
-
-msgid "Sign in to continue to the GMI Terralink workspace."
-msgstr "Connectez-vous pour continuer vers l'espace de travail GMI Terralink."
-
-msgid "Password"
-msgstr "Mot de passe"
-
-msgid "Contact"
-msgstr "Contact"
-
-msgid "System designed, managed and hosted by Devtown Technologies"
-msgstr "Systeme concu, gere et heberge par Devtown Technologies"
-
-msgid "Go"
-msgstr "Aller"
-
-msgid "Operations Dashboard"
-msgstr "Tableau de bord des operations"
-
-msgid "Warehouse stock, storefront stock, transfers, and sales performance."
-msgstr "Stock de l'entrepot, stock de la boutique, transferts et performance des ventes."
-
-msgid "Stock Warehouse"
-msgstr "Stocker l'entrepot"
-
-msgid "Open POS"
-msgstr "Ouvrir le POS"
-
-msgid "Warehouse Units"
-msgstr "Unites en entrepot"
-
-msgid "Store Front Units"
-msgstr "Unites en boutique"
-
-msgid "Sales Today"
-msgstr "Ventes du jour"
-
-msgid "Pending Requests"
-msgstr "Demandes en attente"
-
-msgid "Month Sales"
-msgstr "Ventes du mois"
-
-msgid "Low-Stock Items"
-msgstr "Articles en stock faible"
-
-msgid "Outstanding"
-msgstr "Solde impaye"
-
-msgid "Supplier Dues"
-msgstr "Dettes fournisseurs"
-
-msgid "Alerts"
-msgstr "Alertes"
-
-msgid "Fast-Moving Products"
-msgstr "Produits a rotation rapide"
-
-msgid "Product"
-msgstr "Produit"
-
-msgid "Qty Sold"
-msgstr "Qte vendue"
+msgid "Reserved"
+msgstr "Reserve"
 
 msgid "Revenue"
 msgstr "Revenu"
 
-msgid "No sales delivered yet"
-msgstr "Aucune vente livree pour le moment"
+msgid "Role"
+msgstr "Role"
 
-msgid "Recent Sales Orders"
-msgstr "Commandes clients recentes"
+msgid "Role / Job"
+msgstr "Role / Poste"
 
-msgid "Code"
-msgstr "Code"
+msgid "Role Pay"
+msgstr "Paie par role"
 
-msgid "Client"
-msgstr "Client"
+msgid "SKU"
+msgstr "SKU"
 
-msgid "Status"
-msgstr "Statut"
+msgid "SKU / Product Code"
+msgstr "SKU / Code produit"
 
-msgid "No orders yet"
-msgstr "Aucune commande pour le moment"
+msgid "SO"
+msgstr "BC"
 
-msgid "Recent Purchase Orders"
-msgstr "Bons de commande recents"
+msgid "Sales"
+msgstr "Ventes"
 
-msgid "No POs yet"
-msgstr "Aucun bon de commande pour le moment"
+msgid "Sales History"
+msgstr "Historique des ventes"
 
-msgid "Inventory"
-msgstr "Inventaire"
-
-msgid "Warehouse stock is held separately from storefront stock for sales."
-msgstr "Le stock de l'entrepot est separe du stock de la boutique pour les ventes."
-
-msgid "Search by name or SKU..."
-msgstr "Rechercher par nom ou SKU..."
-
-msgid "Search"
-msgstr "Rechercher"
-
-msgid "Clear"
-msgstr "Effacer"
-
-msgid "Category"
-msgstr "Categorie"
-
-msgid "Brand"
-msgstr "Marque"
-
-msgid "Unit"
-msgstr "Unite"
-
-msgid "Total"
-msgstr "Total"
-
-msgid "Reorder"
-msgstr "Reapprovisionnement"
-
-msgid "Cost"
-msgstr "Cout"
-
-msgid "Price"
-msgstr "Prix"
-
-msgid "Edit"
-msgstr "Modifier"
-
-msgid "No items found."
-msgstr "Aucun article trouve."
+msgid "Sales Order"
+msgstr "Commande client"
 
 msgid "Sales Orders"
 msgstr "Commandes clients"
 
-msgid "New Order"
-msgstr "Nouvelle commande"
+msgid "Sales Today"
+msgstr "Ventes du jour"
 
-msgid "All Statuses"
-msgstr "Tous les statuts"
+msgid "Sales are fulfilled from storefront inventory only."
+msgstr "Les ventes sont executees uniquement depuis le stock boutique."
 
-msgid "Payment"
-msgstr "Paiement"
+msgid "Save"
+msgstr "Enregistrer"
 
-msgid "Est. Delivery"
-msgstr "Livraison estimee"
+msgid "Save Entry"
+msgstr "Enregistrer l'entree"
 
-msgid "Actual Delivery"
-msgstr "Livraison reelle"
+msgid "Save Expense"
+msgstr "Enregistrer la depense"
 
-msgid "View"
-msgstr "Voir"
+msgid "Save Profile"
+msgstr "Enregistrer le profil"
 
-msgid "Preview invoice"
-msgstr "Apercu de la facture"
+msgid "Save Quotation"
+msgstr "Enregistrer le devis"
 
-msgid "Invoice"
-msgstr "Facture"
+msgid "Save Stock"
+msgstr "Enregistrer le stock"
 
-msgid "No orders yet."
-msgstr "Aucune commande pour le moment."
+msgid "Save Worker Pay"
+msgstr "Enregistrer la paie"
 
-msgid "New PO"
-msgstr "Nouveau BC"
+msgid "Search"
+msgstr "Rechercher"
 
-msgid "Expected Ship"
-msgstr "Expedition prevue"
+msgid "Search by name or SKU..."
+msgstr "Rechercher par nom ou SKU..."
 
-msgid "Actions"
-msgstr "Actions"
+msgid "Secure"
+msgstr "Securise"
 
-msgid "Update"
-msgstr "Mettre a jour"
+msgid "Select item"
+msgstr "Selectionner un article"
 
-msgid "Receive"
-msgstr "Recevoir"
+msgid "Sell @"
+msgstr "Vente @"
 
-msgid "No purchase orders yet."
-msgstr "Aucun bon de commande pour le moment."
+msgid "Selling Price"
+msgstr "Prix de vente"
 
-msgid "Invoices"
-msgstr "Factures"
+msgid "Send Task"
+msgstr "Envoyer la tache"
+
+msgid "Send to"
+msgstr "Envoyer a"
+
+msgid "Sent"
+msgstr "Envoye"
+
+msgid "Serial Number Tracking"
+msgstr "Suivi des numeros de serie"
+
+msgid "Set"
+msgstr "Definir"
+
+msgid "Settings"
+msgstr "Parametres"
+
+msgid "Shelf Position"
+msgstr "Position etagere"
+
+msgid "Shipped"
+msgstr "Expedie"
+
+msgid "Sign in"
+msgstr "Connexion"
+
+msgid "Sign in to continue to the GMI Terralink workspace."
+msgstr "Connectez-vous pour continuer vers l'espace de travail GMI Terralink."
+
+msgid "Source location"
+msgstr "Emplacement source"
+
+msgid "Split"
+msgstr "Split"
+
+msgid "Split Qty"
+msgstr "Diviser qte"
+
+msgid "Staff"
+msgstr "Personnel"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Stock"
+msgstr "Stock"
+
+msgid "Stock Adjustment"
+msgstr "Ajustement de stock"
+
+msgid "Stock After"
+msgstr "Stock apres"
+
+msgid "Stock Items"
+msgstr "Articles en stock"
+
+msgid "Stock Movements"
+msgstr "Mouvements de stock"
+
+msgid "Stock Movements (Audit Trail)"
+msgstr "Mouvements de stock (journal d'audit)"
+
+msgid "Stock Requests"
+msgstr "Demandes de stock"
+
+msgid "Stock Transfer"
+msgstr "Transfert de stock"
+
+msgid "Stock Transfer History"
+msgstr "Historique des transferts"
+
+msgid "Stock Warehouse"
+msgstr "Stocker l'entrepot"
+
+msgid "Stocking Form"
+msgstr "Formulaire de stock"
+
+msgid "Storage Locations"
+msgstr "Emplacements de stockage"
+
+msgid "Store Front"
+msgstr "Boutique"
+
+msgid "Store Front Units"
+msgstr "Unites en boutique"
+
+msgid "Store Stock"
+msgstr "Stock boutique"
+
+msgid "Subtotal"
+msgstr "Subtotal"
+
+msgid "Supplier"
+msgstr "Supplier"
+
+msgid "Supplier (optional)"
+msgstr "Supplier (optional)"
+
+msgid "Supplier Dues"
+msgstr "Dettes fournisseurs"
+
+msgid "Supplier Invoice"
+msgstr "Facture fournisseur"
+
+msgid "Supplier Purchase History"
+msgstr "Historique des achats fournisseur"
+
+msgid "Suppliers"
+msgstr "Fournisseurs"
+
+msgid "System"
+msgstr "Systeme"
+
+msgid "System designed, managed and hosted by Devtown Technologies"
+msgstr "Systeme concu, gere et heberge par Devtown Technologies"
+
+msgid "TZS - Tanzanian Shilling"
+msgstr "TZS - Tanzanian Shilling"
+
+msgid "Task"
+msgstr "Tache"
+
+msgid "Tasks"
+msgstr "Taches"
+
+msgid "Tax"
+msgstr "Taxe"
+
+msgid "Tel"
+msgstr "Tel"
+
+msgid "Terms"
+msgstr "Conditions"
+
+msgid "Terms & Conditions"
+msgstr "Conditions generales"
+
+msgid "Thank you for your business."
+msgstr "Merci pour votre confiance."
+
+msgid "Thank you for your payment."
+msgstr "Merci pour votre paiement."
+
+msgid "The original quotation copy is always preserved, even after conversion."
+msgstr "La copie originale du devis est toujours conservee, meme apres conversion."
+
+msgid "The shop floor (Store) requests stock from the Warehouse. Warehouse approves and fulfills as a transfer."
+msgstr "La boutique demande du stock a l'entrepot. L'entrepot approuve et execute la demande par transfert."
+
+msgid "Theme"
+msgstr "Theme"
+
+msgid "This Payment"
+msgstr "Ce paiement"
+
+msgid "This invoice is fully settled. Payment entries are locked and cannot be edited or extended."
+msgstr "Cette facture est entierement reglee. Les paiements sont verrouilles et ne peuvent pas etre modifies ni prolonges."
+
+msgid "This raises a request from the <strong>Main Store</strong> for items currently held in the <strong>Main Warehouse</strong>. After Warehouse approves, fulfilling executes the transfer."
+msgstr "Cela cree une demande du <strong>Main Store</strong> pour des articles actuellement dans le <strong>Main Warehouse</strong>. Apres approbation par l'entrepot, l'execution effectue le transfert."
+
+msgid "This receipt acknowledges payment received in %(mode)s towards invoice %(invoice_code)s. Issued by %(business_name)s."
+msgstr "Ce recu confirme le paiement recu en %(mode)s pour la facture %(invoice_code)s. Emis par %(business_name)s."
+
+msgid "To"
+msgstr "A"
+
+msgid "To (destination)"
+msgstr "Vers (destination)"
+
+msgid "Toggle theme"
+msgstr "Changer le theme"
+
+msgid "Top Clients (by invoiced)"
+msgstr "Meilleurs clients (par facturation)"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Total Hours"
+msgstr "Total des heures"
 
 msgid "Total Invoiced"
 msgstr "Total facture"
@@ -414,74 +1359,158 @@ msgstr "Total facture"
 msgid "Total Paid"
 msgstr "Total paye"
 
-msgid "Order"
-msgstr "Commande"
+msgid "Total Produced (t)"
+msgstr "Total produit (t)"
 
-msgid "Paid"
-msgstr "Paye"
+msgid "Total Worker Pay Recorded"
+msgstr "Total paie travailleurs enregistree"
 
-msgid "Balance"
-msgstr "Solde"
+msgid "Tracking & Dates"
+msgstr "Suivi et dates"
 
-msgid "Print"
-msgstr "Imprimer"
+msgid "Tracking Details"
+msgstr "Details de suivi"
 
-msgid "Amount"
-msgstr "Montant"
+msgid "Transfer"
+msgstr "Transfer"
 
-msgid "Pay"
-msgstr "Payer"
+msgid "Type"
+msgstr "Type"
 
-msgid "No invoices yet."
-msgstr "Aucune facture pour le moment."
+msgid "UGX - Ugandan Shilling"
+msgstr "UGX - Ugandan Shilling"
 
-msgid "Available"
-msgstr "Disponible"
+msgid "USD - US Dollar"
+msgstr "USD - US Dollar"
 
-msgid "In Stock"
-msgstr "En stock"
+msgid "Uganda"
+msgstr "Uganda"
 
-msgid "Low Stock"
-msgstr "Stock faible"
+msgid "Unassigned"
+msgstr "Non assigne"
 
-msgid "Damaged"
-msgstr "Endommage"
+msgid "Unified control for procurement, stock, sales, finance, payroll, mining operations and traceable business documents."
+msgstr "Controle unifie des achats, du stock, des ventes, des finances, de la paie, des operations minieres et des documents commerciaux tracables."
 
-msgid "Expired"
-msgstr "Expire"
+msgid "Unit"
+msgstr "Unite"
 
-msgid "Pending"
-msgstr "En attente"
+msgid "Unit Price"
+msgstr "Unit Price"
 
-msgid "Delivered"
-msgstr "Livre"
+msgid "Unit of Measure"
+msgstr "Unite de mesure"
 
-msgid "Cancelled"
-msgstr "Annule"
+msgid "Update"
+msgstr "Mettre a jour"
 
-msgid "Unpaid"
-msgstr "Impaye"
+msgid "Update Qty"
+msgstr "Mettre a jour qte"
 
-msgid "Partial"
-msgstr "Partiel"
+msgid "Update Status"
+msgstr "Mettre a jour le statut"
 
-msgid "Arrived"
-msgstr "Arrive"
+msgid "User"
+msgstr "Utilisateur"
 
-msgid "Ordered"
-msgstr "Commande"
+msgid "User Roles"
+msgstr "Roles des utilisateurs"
 
-msgid "Shipped"
-msgstr "Expedie"
+msgid "Username"
+msgstr "Nom d'utilisateur"
 
-msgid "Cash"
-msgstr "Especes"
+msgid "Valid Until"
+msgstr "Valid Until"
 
-msgid "Mobile Money"
-msgstr "Mobile Money"
+msgid "Valid until"
+msgstr "Valide jusqu'au"
 
-msgid "Bank"
-msgstr "Banque"
+msgid "Value"
+msgstr "Valeur"
 
-msgid "Credit"
-msgstr "Credit"
+msgid "View"
+msgstr "Voir"
+
+msgid "Walk-in customer"
+msgstr "Client au comptoir"
+
+msgid "Warehouse"
+msgstr "Entrepot"
+
+msgid "Warehouse Location"
+msgstr "Warehouse Location"
+
+msgid "Warehouse Transfer"
+msgstr "Transfert d'entrepot"
+
+msgid "Warehouse Units"
+msgstr "Unites en entrepot"
+
+msgid "Warehouse stock is held separately from storefront stock for sales."
+msgstr "Le stock de l'entrepot est separe du stock de la boutique pour les ventes."
+
+msgid "Warehouse stock, storefront stock, transfers, and sales performance."
+msgstr "Stock de l'entrepot, stock de la boutique, transferts et performance des ventes."
+
+msgid "Warehouse, store front, sales and stock control"
+msgstr "Entrepot, boutique, ventes et controle du stock"
+
+msgid "We look forward to serving you."
+msgstr "Nous sommes impatients de vous servir."
+
+msgid "Website"
+msgstr "Site web"
+
+msgid "Weight or Volume"
+msgstr "Poids ou volume"
+
+msgid "Welcome back"
+msgstr "Bon retour"
+
+msgid "When"
+msgstr "Quand"
+
+msgid "Worker"
+msgstr "Travailleur"
+
+msgid "Worker Name"
+msgstr "Nom du travailleur"
+
+msgid "Worker Pay"
+msgstr "Paie travailleur"
+
+msgid "Worker Pay Records"
+msgstr "Registres de paie travailleurs"
+
+msgid "Worker spend tracking only"
+msgstr "Suivi des depenses travailleurs uniquement"
+
+msgid "You do not have permission to view this page."
+msgstr "Vous n'avez pas l'autorisation de voir cette page."
+
+msgid "assigned to you"
+msgstr "assigne(s) a vous"
+
+msgid "e.g. Damage, count correction, theft, found"
+msgstr "ex. dommage, correction d'inventaire, vol, retrouve"
+
+msgid "e.g. WH-A or SHELF-12"
+msgstr "ex. WH-A ou SHELF-12"
+
+msgid "on hand"
+msgstr "en main"
+
+msgid "operational access"
+msgstr "acces operationnel"
+
+msgid "role controls"
+msgstr "controles des roles"
+
+msgid "select client"
+msgstr "selectionner un client"
+
+msgid "select item"
+msgstr "selectionner un article"
+
+msgid "stock visibility"
+msgstr "visibilite du stock"

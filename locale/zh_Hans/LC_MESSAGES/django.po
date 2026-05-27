@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GMI Inventory System\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-15 00:00+0000\n"
-"PO-Revision-Date: 2026-05-15 00:00+0000\n"
+"POT-Creation-Date: 2026-05-27 00:00+0000\n"
+"PO-Revision-Date: 2026-05-27 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_Hans\n"
@@ -12,71 +12,1070 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "English"
-msgstr "英语"
+msgid "API Browser"
+msgstr "API 浏览器"
 
-msgid "French"
-msgstr "法语"
+msgid "Accepted"
+msgstr "Accepted"
 
-msgid "Chinese"
-msgstr "中文"
+msgid "Access Denied"
+msgstr "访问被拒绝"
 
-msgid "GMI Inventory System"
-msgstr "GMI 库存系统"
+msgid "Action"
+msgstr "操作"
 
-msgid "GMI Inventory"
-msgstr "GMI 库存"
+msgid "Actions"
+msgstr "操作"
 
-msgid "Language"
-msgstr "语言"
+msgid "Actual Delivery"
+msgstr "实际交付"
 
-msgid "Currency"
-msgstr "货币"
+msgid "Add"
+msgstr "添加"
 
-msgid "User"
-msgstr "用户"
+msgid "Add Client"
+msgstr "添加客户"
 
-msgid "Toggle theme"
-msgstr "切换主题"
+msgid "Add Line"
+msgstr "添加行"
 
-msgid "Theme"
-msgstr "主题"
+msgid "Add Location"
+msgstr "添加位置"
 
-msgid "Log out"
-msgstr "退出登录"
+msgid "Add Supplier"
+msgstr "添加供应商"
 
-msgid "Log in"
-msgstr "登录"
+msgid "Adjust"
+msgstr "调整"
 
-msgid "Main"
-msgstr "主页"
+msgid "Adjustments"
+msgstr "库存调整"
 
-msgid "Dashboard"
-msgstr "仪表盘"
+msgid "Admin Panel"
+msgstr "管理后台"
 
-msgid "Notice Board"
-msgstr "公告栏"
+msgid "After"
+msgstr "之后"
 
-msgid "Sales"
-msgstr "销售"
+msgid "Alerts"
+msgstr "提醒"
 
-msgid "Quotations"
-msgstr "报价"
+msgid "All Clients"
+msgstr "所有客户"
 
-msgid "POS Terminal"
-msgstr "POS 终端"
+msgid "All Statuses"
+msgstr "所有状态"
 
-msgid "Sales History"
-msgstr "销售历史"
+msgid "All Suppliers"
+msgstr "所有供应商"
+
+msgid "All historical documents are preserved. Even after a quotation has been converted, its original copy remains available below."
+msgstr "所有历史文档都会保留。即使报价已转换，其原始副本仍可在下方查看。"
+
+msgid "All received stock lands in the <strong>Main Warehouse</strong>. Set or update the item's classification and prices below."
+msgstr "所有收货库存进入<strong>主仓库</strong>。请在下方设置或更新商品分类和价格。"
+
+msgid "Allow backorder"
+msgstr "Allow backorder"
+
+msgid "Allow zero-stock override"
+msgstr "Allow zero-stock override"
+
+msgid "Amount"
+msgstr "金额"
+
+msgid "Amount Paid"
+msgstr "已付金额"
+
+msgid "Apply"
+msgstr "应用"
+
+msgid "Approve"
+msgstr "批准"
+
+msgid "Arrived"
+msgstr "已到达"
+
+msgid "Authorized Access"
+msgstr "授权访问"
+
+msgid "Available"
+msgstr "可用"
+
+msgid "Awaiting Stock"
+msgstr "等待库存"
+
+msgid "Back"
+msgstr "返回"
+
+msgid "Back to Dashboard"
+msgstr "返回仪表盘"
+
+msgid "Balance"
+msgstr "余额"
+
+msgid "Balance Due"
+msgstr "应付余额"
+
+msgid "Bank"
+msgstr "银行"
+
+msgid "Barcode"
+msgstr "条码"
+
+msgid "Batch Number"
+msgstr "批号"
+
+msgid "Bill To"
+msgstr "账单抬头"
+
+msgid "Bill of Lading"
+msgstr "提单"
 
 msgid "Billing"
 msgstr "账单"
 
-msgid "Invoices & Receipts"
-msgstr "发票和收据"
+msgid "Box"
+msgstr "箱"
+
+msgid "Brand"
+msgstr "品牌"
+
+msgid "Business Address"
+msgstr "企业地址"
+
+msgid "Business Name"
+msgstr "企业名称"
+
+msgid "Business Profile"
+msgstr "业务资料"
+
+msgid "Buy @"
+msgstr "买入@"
+
+msgid "By"
+msgstr "由"
+
+msgid "CNY - Chinese Yuan"
+msgstr "CNY - Chinese Yuan"
+
+msgid "CONVERTED"
+msgstr "CONVERTED"
+
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Cart"
+msgstr "购物车"
+
+msgid "Cash"
+msgstr "现金"
+
+msgid "Category"
+msgstr "类别"
+
+msgid "Category Record"
+msgstr "类别记录"
+
+msgid "Change"
+msgstr "更改"
+
+msgid "China"
+msgstr "中国"
+
+msgid "Chinese"
+msgstr "中文"
+
+msgid "Classification"
+msgstr "分类"
+
+msgid "Clear"
+msgstr "清除"
+
+msgid "Client"
+msgstr "客户"
+
+msgid "Clients"
+msgstr "客户"
+
+msgid "Code"
+msgstr "编号"
+
+msgid "Collected"
+msgstr "已收款"
+
+msgid "Complete Sale & Generate Receipt"
+msgstr "完成销售并生成收据"
+
+msgid "Confirm Receiving"
+msgstr "确认收货"
+
+msgid "Contact"
+msgstr "联系方式"
+
+msgid "Contact Person"
+msgstr "联系人"
+
+msgid "Contacts"
+msgstr "联系人"
+
+msgid "Convert to Invoice"
+msgstr "转换为发票"
+
+msgid "Convert to Sales Order & Invoice"
+msgstr "转换为销售订单和发票"
+
+msgid "Converted"
+msgstr "已转换"
+
+msgid "Converted To"
+msgstr "转换为"
+
+msgid "Cost"
+msgstr "成本"
+
+msgid "Count"
+msgstr "数量"
+
+msgid "Country"
+msgstr "国家"
+
+msgid "Create Purchase Order"
+msgstr "创建采购订单"
+
+msgid "Credit Limit"
+msgstr "信用额度"
+
+msgid "Currency"
+msgstr "货币"
+
+msgid "Current Role"
+msgstr "当前角色"
+
+msgid "Current Storefront Stock"
+msgstr "当前门店库存"
+
+msgid "Current Warehouse Stock"
+msgstr "当前仓库库存"
+
+msgid "Customer"
+msgstr "客户"
+
+msgid "Damaged"
+msgstr "损坏"
+
+msgid "Dashboard"
+msgstr "仪表盘"
+
+msgid "Date"
+msgstr "日期"
+
+msgid "Date of Stock"
+msgstr "入库日期"
+
+msgid "Dead Stock"
+msgstr "呆滞库存"
+
+msgid "Default"
+msgstr "默认"
+
+msgid "Default WH"
+msgstr "默认仓库"
+
+msgid "Delivered"
+msgstr "已交付"
+
+msgid "Department"
+msgstr "部门"
+
+msgid "Deposit"
+msgstr "订金"
+
+msgid "Description"
+msgstr "描述"
+
+msgid "Destination location"
+msgstr "目标位置"
+
+msgid "Details"
+msgstr "详情"
+
+msgid "Direction"
+msgstr "方向"
+
+msgid "Director / Owner"
+msgstr "董事 / 所有者"
+
+msgid "Discount"
+msgstr "折扣"
+
+msgid "Documents"
+msgstr "文档"
+
+msgid "Done"
+msgstr "已完成"
+
+msgid "Done by %(completed_by)s on %(completed_at)s"
+msgstr "Done by %(completed_by)s on %(completed_at)s"
+
+msgid "Draft"
+msgstr "草稿"
+
+msgid "EUR - Euro"
+msgstr "EUR - Euro"
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "Edit Client"
+msgstr "编辑客户"
+
+msgid "Edit Supplier"
+msgstr "编辑供应商"
+
+msgid "Email"
+msgstr "电子邮箱"
+
+msgid "English"
+msgstr "英语"
+
+msgid "Entries"
+msgstr "记录"
+
+msgid "Est. Delivery"
+msgstr "预计交付"
+
+msgid "Est. Delivery Date"
+msgstr "预计交付日期"
+
+msgid "Expatriates Count"
+msgstr "外派人数"
+
+msgid "Expats"
+msgstr "外派人员"
+
+msgid "Expected Ship"
+msgstr "预计发货"
+
+msgid "Expected Shipment Date"
+msgstr "预计发货日期"
+
+msgid "Expense Records"
+msgstr "支出记录"
+
+msgid "Expense Records (Total: %(currency_code)s %(total_amount)s)"
+msgstr "Expense Records (Total: %(currency_code)s %(total_amount)s)"
+
+msgid "Expense Records by Supplier"
+msgstr "按供应商的支出记录"
 
 msgid "Expenses"
 msgstr "支出"
+
+msgid "Expenses Recorded"
+msgstr "已记录支出"
+
+msgid "Expenses and payroll are not deducted"
+msgstr "Expenses and payroll are not deducted"
+
+msgid "Expenses are tracked for record keeping only. They are not deducted from sales or net sales reports."
+msgstr "Expenses are tracked for record keeping only. They are not deducted from sales or net sales reports."
+
+msgid "Expenses by Type"
+msgstr "按类型支出"
+
+msgid "Expired"
+msgstr "过期"
+
+msgid "Expiry Date"
+msgstr "到期日"
+
+msgid "Fast-Moving Items"
+msgstr "畅销商品"
+
+msgid "Fast-Moving Products"
+msgstr "畅销商品"
+
+msgid "Filter"
+msgstr "筛选"
+
+msgid "Filter Month"
+msgstr "筛选月份"
+
+msgid "For queries"
+msgstr "咨询"
+
+msgid "French"
+msgstr "法语"
+
+msgid "From"
+msgstr "从"
+
+msgid "From (source)"
+msgstr "从（来源）"
+
+msgid "Fulfill (Transfer)"
+msgstr "完成（调拨）"
+
+msgid "GBP - British Pound"
+msgstr "GBP - British Pound"
+
+msgid "GMI Inventory"
+msgstr "GMI 库存"
+
+msgid "GMI Inventory Admin"
+msgstr "GMI Inventory Admin"
+
+msgid "GMI Inventory System"
+msgstr "GMI 库存系统"
+
+msgid "Go"
+msgstr "确定"
+
+msgid "Hours"
+msgstr "小时"
+
+msgid "Hours Worked"
+msgstr "工作小时"
+
+msgid "In Transit"
+msgstr "运输中"
+
+msgid "Inventory"
+msgstr "库存"
+
+msgid "Inventory Ledger"
+msgstr "库存台账"
+
+msgid "Inventory Valuation"
+msgstr "库存估值"
+
+msgid "Inventory, transfers, sales, mining production, payroll records, and expense tracking."
+msgstr "Inventory, transfers, sales, mining production, payroll records, and expense tracking."
+
+msgid "Invoice"
+msgstr "发票"
+
+msgid "Invoice Total"
+msgstr "发票总额"
+
+msgid "Invoiced"
+msgstr "已开票"
+
+msgid "Invoices"
+msgstr "发票"
+
+msgid "Invoices & Receipts"
+msgstr "发票和收据"
+
+msgid "Issued"
+msgstr "开具"
+
+msgid "Item"
+msgstr "商品"
+
+msgid "Item Description"
+msgstr "商品描述"
+
+msgid "Item Name"
+msgstr "商品名称"
+
+msgid "KES - Kenyan Shilling"
+msgstr "KES - Kenyan Shilling"
+
+msgid "Kg"
+msgstr "Kg"
+
+msgid "Kind"
+msgstr "类型"
+
+msgid "Language"
+msgstr "语言"
+
+msgid "Line"
+msgstr "生产线"
+
+msgid "Line Items"
+msgstr "明细行"
+
+msgid "Line Staff Count"
+msgstr "生产线员工数"
+
+msgid "Line Total"
+msgstr "行总计"
+
+msgid "Litre"
+msgstr "升"
+
+msgid "Live"
+msgstr "实时"
+
+msgid "Local"
+msgstr "本地"
+
+msgid "Local Service"
+msgstr "本地服务"
+
+msgid "Location"
+msgstr "位置"
+
+msgid "Locations"
+msgstr "库位"
+
+msgid "Locked"
+msgstr "已锁定"
+
+msgid "Log Entry"
+msgstr "记录条目"
+
+msgid "Log Production Entry"
+msgstr "记录生产条目"
+
+msgid "Log in"
+msgstr "登录"
+
+msgid "Log out"
+msgstr "退出登录"
+
+msgid "Logistics"
+msgstr "物流"
+
+msgid "Logo"
+msgstr "标志"
+
+msgid "Low Stock Items"
+msgstr "低库存商品"
+
+msgid "Low-Stock Items"
+msgstr "低库存商品"
+
+msgid "Main"
+msgstr "主页"
+
+msgid "Main Warehouse"
+msgstr "主仓库"
+
+msgid "Management System"
+msgstr "管理系统"
+
+msgid "Mark Done"
+msgstr "标记完成"
+
+msgid "Mark as Delivered"
+msgstr "标记为已交付"
+
+msgid "Metre"
+msgstr "Metre"
+
+msgid "Mineral"
+msgstr "矿物"
+
+msgid "Mineral Type"
+msgstr "矿物类型"
+
+msgid "Mining"
+msgstr "采矿"
+
+msgid "Mining Activity"
+msgstr "采矿活动"
+
+msgid "Mining Inventory"
+msgstr "矿业库存"
+
+msgid "Mining Production"
+msgstr "采矿生产"
+
+msgid "Missing"
+msgstr "缺失"
+
+msgid "Mobile Money"
+msgstr "移动支付"
+
+msgid "Mode"
+msgstr "方式"
+
+msgid "Month Sales"
+msgstr "本月销售"
+
+msgid "Movement"
+msgstr "流动"
+
+msgid "Movements"
+msgstr "库存流水"
+
+msgid "Name"
+msgstr "名称"
+
+msgid "Net Sales Collected"
+msgstr "已收净销售额"
+
+msgid "New Order"
+msgstr "新订单"
+
+msgid "New PO"
+msgstr "新采购单"
+
+msgid "New Purchase Order"
+msgstr "新采购订单"
+
+msgid "New Quotation"
+msgstr "新报价"
+
+msgid "New Request"
+msgstr "新申请"
+
+msgid "New Stock Request"
+msgstr "新库存申请"
+
+msgid "New Task"
+msgstr "新任务"
+
+msgid "No POs yet"
+msgstr "暂无采购订单"
+
+msgid "No clients yet."
+msgstr "暂无客户。"
+
+msgid "No dead stock detected."
+msgstr "未发现呆滞库存。"
+
+msgid "No entries found."
+msgstr "未找到记录。"
+
+msgid "No expenses in this window."
+msgstr "此期间无支出。"
+
+msgid "No expenses yet."
+msgstr "暂无支出。"
+
+msgid "No invoices yet."
+msgstr "暂无发票。"
+
+msgid "No invoices."
+msgstr "无发票。"
+
+msgid "No items found."
+msgstr "未找到商品。"
+
+msgid "No locations yet."
+msgstr "暂无位置。"
+
+msgid "No low stock items."
+msgstr "无低库存商品。"
+
+msgid "No mining entries."
+msgstr "无采矿记录。"
+
+msgid "No movements recorded yet."
+msgstr "暂无库存流水。"
+
+msgid "No orders yet"
+msgstr "暂无订单"
+
+msgid "No orders yet."
+msgstr "暂无订单。"
+
+msgid "No outstanding invoices."
+msgstr "无未结发票。"
+
+msgid "No payments in this window."
+msgstr "此期间无付款。"
+
+msgid "No payments yet."
+msgstr "暂无付款。"
+
+msgid "No payroll entries found."
+msgstr "未找到薪资记录。"
+
+msgid "No payroll entries."
+msgstr "无薪资记录。"
+
+msgid "No purchase orders yet."
+msgstr "暂无采购订单。"
+
+msgid "No quotations yet."
+msgstr "暂无报价。"
+
+msgid "No requests yet."
+msgstr "暂无申请。"
+
+msgid "No sales delivered yet"
+msgstr "暂无已交付销售"
+
+msgid "No sales in this window."
+msgstr "此期间无销售。"
+
+msgid "No storefront stock."
+msgstr "无门店库存。"
+
+msgid "No supplier expenses."
+msgstr "无供应商支出。"
+
+msgid "No supplier purchases in this window."
+msgstr "此期间无供应商采购。"
+
+msgid "No supplier selected"
+msgstr "未选择供应商"
+
+msgid "No suppliers yet."
+msgstr "暂无供应商。"
+
+msgid "No tasks posted yet."
+msgstr "暂无任务。"
+
+msgid "No transfers in this window."
+msgstr "此期间无调拨。"
+
+msgid "No users found"
+msgstr "未找到用户"
+
+msgid "No warehouse stock."
+msgstr "无仓库库存。"
+
+msgid "No."
+msgstr "编号"
+
+msgid "None"
+msgstr "无"
+
+msgid "Not available"
+msgstr "不可用"
+
+msgid "Note"
+msgstr "备注"
+
+msgid "Note (optional)"
+msgstr "备注（可选）"
+
+msgid "Notes"
+msgstr "备注"
+
+msgid "Notice Board"
+msgstr "公告栏"
+
+msgid "On Hand"
+msgstr "现有"
+
+msgid "Open"
+msgstr "未完成"
+
+msgid "Open Order"
+msgstr "打开订单"
+
+msgid "Open POS"
+msgstr "打开 POS"
+
+msgid "Operations Dashboard"
+msgstr "运营仪表盘"
+
+msgid "Order"
+msgstr "订单"
+
+msgid "Order Details"
+msgstr "订单详情"
+
+msgid "Order Lines"
+msgstr "订单行"
+
+msgid "Order Reference"
+msgstr "订单参考"
+
+msgid "Ordered"
+msgstr "已下单"
+
+msgid "Original"
+msgstr "原件"
+
+msgid "Output/Hr"
+msgstr "每小时产量"
+
+msgid "Outstanding"
+msgstr "未结余额"
+
+msgid "Outstanding Invoices (top 20 by balance)"
+msgstr "未结发票（余额前20）"
+
+msgid "Overdue >30 days"
+msgstr "逾期超过30天"
+
+msgid "PAID"
+msgstr "已付"
+
+msgid "PAID - LOCKED"
+msgstr "已付 - 已锁定"
+
+msgid "POS Terminal"
+msgstr "POS 终端"
+
+msgid "Pack"
+msgstr "Pack"
+
+msgid "Paid"
+msgstr "已付"
+
+msgid "Paid in Full"
+msgstr "已全额支付"
+
+msgid "Parent"
+msgstr "父级"
+
+msgid "Parent (optional)"
+msgstr "父级（可选）"
+
+msgid "Partially Paid"
+msgstr "部分已付"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Pay"
+msgstr "付款"
+
+msgid "Payment"
+msgstr "付款"
+
+msgid "Payment Details"
+msgstr "付款详情"
+
+msgid "Payment History"
+msgstr "付款历史"
+
+msgid "Payment Instructions"
+msgstr "付款说明"
+
+msgid "Payment Method"
+msgstr "付款方式"
+
+msgid "Payment Terms"
+msgstr "付款条件"
+
+msgid "Payment received against invoice <strong>%(invoice_code)s</strong>"
+msgstr "收到针对发票 <strong>%(invoice_code)s</strong> 的付款"
+
+msgid "Payments by Mode"
+msgstr "按方式付款"
+
+msgid "Payroll"
+msgstr "薪资"
+
+msgid "Payroll Recorded"
+msgstr "已记录薪资"
+
+msgid "Payroll by Department"
+msgstr "按部门薪资"
+
+msgid "Payroll by Role"
+msgstr "按岗位薪资"
+
+msgid "Payroll by Worker"
+msgstr "按员工薪资"
+
+msgid "Payroll is a separate record-keeping department for mining activity worker payments. These amounts are not deducted from sales reports."
+msgstr "薪资作为采矿活动员工付款的独立记录。这些金额不会从销售报表中扣除。"
+
+msgid "Payroll is tracked separately for mining activities and is not deducted from sales totals."
+msgstr "采矿活动薪资单独跟踪，不会从销售总额中扣除。"
+
+msgid "Pending"
+msgstr "待处理"
+
+msgid "Pending Requests"
+msgstr "待处理申请"
+
+msgid "Phone"
+msgstr "电话"
+
+msgid "Piece"
+msgstr "件"
+
+msgid "Please pay by bank transfer, mobile money, or cash to %(business_name)s. Quote invoice number <strong>%(invoice_code)s</strong> as the reference. Goods remain the property of %(business_name)s until paid in full."
+msgstr "请通过银行转账、移动支付或现金向 %(business_name)s 付款，并以发票号 <strong>%(invoice_code)s</strong> 作为参考。货款付清前，货物仍归 %(business_name)s 所有。"
+
+msgid "Point of Sale"
+msgstr "销售点"
+
+msgid "Post tasks between departments and mark them done when completed."
+msgstr "在部门之间发布任务，并在完成后标记为完成。"
+
+msgid "Prepared For"
+msgstr "准备给"
+
+msgid "Preview"
+msgstr "预览"
+
+msgid "Preview / Print"
+msgstr "预览 / 打印"
+
+msgid "Preview invoice"
+msgstr "预览发票"
+
+msgid "Price"
+msgstr "价格"
+
+msgid "Prices quoted in %(currency_code)s are subject to stock availability at time of order. Acceptance of this quotation constitutes a binding agreement to purchase from %(business_name)s."
+msgstr "以 %(currency_code)s 报价，取决于下单时的库存情况。接受本报价即表示同意向 %(business_name)s 采购。"
+
+msgid "Pricing & Stock"
+msgstr "价格和库存"
+
+msgid "Print"
+msgstr "打印"
+
+msgid "Print / Save PDF"
+msgstr "打印 / 保存PDF"
+
+msgid "Print Invoice"
+msgstr "打印发票"
+
+msgid "Processing"
+msgstr "处理中"
+
+msgid "Procurement"
+msgstr "采购"
+
+msgid "Produced (t)"
+msgstr "产量（吨）"
+
+msgid "Product"
+msgstr "产品"
+
+msgid "Product Identity"
+msgstr "产品标识"
+
+msgid "Product Image"
+msgstr "产品图片"
+
+msgid "Product Search / Barcode"
+msgstr "产品搜索 / 条码"
+
+msgid "Production"
+msgstr "生产"
+
+msgid "Production Entries"
+msgstr "生产记录"
+
+msgid "Production Line"
+msgstr "生产线"
+
+msgid "Purchase Cost"
+msgstr "采购成本"
+
+msgid "Purchase Orders"
+msgstr "采购订单"
+
+msgid "QUOTATION"
+msgstr "QUOTATION"
+
+msgid "Qty"
+msgstr "Qty"
+
+msgid "Qty Ordered"
+msgstr "Qty Ordered"
+
+msgid "Qty Sold"
+msgstr "已售数量"
+
+msgid "Quantity"
+msgstr "数量"
+
+msgid "Quantity Produced (t)"
+msgstr "产量（吨）"
+
+msgid "Quantity Stocked"
+msgstr "入库数量"
+
+msgid "Quotation"
+msgstr "Quotation"
+
+msgid "Quotation Lines"
+msgstr "报价明细"
+
+msgid "Quotation Status"
+msgstr "报价状态"
+
+msgid "Quotations"
+msgstr "报价"
+
+msgid "Quote Date"
+msgstr "报价日期"
+
+msgid "RECEIPT"
+msgstr "RECEIPT"
+
+msgid "RWF - Rwandan Franc"
+msgstr "RWF - Rwandan Franc"
+
+msgid "Raise Request"
+msgstr "提交申请"
+
+msgid "Reason (audit trail)"
+msgstr "原因（审计记录）"
+
+msgid "Reason / reference"
+msgstr "原因 / 参考"
+
+msgid "Receipt"
+msgstr "Receipt"
+
+msgid "Receivables (AR)"
+msgstr "应收账款"
+
+msgid "Receive"
+msgstr "收货"
+
+msgid "Receive PO"
+msgstr "Receive PO"
+
+msgid "Received"
+msgstr "已收"
+
+msgid "Received From"
+msgstr "收自"
+
+msgid "Received With Thanks"
+msgstr "已收并致谢"
+
+msgid "Recent Purchase Orders"
+msgstr "最近采购订单"
+
+msgid "Recent Sales Orders"
+msgstr "最近销售订单"
+
+msgid "Record Adjustment"
+msgstr "记录调整"
+
+msgid "Record Expense"
+msgstr "记录支出"
+
+msgid "Record Payment"
+msgstr "记录付款"
+
+msgid "Record Transfer"
+msgstr "记录调拨"
+
+msgid "Record Worker Pay"
+msgstr "记录员工薪资"
+
+msgid "Record keeping only"
+msgstr "Record keeping only"
+
+msgid "Reference"
+msgstr "参考"
+
+msgid "Reject"
+msgstr "拒绝"
+
+msgid "Rejected"
+msgstr "已拒绝"
+
+msgid "Remove"
+msgstr "移除"
+
+msgid "Reorder"
+msgstr "补货点"
+
+msgid "Reorder Level"
+msgstr "Reorder Level"
 
 msgid "Reports"
 msgstr "报表"
@@ -84,329 +1083,275 @@ msgstr "报表"
 msgid "Reports & Analytics"
 msgstr "报表与分析"
 
-msgid "Warehouse"
-msgstr "仓库"
+msgid "Request Stock from Warehouse"
+msgstr "向仓库申请库存"
 
-msgid "Stocking Form"
-msgstr "入库表单"
+msgid "Request Store Stock"
+msgstr "申请门店库存"
 
-msgid "Inventory Ledger"
-msgstr "库存台账"
-
-msgid "Locations"
-msgstr "库位"
-
-msgid "Warehouse Transfer"
-msgstr "仓库调拨"
-
-msgid "Adjustments"
-msgstr "库存调整"
-
-msgid "Store Front"
-msgstr "门店"
-
-msgid "Stock Requests"
-msgstr "库存申请"
-
-msgid "Movements"
-msgstr "库存流水"
-
-msgid "Procurement"
-msgstr "采购"
-
-msgid "Purchase Orders"
-msgstr "采购订单"
-
-msgid "Contacts"
-msgstr "联系人"
-
-msgid "Clients"
-msgstr "客户"
-
-msgid "Suppliers"
-msgstr "供应商"
-
-msgid "Mining"
-msgstr "采矿"
-
-msgid "Production"
-msgstr "生产"
-
-msgid "Payroll"
-msgstr "薪资"
-
-msgid "Role Pay"
-msgstr "岗位薪资"
-
-msgid "System"
-msgstr "系统"
-
-msgid "Settings"
-msgstr "设置"
-
-msgid "Admin Panel"
-msgstr "管理后台"
-
-msgid "API Browser"
-msgstr "API 浏览器"
-
-msgid "Business Profile"
-msgstr "业务资料"
-
-msgid "Business Name"
-msgstr "企业名称"
-
-msgid "Business Address"
-msgstr "企业地址"
-
-msgid "Phone"
-msgstr "电话"
-
-msgid "Email"
-msgstr "电子邮箱"
-
-msgid "Website"
-msgstr "网站"
-
-msgid "Logo"
-msgstr "标志"
-
-msgid "Save Profile"
-msgstr "保存资料"
-
-msgid "User Roles"
-msgstr "用户角色"
-
-msgid "Username"
-msgstr "用户名"
-
-msgid "Current Role"
-msgstr "当前角色"
-
-msgid "Change"
-msgstr "更改"
-
-msgid "Set"
-msgstr "设置"
-
-msgid "No users found"
-msgstr "未找到用户"
-
-msgid "Sign in"
-msgstr "登录"
-
-msgid "Mining Inventory"
-msgstr "矿业库存"
-
-msgid "Management System"
-msgstr "管理系统"
-
-msgid "Unified control for procurement, stock, sales, finance, payroll, mining operations and traceable business documents."
-msgstr "统一管理采购、库存、销售、财务、薪资、采矿运营和可追溯业务文档。"
-
-msgid "operational access"
-msgstr "运营访问"
-
-msgid "Live"
-msgstr "实时"
-
-msgid "stock visibility"
-msgstr "库存可视化"
-
-msgid "Secure"
-msgstr "安全"
-
-msgid "role controls"
-msgstr "角色控制"
-
-msgid "Authorized Access"
-msgstr "授权访问"
-
-msgid "Welcome back"
-msgstr "欢迎回来"
-
-msgid "Sign in to continue to the GMI Terralink workspace."
-msgstr "登录以继续访问 GMI Terralink 工作区。"
-
-msgid "Password"
-msgstr "密码"
-
-msgid "Contact"
-msgstr "联系方式"
-
-msgid "System designed, managed and hosted by Devtown Technologies"
-msgstr "系统由 Devtown Technologies 设计、管理和托管"
-
-msgid "Go"
-msgstr "确定"
-
-msgid "Operations Dashboard"
-msgstr "运营仪表盘"
-
-msgid "Warehouse stock, storefront stock, transfers, and sales performance."
-msgstr "仓库库存、门店库存、调拨和销售表现。"
-
-msgid "Stock Warehouse"
-msgstr "仓库入库"
-
-msgid "Open POS"
-msgstr "打开 POS"
-
-msgid "Warehouse Units"
-msgstr "仓库数量"
-
-msgid "Store Front Units"
-msgstr "门店数量"
-
-msgid "Sales Today"
-msgstr "今日销售"
-
-msgid "Pending Requests"
-msgstr "待处理申请"
-
-msgid "Month Sales"
-msgstr "本月销售"
-
-msgid "Low-Stock Items"
-msgstr "低库存商品"
-
-msgid "Outstanding"
-msgstr "未结余额"
-
-msgid "Supplier Dues"
-msgstr "供应商应付款"
-
-msgid "Alerts"
-msgstr "提醒"
-
-msgid "Fast-Moving Products"
-msgstr "畅销商品"
-
-msgid "Product"
-msgstr "产品"
-
-msgid "Qty Sold"
-msgstr "已售数量"
+msgid "Reserved"
+msgstr "已预留"
 
 msgid "Revenue"
 msgstr "收入"
 
-msgid "No sales delivered yet"
-msgstr "暂无已交付销售"
+msgid "Role"
+msgstr "Role"
 
-msgid "Recent Sales Orders"
-msgstr "最近销售订单"
+msgid "Role / Job"
+msgstr "角色 / 岗位"
 
-msgid "Code"
-msgstr "编号"
+msgid "Role Pay"
+msgstr "岗位薪资"
 
-msgid "Client"
-msgstr "客户"
+msgid "SKU"
+msgstr "SKU"
 
-msgid "Status"
-msgstr "状态"
+msgid "SKU / Product Code"
+msgstr "SKU / 产品代码"
 
-msgid "No orders yet"
-msgstr "暂无订单"
+msgid "SO"
+msgstr "销售单"
 
-msgid "Recent Purchase Orders"
-msgstr "最近采购订单"
+msgid "Sales"
+msgstr "销售"
 
-msgid "No POs yet"
-msgstr "暂无采购订单"
+msgid "Sales History"
+msgstr "销售历史"
 
-msgid "Inventory"
-msgstr "库存"
-
-msgid "Warehouse stock is held separately from storefront stock for sales."
-msgstr "仓库库存与门店销售库存分开管理。"
-
-msgid "Search by name or SKU..."
-msgstr "按名称或 SKU 搜索..."
-
-msgid "Search"
-msgstr "搜索"
-
-msgid "Clear"
-msgstr "清除"
-
-msgid "Category"
-msgstr "类别"
-
-msgid "Brand"
-msgstr "品牌"
-
-msgid "Unit"
-msgstr "单位"
-
-msgid "Total"
-msgstr "总计"
-
-msgid "Reorder"
-msgstr "补货点"
-
-msgid "Cost"
-msgstr "成本"
-
-msgid "Price"
-msgstr "价格"
-
-msgid "Edit"
-msgstr "编辑"
-
-msgid "No items found."
-msgstr "未找到商品。"
+msgid "Sales Order"
+msgstr "销售订单"
 
 msgid "Sales Orders"
 msgstr "销售订单"
 
-msgid "New Order"
-msgstr "新订单"
+msgid "Sales Today"
+msgstr "今日销售"
 
-msgid "All Statuses"
-msgstr "所有状态"
+msgid "Sales are fulfilled from storefront inventory only."
+msgstr "销售仅从门店库存履约。"
 
-msgid "Payment"
-msgstr "付款"
+msgid "Save"
+msgstr "保存"
 
-msgid "Est. Delivery"
-msgstr "预计交付"
+msgid "Save Entry"
+msgstr "保存记录"
 
-msgid "Actual Delivery"
-msgstr "实际交付"
+msgid "Save Expense"
+msgstr "保存支出"
 
-msgid "View"
-msgstr "查看"
+msgid "Save Profile"
+msgstr "保存资料"
 
-msgid "Preview invoice"
-msgstr "预览发票"
+msgid "Save Quotation"
+msgstr "保存报价"
 
-msgid "Invoice"
-msgstr "发票"
+msgid "Save Stock"
+msgstr "保存库存"
 
-msgid "No orders yet."
-msgstr "暂无订单。"
+msgid "Save Worker Pay"
+msgstr "保存员工薪资"
 
-msgid "New PO"
-msgstr "新采购单"
+msgid "Search"
+msgstr "搜索"
 
-msgid "Expected Ship"
-msgstr "预计发货"
+msgid "Search by name or SKU..."
+msgstr "按名称或 SKU 搜索..."
 
-msgid "Actions"
-msgstr "操作"
+msgid "Secure"
+msgstr "安全"
 
-msgid "Update"
-msgstr "更新"
+msgid "Select item"
+msgstr "选择商品"
 
-msgid "Receive"
-msgstr "收货"
+msgid "Sell @"
+msgstr "销售@"
 
-msgid "No purchase orders yet."
-msgstr "暂无采购订单。"
+msgid "Selling Price"
+msgstr "销售价"
 
-msgid "Invoices"
-msgstr "发票"
+msgid "Send Task"
+msgstr "发送任务"
+
+msgid "Send to"
+msgstr "发送给"
+
+msgid "Sent"
+msgstr "已发送"
+
+msgid "Serial Number Tracking"
+msgstr "序列号跟踪"
+
+msgid "Set"
+msgstr "设置"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Shelf Position"
+msgstr "货架位置"
+
+msgid "Shipped"
+msgstr "已发货"
+
+msgid "Sign in"
+msgstr "登录"
+
+msgid "Sign in to continue to the GMI Terralink workspace."
+msgstr "登录以继续访问 GMI Terralink 工作区。"
+
+msgid "Source location"
+msgstr "Source location"
+
+msgid "Split"
+msgstr "Split"
+
+msgid "Split Qty"
+msgstr "拆分数量"
+
+msgid "Staff"
+msgstr "员工"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "Stock"
+msgstr "库存"
+
+msgid "Stock Adjustment"
+msgstr "库存调整"
+
+msgid "Stock After"
+msgstr "变动后库存"
+
+msgid "Stock Items"
+msgstr "库存商品"
+
+msgid "Stock Movements"
+msgstr "库存流水"
+
+msgid "Stock Movements (Audit Trail)"
+msgstr "库存流水（审计轨迹）"
+
+msgid "Stock Requests"
+msgstr "库存申请"
+
+msgid "Stock Transfer"
+msgstr "库存调拨"
+
+msgid "Stock Transfer History"
+msgstr "库存调拨历史"
+
+msgid "Stock Warehouse"
+msgstr "仓库入库"
+
+msgid "Stocking Form"
+msgstr "入库表单"
+
+msgid "Storage Locations"
+msgstr "存储位置"
+
+msgid "Store Front"
+msgstr "门店"
+
+msgid "Store Front Units"
+msgstr "门店数量"
+
+msgid "Store Stock"
+msgstr "门店库存"
+
+msgid "Subtotal"
+msgstr "小计"
+
+msgid "Supplier"
+msgstr "Supplier"
+
+msgid "Supplier (optional)"
+msgstr "Supplier (optional)"
+
+msgid "Supplier Dues"
+msgstr "供应商应付款"
+
+msgid "Supplier Invoice"
+msgstr "供应商发票"
+
+msgid "Supplier Purchase History"
+msgstr "供应商采购历史"
+
+msgid "Suppliers"
+msgstr "供应商"
+
+msgid "System"
+msgstr "系统"
+
+msgid "System designed, managed and hosted by Devtown Technologies"
+msgstr "系统由 Devtown Technologies 设计、管理和托管"
+
+msgid "TZS - Tanzanian Shilling"
+msgstr "TZS - Tanzanian Shilling"
+
+msgid "Task"
+msgstr "任务"
+
+msgid "Tasks"
+msgstr "任务"
+
+msgid "Tax"
+msgstr "税费"
+
+msgid "Tel"
+msgstr "Tel"
+
+msgid "Terms"
+msgstr "条款"
+
+msgid "Terms & Conditions"
+msgstr "条款和条件"
+
+msgid "Thank you for your business."
+msgstr "感谢惠顾。"
+
+msgid "Thank you for your payment."
+msgstr "感谢您的付款。"
+
+msgid "The original quotation copy is always preserved, even after conversion."
+msgstr "即使转换后，原始报价副本也会一直保留。"
+
+msgid "The shop floor (Store) requests stock from the Warehouse. Warehouse approves and fulfills as a transfer."
+msgstr "门店向仓库申请库存。仓库批准后通过调拨完成。"
+
+msgid "Theme"
+msgstr "主题"
+
+msgid "This Payment"
+msgstr "本次付款"
+
+msgid "This invoice is fully settled. Payment entries are locked and cannot be edited or extended."
+msgstr "此发票已全部结清。付款记录已锁定，无法编辑或追加。"
+
+msgid "This raises a request from the <strong>Main Store</strong> for items currently held in the <strong>Main Warehouse</strong>. After Warehouse approves, fulfilling executes the transfer."
+msgstr "这会从<strong>主门店</strong>向当前存放在<strong>主仓库</strong>的商品发起申请。仓库批准后，履约会执行调拨。"
+
+msgid "This receipt acknowledges payment received in %(mode)s towards invoice %(invoice_code)s. Issued by %(business_name)s."
+msgstr "本收据确认通过 %(mode)s 收到发票 %(invoice_code)s 的付款。由 %(business_name)s 开具。"
+
+msgid "To"
+msgstr "到"
+
+msgid "To (destination)"
+msgstr "到（目标）"
+
+msgid "Toggle theme"
+msgstr "切换主题"
+
+msgid "Top Clients (by invoiced)"
+msgstr "主要客户（按开票）"
+
+msgid "Total"
+msgstr "总计"
+
+msgid "Total Hours"
+msgstr "Total Hours"
 
 msgid "Total Invoiced"
 msgstr "发票总额"
@@ -414,74 +1359,158 @@ msgstr "发票总额"
 msgid "Total Paid"
 msgstr "已付总额"
 
-msgid "Order"
-msgstr "订单"
+msgid "Total Produced (t)"
+msgstr "Total Produced (t)"
 
-msgid "Paid"
-msgstr "已付"
+msgid "Total Worker Pay Recorded"
+msgstr "Total Worker Pay Recorded"
 
-msgid "Balance"
-msgstr "余额"
+msgid "Tracking & Dates"
+msgstr "跟踪和日期"
 
-msgid "Print"
-msgstr "打印"
+msgid "Tracking Details"
+msgstr "跟踪详情"
 
-msgid "Amount"
-msgstr "金额"
+msgid "Transfer"
+msgstr "Transfer"
 
-msgid "Pay"
-msgstr "付款"
+msgid "Type"
+msgstr "类型"
 
-msgid "No invoices yet."
-msgstr "暂无发票。"
+msgid "UGX - Ugandan Shilling"
+msgstr "UGX - Ugandan Shilling"
 
-msgid "Available"
-msgstr "可用"
+msgid "USD - US Dollar"
+msgstr "USD - US Dollar"
 
-msgid "In Stock"
-msgstr "有库存"
+msgid "Uganda"
+msgstr "Uganda"
 
-msgid "Low Stock"
-msgstr "库存不足"
+msgid "Unassigned"
+msgstr "未分配"
 
-msgid "Damaged"
-msgstr "损坏"
+msgid "Unified control for procurement, stock, sales, finance, payroll, mining operations and traceable business documents."
+msgstr "统一管理采购、库存、销售、财务、薪资、采矿运营和可追溯业务文档。"
 
-msgid "Expired"
-msgstr "过期"
+msgid "Unit"
+msgstr "单位"
 
-msgid "Pending"
-msgstr "待处理"
+msgid "Unit Price"
+msgstr "单价"
 
-msgid "Delivered"
-msgstr "已交付"
+msgid "Unit of Measure"
+msgstr "计量单位"
 
-msgid "Cancelled"
-msgstr "已取消"
+msgid "Update"
+msgstr "更新"
 
-msgid "Unpaid"
-msgstr "未付"
+msgid "Update Qty"
+msgstr "更新数量"
 
-msgid "Partial"
-msgstr "部分付款"
+msgid "Update Status"
+msgstr "更新状态"
 
-msgid "Arrived"
-msgstr "已到达"
+msgid "User"
+msgstr "用户"
 
-msgid "Ordered"
-msgstr "已下单"
+msgid "User Roles"
+msgstr "用户角色"
 
-msgid "Shipped"
-msgstr "已发货"
+msgid "Username"
+msgstr "用户名"
 
-msgid "Cash"
-msgstr "现金"
+msgid "Valid Until"
+msgstr "有效至"
 
-msgid "Mobile Money"
-msgstr "移动支付"
+msgid "Valid until"
+msgstr "有效至"
 
-msgid "Bank"
-msgstr "银行"
+msgid "Value"
+msgstr "价值"
 
-msgid "Credit"
-msgstr "赊账"
+msgid "View"
+msgstr "查看"
+
+msgid "Walk-in customer"
+msgstr "散客"
+
+msgid "Warehouse"
+msgstr "仓库"
+
+msgid "Warehouse Location"
+msgstr "仓库位置"
+
+msgid "Warehouse Transfer"
+msgstr "仓库调拨"
+
+msgid "Warehouse Units"
+msgstr "仓库数量"
+
+msgid "Warehouse stock is held separately from storefront stock for sales."
+msgstr "仓库库存与门店销售库存分开管理。"
+
+msgid "Warehouse stock, storefront stock, transfers, and sales performance."
+msgstr "仓库库存、门店库存、调拨和销售表现。"
+
+msgid "Warehouse, store front, sales and stock control"
+msgstr "仓库、门店、销售和库存控制"
+
+msgid "We look forward to serving you."
+msgstr "期待为您服务。"
+
+msgid "Website"
+msgstr "网站"
+
+msgid "Weight or Volume"
+msgstr "重量或体积"
+
+msgid "Welcome back"
+msgstr "欢迎回来"
+
+msgid "When"
+msgstr "时间"
+
+msgid "Worker"
+msgstr "员工"
+
+msgid "Worker Name"
+msgstr "员工姓名"
+
+msgid "Worker Pay"
+msgstr "员工薪资"
+
+msgid "Worker Pay Records"
+msgstr "员工薪资记录"
+
+msgid "Worker spend tracking only"
+msgstr "仅跟踪员工支出"
+
+msgid "You do not have permission to view this page."
+msgstr "您无权查看此页面。"
+
+msgid "assigned to you"
+msgstr "分配给你"
+
+msgid "e.g. Damage, count correction, theft, found"
+msgstr "例如：损坏、盘点更正、被盗、找回"
+
+msgid "e.g. WH-A or SHELF-12"
+msgstr "例如 WH-A 或 SHELF-12"
+
+msgid "on hand"
+msgstr "现有"
+
+msgid "operational access"
+msgstr "运营访问"
+
+msgid "role controls"
+msgstr "角色控制"
+
+msgid "select client"
+msgstr "选择客户"
+
+msgid "select item"
+msgstr "选择商品"
+
+msgid "stock visibility"
+msgstr "库存可视化"

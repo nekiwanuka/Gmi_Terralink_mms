@@ -1,165 +1,166 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
 <div class="page-header">
   <div>
-    <h2>Reports &amp; Analytics</h2>
-    <p style="color:#4a5c58">Inventory, transfers, sales, mining production, payroll records, and expense tracking.</p>
+    <h2>{% trans "Reports & Analytics" %}</h2>
+    <p style="color:#4a5c58">{% trans "Inventory, transfers, sales, mining production, payroll records, and expense tracking." %}</p>
   </div>
   <form method="get" class="form-inline" style="display:flex;gap:.5rem;align-items:end">
     <div class="form-group">
-      <label>From</label>
+      <label>{% trans "From" %}</label>
       <input type="date" name="start" value="{{ start|date:'Y-m-d' }}" />
     </div>
     <div class="form-group">
-      <label>To</label>
+      <label>{% trans "To" %}</label>
       <input type="date" name="end" value="{{ end|date:'Y-m-d' }}" />
     </div>
-    <button class="btn btn-primary btn-sm" type="submit">Apply</button>
+    <button class="btn btn-primary btn-sm" type="submit">{% trans "Apply" %}</button>
   </form>
 </div>
 
 <div class="kpi-grid">
-  <div class="kpi-card"><div class="kpi-label">Invoiced</div><div class="kpi-value">{{ currency_code }} {{ invoiced|floatformat:0 }}</div></div>
-  <div class="kpi-card"><div class="kpi-label">Collected</div><div class="kpi-value">{{ currency_code }} {{ collected|floatformat:0 }}</div></div>
-  <div class="kpi-card"><div class="kpi-label">Expenses Recorded</div><div class="kpi-value">{{ currency_code }} {{ expenses_total|floatformat:0 }}</div><div class="muted">Record keeping only</div></div>
-  <div class="kpi-card"><div class="kpi-label">Payroll Recorded</div><div class="kpi-value">{{ currency_code }} {{ payroll_total|floatformat:0 }}</div><div class="muted">Worker spend tracking only</div></div>
-  <div class="kpi-card kpi-accent"><div class="kpi-label">Net Sales Collected</div><div class="kpi-value">{{ currency_code }} {{ sales_net|floatformat:0 }}</div><div class="muted">Expenses and payroll are not deducted</div></div>
-  <div class="kpi-card"><div class="kpi-label">Inventory Valuation</div><div class="kpi-value">{{ currency_code }} {{ inventory_valuation|floatformat:0 }}</div></div>
-  <div class="kpi-card"><div class="kpi-label">Receivables (AR)</div><div class="kpi-value">{{ currency_code }} {{ ar_total|floatformat:0 }}</div></div>
-  <div class="kpi-card"><div class="kpi-label">Overdue &gt;30 days</div><div class="kpi-value">{{ currency_code }} {{ overdue_30|floatformat:0 }}</div></div>
+  <div class="kpi-card"><div class="kpi-label">{% trans "Invoiced" %}</div><div class="kpi-value">{{ currency_code }} {{ invoiced|floatformat:0 }}</div></div>
+  <div class="kpi-card"><div class="kpi-label">{% trans "Collected" %}</div><div class="kpi-value">{{ currency_code }} {{ collected|floatformat:0 }}</div></div>
+  <div class="kpi-card"><div class="kpi-label">{% trans "Expenses Recorded" %}</div><div class="kpi-value">{{ currency_code }} {{ expenses_total|floatformat:0 }}</div><div class="muted">{% trans "Record keeping only" %}</div></div>
+  <div class="kpi-card"><div class="kpi-label">{% trans "Payroll Recorded" %}</div><div class="kpi-value">{{ currency_code }} {{ payroll_total|floatformat:0 }}</div><div class="muted">{% trans "Worker spend tracking only" %}</div></div>
+  <div class="kpi-card kpi-accent"><div class="kpi-label">{% trans "Net Sales Collected" %}</div><div class="kpi-value">{{ currency_code }} {{ sales_net|floatformat:0 }}</div><div class="muted">{% trans "Expenses and payroll are not deducted" %}</div></div>
+  <div class="kpi-card"><div class="kpi-label">{% trans "Inventory Valuation" %}</div><div class="kpi-value">{{ currency_code }} {{ inventory_valuation|floatformat:0 }}</div></div>
+  <div class="kpi-card"><div class="kpi-label">{% trans "Receivables (AR)" %}</div><div class="kpi-value">{{ currency_code }} {{ ar_total|floatformat:0 }}</div></div>
+  <div class="kpi-card"><div class="kpi-label">{% trans "Overdue >30 days" %}</div><div class="kpi-value">{{ currency_code }} {{ overdue_30|floatformat:0 }}</div></div>
 </div>
 
 <div class="report-grid">
   <section class="card">
-    <h3>Current Warehouse Stock</h3>
+    <h3>{% trans "Current Warehouse Stock" %}</h3>
     <table class="data">
-      <thead><tr><th>Item</th><th style="text-align:right">Qty</th><th style="text-align:right">Value</th></tr></thead>
+      <thead><tr><th>{% trans "Item" %}</th><th style="text-align:right">{% trans "Qty" %}</th><th style="text-align:right">{% trans "Value" %}</th></tr></thead>
       <tbody>
         {% for row in warehouse_stock %}
           <tr><td>{{ row.item.sku }} — {{ row.item.name }}</td><td style="text-align:right">{{ row.quantity }}</td><td style="text-align:right">{{ currency_code }} {{ row.value|floatformat:0 }}</td></tr>
-        {% empty %}<tr><td colspan="3" class="muted">No warehouse stock.</td></tr>{% endfor %}
+        {% empty %}<tr><td colspan="3" class="muted">{% trans "No warehouse stock." %}</td></tr>{% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card">
-    <h3>Current Storefront Stock</h3>
+    <h3>{% trans "Current Storefront Stock" %}</h3>
     <table class="data">
-      <thead><tr><th>Item</th><th style="text-align:right">Qty</th><th>Status</th></tr></thead>
+      <thead><tr><th>{% trans "Item" %}</th><th style="text-align:right">{% trans "Qty" %}</th><th>{% trans "Status" %}</th></tr></thead>
       <tbody>
         {% for row in storefront_stock %}
-          <tr><td>{{ row.item.sku }} — {{ row.item.name }}</td><td style="text-align:right">{{ row.quantity }}</td><td>{{ row.item.stock_status }}</td></tr>
-        {% empty %}<tr><td colspan="3" class="muted">No storefront stock.</td></tr>{% endfor %}
+          <tr><td>{{ row.item.sku }} — {{ row.item.name }}</td><td style="text-align:right">{{ row.quantity }}</td><td>{% trans row.item.stock_status %}</td></tr>
+        {% empty %}<tr><td colspan="3" class="muted">{% trans "No storefront stock." %}</td></tr>{% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card">
-    <h3>Fast-Moving Items</h3>
+    <h3>{% trans "Fast-Moving Items" %}</h3>
     <table class="data">
-      <thead><tr><th>Item</th><th style="text-align:right">Qty Sold</th><th style="text-align:right">Revenue</th></tr></thead>
+      <thead><tr><th>{% trans "Item" %}</th><th style="text-align:right">{% trans "Qty Sold" %}</th><th style="text-align:right">{% trans "Revenue" %}</th></tr></thead>
       <tbody>
         {% for row in fast_moving_items %}
           <tr><td>{{ row.item__sku }} — {{ row.item__name }}</td><td style="text-align:right">{{ row.qty }}</td><td style="text-align:right">{{ currency_code }} {{ row.revenue|floatformat:0 }}</td></tr>
-        {% empty %}<tr><td colspan="3" class="muted">No sales in this window.</td></tr>{% endfor %}
+        {% empty %}<tr><td colspan="3" class="muted">{% trans "No sales in this window." %}</td></tr>{% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card">
-    <h3>Low Stock Items</h3>
+    <h3>{% trans "Low Stock Items" %}</h3>
     <table class="data">
-      <thead><tr><th>Item</th><th style="text-align:right">Available</th><th style="text-align:right">Reorder</th></tr></thead>
+      <thead><tr><th>{% trans "Item" %}</th><th style="text-align:right">{% trans "Available" %}</th><th style="text-align:right">{% trans "Reorder" %}</th></tr></thead>
       <tbody>
         {% for item in low_stock_items %}
           <tr><td>{{ item.sku }} — {{ item.name }}</td><td style="text-align:right">{{ item.available_stock }}</td><td style="text-align:right">{{ item.reorder_level }}</td></tr>
-        {% empty %}<tr><td colspan="3" class="muted">No low stock items.</td></tr>{% endfor %}
+        {% empty %}<tr><td colspan="3" class="muted">{% trans "No low stock items." %}</td></tr>{% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card">
-    <h3>Dead Stock</h3>
+    <h3>{% trans "Dead Stock" %}</h3>
     <table class="data">
-      <thead><tr><th>Item</th><th style="text-align:right">On Hand</th><th style="text-align:right">Value</th></tr></thead>
+      <thead><tr><th>{% trans "Item" %}</th><th style="text-align:right">{% trans "On Hand" %}</th><th style="text-align:right">{% trans "Value" %}</th></tr></thead>
       <tbody>
         {% for item in dead_stock_items %}
           <tr><td>{{ item.sku }} — {{ item.name }}</td><td style="text-align:right">{{ item.stock_on_hand }}</td><td style="text-align:right">{{ currency_code }} {{ item.stock_value|floatformat:0 }}</td></tr>
-        {% empty %}<tr><td colspan="3" class="muted">No dead stock detected.</td></tr>{% endfor %}
+        {% empty %}<tr><td colspan="3" class="muted">{% trans "No dead stock detected." %}</td></tr>{% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card">
-    <h3>Supplier Purchase History</h3>
+    <h3>{% trans "Supplier Purchase History" %}</h3>
     <table class="data">
-      <thead><tr><th>Supplier</th><th style="text-align:right">Qty Ordered</th><th style="text-align:right">Value</th></tr></thead>
+      <thead><tr><th>{% trans "Supplier" %}</th><th style="text-align:right">{% trans "Qty Ordered" %}</th><th style="text-align:right">{% trans "Value" %}</th></tr></thead>
       <tbody>
         {% for row in supplier_purchase_history %}
           <tr><td>{{ row.purchase_order__supplier__name }}</td><td style="text-align:right">{{ row.qty }}</td><td style="text-align:right">{{ currency_code }} {{ row.total|floatformat:0 }}</td></tr>
-        {% empty %}<tr><td colspan="3" class="muted">No supplier purchases in this window.</td></tr>{% endfor %}
+        {% empty %}<tr><td colspan="3" class="muted">{% trans "No supplier purchases in this window." %}</td></tr>{% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card" style="grid-column: 1 / -1">
-    <h3>Stock Transfer History</h3>
+    <h3>{% trans "Stock Transfer History" %}</h3>
     <table class="data">
-      <thead><tr><th>When</th><th>Item</th><th>Qty</th><th>From</th><th>To</th><th>Reference</th></tr></thead>
+      <thead><tr><th>{% trans "When" %}</th><th>{% trans "Item" %}</th><th>{% trans "Qty" %}</th><th>{% trans "From" %}</th><th>{% trans "To" %}</th><th>{% trans "Reference" %}</th></tr></thead>
       <tbody>
         {% for row in transfer_history %}
           <tr><td>{{ row.created_at|date:"d M Y H:i" }}</td><td>{{ row.item.sku }} — {{ row.item.name }}</td><td>{{ row.quantity }}</td><td>{{ row.source.code }}</td><td>{{ row.destination.code }}</td><td>{{ row.reference }}</td></tr>
-        {% empty %}<tr><td colspan="6" class="muted">No transfers in this window.</td></tr>{% endfor %}
+        {% empty %}<tr><td colspan="6" class="muted">{% trans "No transfers in this window." %}</td></tr>{% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card">
-    <h3>Payments by Mode</h3>
+    <h3>{% trans "Payments by Mode" %}</h3>
     <table class="data">
-      <thead><tr><th>Mode</th><th>Count</th><th style="text-align:right">Total</th></tr></thead>
+      <thead><tr><th>{% trans "Mode" %}</th><th>{% trans "Count" %}</th><th style="text-align:right">{% trans "Total" %}</th></tr></thead>
       <tbody>
         {% for r in payments_by_mode %}
-          <tr><td>{{ r.mode }}</td><td>{{ r.count }}</td><td style="text-align:right">{{ currency_code }} {{ r.total|floatformat:0 }}</td></tr>
+          <tr><td>{% trans r.mode %}</td><td>{{ r.count }}</td><td style="text-align:right">{{ currency_code }} {{ r.total|floatformat:0 }}</td></tr>
         {% empty %}
-          <tr><td colspan="3" class="muted">No payments in this window.</td></tr>
+          <tr><td colspan="3" class="muted">{% trans "No payments in this window." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card">
-    <h3>Expenses by Type</h3>
+    <h3>{% trans "Expenses by Type" %}</h3>
     <table class="data">
-      <thead><tr><th>Type</th><th>Count</th><th style="text-align:right">Total</th></tr></thead>
+      <thead><tr><th>{% trans "Type" %}</th><th>{% trans "Count" %}</th><th style="text-align:right">{% trans "Total" %}</th></tr></thead>
       <tbody>
         {% for r in expenses_by_type %}
-          <tr><td>{{ r.expense_type }}</td><td>{{ r.count }}</td><td style="text-align:right">{{ currency_code }} {{ r.total|floatformat:0 }}</td></tr>
+          <tr><td>{% trans r.expense_type %}</td><td>{{ r.count }}</td><td style="text-align:right">{{ currency_code }} {{ r.total|floatformat:0 }}</td></tr>
         {% empty %}
-          <tr><td colspan="3" class="muted">No expenses in this window.</td></tr>
+          <tr><td colspan="3" class="muted">{% trans "No expenses in this window." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card">
-    <h3>Expense Records by Supplier</h3>
+    <h3>{% trans "Expense Records by Supplier" %}</h3>
     <table class="data">
-      <thead><tr><th>Supplier</th><th style="text-align:right">Total</th></tr></thead>
+      <thead><tr><th>{% trans "Supplier" %}</th><th style="text-align:right">{% trans "Total" %}</th></tr></thead>
       <tbody>
         {% for r in expenses_by_supplier %}
           <tr><td>{{ r.supplier__name }}</td><td style="text-align:right">{{ currency_code }} {{ r.total|floatformat:0 }}</td></tr>
         {% empty %}
-          <tr><td colspan="2" class="muted">No supplier expenses.</td></tr>
+          <tr><td colspan="2" class="muted">{% trans "No supplier expenses." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card">
-    <h3>Top Clients (by invoiced)</h3>
+    <h3>{% trans "Top Clients (by invoiced)" %}</h3>
     <table class="data">
-      <thead><tr><th>Client</th><th style="text-align:right">Invoiced</th><th style="text-align:right">Paid</th></tr></thead>
+      <thead><tr><th>{% trans "Client" %}</th><th style="text-align:right">{% trans "Invoiced" %}</th><th style="text-align:right">{% trans "Paid" %}</th></tr></thead>
       <tbody>
         {% for r in top_clients %}
           <tr>
@@ -168,58 +169,58 @@
             <td style="text-align:right">{{ currency_code }} {{ r.paid|floatformat:0 }}</td>
           </tr>
         {% empty %}
-          <tr><td colspan="3" class="muted">No invoices.</td></tr>
+          <tr><td colspan="3" class="muted">{% trans "No invoices." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card">
-    <h3>Payroll by Worker</h3>
+    <h3>{% trans "Payroll by Worker" %}</h3>
     <table class="data">
-      <thead><tr><th>Worker</th><th>Department</th><th>Role</th><th style="text-align:right">Total Paid</th></tr></thead>
+      <thead><tr><th>{% trans "Worker" %}</th><th>{% trans "Department" %}</th><th>{% trans "Role" %}</th><th style="text-align:right">{% trans "Total Paid" %}</th></tr></thead>
       <tbody>
         {% for r in payroll_by_worker %}
-          <tr><td>{{ r.worker_name|default:"Unassigned" }}</td><td>{{ r.department }}</td><td>{{ r.role }}</td><td style="text-align:right">{{ currency_code }} {{ r.total|floatformat:0 }}</td></tr>
+          <tr><td>{% if r.worker_name %}{{ r.worker_name }}{% else %}{% trans "Unassigned" %}{% endif %}</td><td>{% trans r.department %}</td><td>{{ r.role }}</td><td style="text-align:right">{{ currency_code }} {{ r.total|floatformat:0 }}</td></tr>
         {% empty %}
-          <tr><td colspan="4" class="muted">No payroll entries.</td></tr>
+          <tr><td colspan="4" class="muted">{% trans "No payroll entries." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card">
-    <h3>Payroll by Department</h3>
+    <h3>{% trans "Payroll by Department" %}</h3>
     <table class="data">
-      <thead><tr><th>Department</th><th style="text-align:right">Entries</th><th style="text-align:right">Total Paid</th></tr></thead>
+      <thead><tr><th>{% trans "Department" %}</th><th style="text-align:right">{% trans "Entries" %}</th><th style="text-align:right">{% trans "Total Paid" %}</th></tr></thead>
       <tbody>
         {% for r in payroll_by_department %}
-          <tr><td>{{ r.department }}</td><td style="text-align:right">{{ r.count }}</td><td style="text-align:right">{{ currency_code }} {{ r.total|floatformat:0 }}</td></tr>
+          <tr><td>{% trans r.department %}</td><td style="text-align:right">{{ r.count }}</td><td style="text-align:right">{{ currency_code }} {{ r.total|floatformat:0 }}</td></tr>
         {% empty %}
-          <tr><td colspan="3" class="muted">No payroll entries.</td></tr>
+          <tr><td colspan="3" class="muted">{% trans "No payroll entries." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card">
-    <h3>Payroll by Role</h3>
+    <h3>{% trans "Payroll by Role" %}</h3>
     <table class="data">
-      <thead><tr><th>Role</th><th style="text-align:right">Total</th></tr></thead>
+      <thead><tr><th>{% trans "Role" %}</th><th style="text-align:right">{% trans "Total" %}</th></tr></thead>
       <tbody>
         {% for r in payroll_by_role %}
           <tr><td>{{ r.role }}</td><td style="text-align:right">{{ currency_code }} {{ r.total|floatformat:0 }}</td></tr>
         {% empty %}
-          <tr><td colspan="2" class="muted">No payroll entries.</td></tr>
+          <tr><td colspan="2" class="muted">{% trans "No payroll entries." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card">
-    <h3>Mining Production</h3>
+    <h3>{% trans "Mining Production" %}</h3>
     <table class="data">
-      <thead><tr><th>Mineral</th><th style="text-align:right">Quantity</th><th style="text-align:right">Hours</th></tr></thead>
+      <thead><tr><th>{% trans "Mineral" %}</th><th style="text-align:right">{% trans "Quantity" %}</th><th style="text-align:right">{% trans "Hours" %}</th></tr></thead>
       <tbody>
         {% for r in mining_by_mineral %}
           <tr>
@@ -228,17 +229,17 @@
             <td style="text-align:right">{{ r.hours|floatformat:1 }}</td>
           </tr>
         {% empty %}
-          <tr><td colspan="3" class="muted">No mining entries.</td></tr>
+          <tr><td colspan="3" class="muted">{% trans "No mining entries." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>
   </section>
 
   <section class="card" style="grid-column: 1 / -1">
-    <h3>Outstanding Invoices (top 20 by balance)</h3>
+    <h3>{% trans "Outstanding Invoices (top 20 by balance)" %}</h3>
     <table class="data">
       <thead>
-        <tr><th>Invoice</th><th>Client</th><th>Issued</th><th style="text-align:right">Total</th><th style="text-align:right">Paid</th><th style="text-align:right">Balance</th></tr>
+        <tr><th>{% trans "Invoice" %}</th><th>{% trans "Client" %}</th><th>{% trans "Issued" %}</th><th style="text-align:right">{% trans "Total" %}</th><th style="text-align:right">{% trans "Paid" %}</th><th style="text-align:right">{% trans "Balance" %}</th></tr>
       </thead>
       <tbody>
         {% for inv in outstanding_invoices %}
@@ -251,7 +252,7 @@
             <td style="text-align:right"><strong>{{ currency_code }} {{ inv.balance|floatformat:0 }}</strong></td>
           </tr>
         {% empty %}
-          <tr><td colspan="6" class="muted">No outstanding invoices.</td></tr>
+          <tr><td colspan="6" class="muted">{% trans "No outstanding invoices." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>

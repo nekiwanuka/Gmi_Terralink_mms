@@ -1,19 +1,20 @@
 {% extends "base.html" %}
-{% block title %}Receive PO {{ po.code }}{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Receive PO" %} {{ po.code }}{% endblock %}
 {% block content %}
-<h2>Receive — {{ po.code }}</h2>
-<p style="margin-bottom:12px">Supplier: <strong>{{ po.supplier.name }}</strong></p>
-<p class="muted" style="margin-bottom:12px">All received stock lands in the <strong>Main Warehouse</strong>. Set or update the item's classification and prices below.</p>
+<h2>{% trans "Receive" %} — {{ po.code }}</h2>
+<p style="margin-bottom:12px">{% trans "Supplier" %}: <strong>{{ po.supplier.name }}</strong></p>
+<p class="muted" style="margin-bottom:12px">{% blocktrans %}All received stock lands in the <strong>Main Warehouse</strong>. Set or update the item's classification and prices below.{% endblocktrans %}</p>
 <div class="panel">
 <form method="post">
   {% csrf_token %}
   <table>
     <thead>
       <tr>
-        <th>Item</th><th>Ordered</th>
-        <th>Received</th><th>Damaged</th><th>Missing</th>
-        <th>Category</th><th>Brand</th>
-        <th>Buy @</th><th>Sell @</th>
+        <th>{% trans "Item" %}</th><th>{% trans "Ordered" %}</th>
+        <th>{% trans "Received" %}</th><th>{% trans "Damaged" %}</th><th>{% trans "Missing" %}</th>
+        <th>{% trans "Category" %}</th><th>{% trans "Brand" %}</th>
+        <th>{% trans "Buy @" %}</th><th>{% trans "Sell @" %}</th>
       </tr>
     </thead>
     <tbody>
@@ -47,8 +48,8 @@
     </tbody>
   </table>
   <div class="form-actions" style="margin-top:14px">
-    <button type="submit" class="btn btn-primary">Confirm Receiving</button>
-    <a href="/procurement/" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-primary">{% trans "Confirm Receiving" %}</button>
+    <a href="/procurement/" class="btn btn-secondary">{% trans "Cancel" %}</a>
   </div>
 </form>
 </div>

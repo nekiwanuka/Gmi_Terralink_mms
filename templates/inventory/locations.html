@@ -1,53 +1,54 @@
 {% extends "base.html" %}
-{% block title %}Locations{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Locations" %}{% endblock %}
 {% block content %}
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-  <h2>Storage Locations</h2>
+  <h2>{% trans "Storage Locations" %}</h2>
   <div style="display:flex;gap:.5rem">
-    <a href="/inventory/" class="btn btn-secondary btn-sm">Stock Items</a>
-    <a href="/inventory/transfer/" class="btn btn-secondary btn-sm">Transfer</a>
-    <a href="/inventory/adjust/" class="btn btn-secondary btn-sm">Adjust</a>
-    <a href="/inventory/movements/" class="btn btn-secondary btn-sm">Movements</a>
+    <a href="/inventory/" class="btn btn-secondary btn-sm">{% trans "Stock Items" %}</a>
+    <a href="/inventory/transfer/" class="btn btn-secondary btn-sm">{% trans "Transfer" %}</a>
+    <a href="/inventory/adjust/" class="btn btn-secondary btn-sm">{% trans "Adjust" %}</a>
+    <a href="/inventory/movements/" class="btn btn-secondary btn-sm">{% trans "Movements" %}</a>
   </div>
 </div>
 
 <div class="panel">
-  <h3 style="margin-top:0">Add Location</h3>
+  <h3 style="margin-top:0">{% trans "Add Location" %}</h3>
   <form method="post" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.5rem;align-items:end">
     {% csrf_token %}
-    <div class="form-group"><label>Name</label><input name="name" required /></div>
-    <div class="form-group"><label>Code</label><input name="code" required placeholder="e.g. WH-A or SHELF-12" /></div>
+    <div class="form-group"><label>{% trans "Name" %}</label><input name="name" required /></div>
+    <div class="form-group"><label>{% trans "Code" %}</label><input name="code" required placeholder="{% trans 'e.g. WH-A or SHELF-12' %}" /></div>
     <div class="form-group">
-      <label>Kind</label>
+      <label>{% trans "Kind" %}</label>
       <select name="kind">
-        {% for k,_ in kind_choices %}<option value="{{ k }}">{{ k }}</option>{% endfor %}
+        {% for k,_ in kind_choices %}<option value="{{ k }}">{% trans k %}</option>{% endfor %}
       </select>
     </div>
     <div class="form-group">
-      <label>Parent (optional)</label>
+      <label>{% trans "Parent (optional)" %}</label>
       <select name="parent">
-        <option value="">— None —</option>
+        <option value="">— {% trans "None" %} —</option>
         {% for loc in locations %}<option value="{{ loc.pk }}">{{ loc.code }} ({{ loc.kind }})</option>{% endfor %}
       </select>
     </div>
-    <button class="btn btn-primary" type="submit">Add</button>
+    <button class="btn btn-primary" type="submit">{% trans "Add" %}</button>
   </form>
 </div>
 
 <div class="panel">
 <table>
-  <thead><tr><th>Code</th><th>Name</th><th>Kind</th><th>Parent</th><th>Default WH</th></tr></thead>
+  <thead><tr><th>{% trans "Code" %}</th><th>{% trans "Name" %}</th><th>{% trans "Kind" %}</th><th>{% trans "Parent" %}</th><th>{% trans "Default WH" %}</th></tr></thead>
   <tbody>
     {% for loc in locations %}
     <tr>
       <td><strong>{{ loc.code }}</strong></td>
       <td>{{ loc.name }}</td>
-      <td>{{ loc.kind }}</td>
+      <td>{% trans loc.kind %}</td>
       <td>{% if loc.parent %}{{ loc.parent.code }}{% else %}—{% endif %}</td>
-      <td>{% if loc.is_default_warehouse %}<span class="badge badge-green">Default</span>{% endif %}</td>
+      <td>{% if loc.is_default_warehouse %}<span class="badge badge-green">{% trans "Default" %}</span>{% endif %}</td>
     </tr>
     {% empty %}
-    <tr><td colspan="5" style="text-align:center;padding:20px">No locations yet.</td></tr>
+    <tr><td colspan="5" style="text-align:center;padding:20px">{% trans "No locations yet." %}</td></tr>
     {% endfor %}
   </tbody>
 </table>

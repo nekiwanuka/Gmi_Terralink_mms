@@ -1,17 +1,18 @@
 {% extends "base.html" %}
-{% block title %}Notice Board{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Notice Board" %}{% endblock %}
 {% block content %}
 <div class="page-header">
   <div>
-    <h2>Notice Board</h2>
-    <p class="muted">Post tasks between departments and mark them done when completed.</p>
+    <h2>{% trans "Notice Board" %}</h2>
+    <p class="muted">{% trans "Post tasks between departments and mark them done when completed." %}</p>
   </div>
-  <span class="badge {% if my_open_count %}badge-yellow{% else %}badge-green{% endif %}">{{ my_open_count }} assigned to you</span>
+  <span class="badge {% if my_open_count %}badge-yellow{% else %}badge-green{% endif %}">{{ my_open_count }} {% trans "assigned to you" %}</span>
 </div>
 
 <div class="grid notice-board-grid">
   <div class="panel">
-    <h3>New Task</h3>
+    <h3>{% trans "New Task" %}</h3>
     <form method="post" class="form-grid">
       {% csrf_token %}
       {% for field in form %}
@@ -22,22 +23,22 @@
         </label>
       {% endfor %}
       <div class="form-actions" style="justify-content:flex-start">
-        <button type="submit" class="btn btn-primary">Send Task</button>
+        <button type="submit" class="btn btn-primary">{% trans "Send Task" %}</button>
       </div>
     </form>
   </div>
 
   <div class="panel">
-    <h3>Tasks</h3>
+    <h3>{% trans "Tasks" %}</h3>
     <table>
       <thead>
         <tr>
-          <th>Task</th>
-          <th>To</th>
-          <th>From</th>
-          <th>Status</th>
-          <th>When</th>
-          <th style="width:130px">Action</th>
+          <th>{% trans "Task" %}</th>
+          <th>{% trans "To" %}</th>
+          <th>{% trans "From" %}</th>
+          <th>{% trans "Status" %}</th>
+          <th>{% trans "When" %}</th>
+          <th style="width:130px">{% trans "Action" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -46,15 +47,15 @@
           <td>
             <strong>{{ task.title }}</strong>
             {% if task.details %}<p class="muted" style="margin-top:4px">{{ task.details }}</p>{% endif %}
-            {% if task.completed_at %}<p class="muted" style="margin-top:4px">Done by {{ task.completed_by|default:"-" }} on {{ task.completed_at|date:"Y-m-d H:i" }}</p>{% endif %}
+            {% if task.completed_at %}<p class="muted" style="margin-top:4px">{% blocktrans with completed_by=task.completed_by|default:"-" completed_at=task.completed_at|date:"Y-m-d H:i" %}Done by {{ completed_by }} on {{ completed_at }}{% endblocktrans %}</p>{% endif %}
           </td>
           <td>{{ task.target_label }}</td>
           <td>{{ task.created_by|default:"-" }}</td>
           <td>
             {% if task.is_done %}
-              <span class="badge badge-green">Done</span>
+              <span class="badge badge-green">{% trans "Done" %}</span>
             {% else %}
-              <span class="badge badge-yellow">Open</span>
+              <span class="badge badge-yellow">{% trans "Open" %}</span>
             {% endif %}
           </td>
           <td>{{ task.created_at|date:"Y-m-d H:i" }}</td>
@@ -62,7 +63,7 @@
             {% if task.can_mark_done %}
               <form method="post" action="{% url 'notice_task_done' task.pk %}">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-primary btn-sm">Mark Done</button>
+                <button type="submit" class="btn btn-primary btn-sm">{% trans "Mark Done" %}</button>
               </form>
             {% else %}
               <span class="muted">-</span>
@@ -70,7 +71,7 @@
           </td>
         </tr>
         {% empty %}
-        <tr><td colspan="6" style="text-align:center;padding:20px">No tasks posted yet.</td></tr>
+        <tr><td colspan="6" style="text-align:center;padding:20px">{% trans "No tasks posted yet." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>

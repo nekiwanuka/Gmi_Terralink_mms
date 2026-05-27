@@ -1,64 +1,65 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
 <h2>{{ title }}</h2>
 <div class="panel form-panel">
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
-  <h3>Product Identity</h3>
+  <h3>{% trans "Product Identity" %}</h3>
   <div class="form-row">
     <div>
-      <label class="form-label">Item Name</label>{{ form.name }}
+      <label class="form-label">{% trans "Item Name" %}</label>{{ form.name }}
     </div>
     <div>
-      <label class="form-label">SKU / Product Code</label>{{ form.sku }}
+      <label class="form-label">{% trans "SKU / Product Code" %}</label>{{ form.sku }}
       {% if form.sku.errors %}<span style="color:red">{{ form.sku.errors }}</span>{% endif %}
     </div>
-    <div><label class="form-label">Barcode</label>{{ form.barcode }}</div>
+    <div><label class="form-label">{% trans "Barcode" %}</label>{{ form.barcode }}</div>
   </div>
   <div class="form-row">
     <div>
-      <label class="form-label">Item Description</label>{{ form.description }}
+      <label class="form-label">{% trans "Item Description" %}</label>{{ form.description }}
     </div>
   </div>
-  <h3>Classification</h3>
+  <h3>{% trans "Classification" %}</h3>
   <div class="form-row">
-    <div><label class="form-label">Category</label>{{ form.category }}</div>
-    <div><label class="form-label">Category Record</label>{{ form.category_ref }}</div>
-    <div><label class="form-label">Brand</label>{{ form.brand }}</div>
+    <div><label class="form-label">{% trans "Category" %}</label>{{ form.category }}</div>
+    <div><label class="form-label">{% trans "Category Record" %}</label>{{ form.category_ref }}</div>
+    <div><label class="form-label">{% trans "Brand" %}</label>{{ form.brand }}</div>
   </div>
   <div class="form-row">
-    <div><label class="form-label">Unit of Measure</label>{{ form.unit }}</div>
-    <div><label class="form-label">Weight or Volume</label>{{ form.weight_or_volume }}</div>
-    <div><label class="form-label">Supplier</label>{{ form.supplier }}</div>
+    <div><label class="form-label">{% trans "Unit of Measure" %}</label>{{ form.unit }}</div>
+    <div><label class="form-label">{% trans "Weight or Volume" %}</label>{{ form.weight_or_volume }}</div>
+    <div><label class="form-label">{% trans "Supplier" %}</label>{{ form.supplier }}</div>
   </div>
-  <h3>Tracking &amp; Dates</h3>
+  <h3>{% trans "Tracking & Dates" %}</h3>
   <div class="form-row">
-    <div><label class="form-label">Batch Number</label>{{ form.batch_number }}</div>
-    <div><label class="form-label">Date of Stock</label>{{ form.date_stocked }}</div>
-    <div><label class="form-label">Expiry Date</label>{{ form.expiry_date }}</div>
+    <div><label class="form-label">{% trans "Batch Number" %}</label>{{ form.batch_number }}</div>
+    <div><label class="form-label">{% trans "Date of Stock" %}</label>{{ form.date_stocked }}</div>
+    <div><label class="form-label">{% trans "Expiry Date" %}</label>{{ form.expiry_date }}</div>
   </div>
   <div class="form-row compact-row">
-    <label class="checkline">{{ form.serial_number_tracking }} Serial Number Tracking</label>
+    <label class="checkline">{{ form.serial_number_tracking }} {% trans "Serial Number Tracking" %}</label>
   </div>
-  <h3>Pricing &amp; Stock</h3>
+  <h3>{% trans "Pricing & Stock" %}</h3>
   <div class="form-row">
-    <div><label class="form-label">Purchase Cost ({{ currency_code }})</label>{{ form.unit_cost }}</div>
-    <div><label class="form-label">Selling Price ({{ currency_code }})</label>{{ form.selling_price }}</div>
-    <div><label class="form-label">Quantity Stocked</label>{{ form.quantity_stocked }}</div>
-  </div>
-  <div class="form-row">
-    <div><label class="form-label">Reorder Level</label>{{ form.reorder_level }}</div>
-    <div><label class="form-label">Warehouse Location</label>{{ form.warehouse_location }}</div>
-    <div><label class="form-label">Shelf Position</label>{{ form.warehouse_position }}</div>
+    <div><label class="form-label">{% trans "Purchase Cost" %} ({{ currency_code }})</label>{{ form.unit_cost }}</div>
+    <div><label class="form-label">{% trans "Selling Price" %} ({{ currency_code }})</label>{{ form.selling_price }}</div>
+    <div><label class="form-label">{% trans "Quantity Stocked" %}</label>{{ form.quantity_stocked }}</div>
   </div>
   <div class="form-row">
-    <div><label class="form-label">Product Image</label>{{ form.product_image }}</div>
-    <div><label class="form-label">Status</label>{{ form.status }}</div>
+    <div><label class="form-label">{% trans "Reorder Level" %}</label>{{ form.reorder_level }}</div>
+    <div><label class="form-label">{% trans "Warehouse Location" %}</label>{{ form.warehouse_location }}</div>
+    <div><label class="form-label">{% trans "Shelf Position" %}</label>{{ form.warehouse_position }}</div>
+  </div>
+  <div class="form-row">
+    <div><label class="form-label">{% trans "Product Image" %}</label>{{ form.product_image }}</div>
+    <div><label class="form-label">{% trans "Status" %}</label>{{ form.status }}</div>
   </div>
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary">Save Stock</button>
-    <a href="/inventory/" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-primary">{% trans "Save Stock" %}</button>
+    <a href="/inventory/" class="btn btn-secondary">{% trans "Cancel" %}</a>
   </div>
 </form>
 </div>

@@ -1,13 +1,14 @@
 {% extends "base.html" %}
-{% block title %}Stock Movements{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Stock Movements" %}{% endblock %}
 {% block content %}
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-  <h2>Stock Movements (Audit Trail)</h2>
+  <h2>{% trans "Stock Movements (Audit Trail)" %}</h2>
   <div style="display:flex;gap:.5rem">
-    <a href="/inventory/" class="btn btn-secondary btn-sm">Stock Items</a>
-    <a href="/inventory/locations/" class="btn btn-secondary btn-sm">Locations</a>
-    <a href="/inventory/transfer/" class="btn btn-secondary btn-sm">+ Transfer</a>
-    <a href="/inventory/adjust/" class="btn btn-secondary btn-sm">+ Adjust</a>
+    <a href="/inventory/" class="btn btn-secondary btn-sm">{% trans "Stock Items" %}</a>
+    <a href="/inventory/locations/" class="btn btn-secondary btn-sm">{% trans "Locations" %}</a>
+    <a href="/inventory/transfer/" class="btn btn-secondary btn-sm">+ {% trans "Transfer" %}</a>
+    <a href="/inventory/adjust/" class="btn btn-secondary btn-sm">+ {% trans "Adjust" %}</a>
   </div>
 </div>
 
@@ -15,8 +16,8 @@
 <table>
   <thead>
     <tr>
-      <th>When</th><th>Kind</th><th>Item</th><th>Movement</th><th>Stock After</th>
-      <th>From</th><th>To</th><th>Reference</th><th>Note</th><th>By</th>
+      <th>{% trans "When" %}</th><th>{% trans "Kind" %}</th><th>{% trans "Item" %}</th><th>{% trans "Movement" %}</th><th>{% trans "Stock After" %}</th>
+      <th>{% trans "From" %}</th><th>{% trans "To" %}</th><th>{% trans "Reference" %}</th><th>{% trans "Note" %}</th><th>{% trans "By" %}</th>
     </tr>
   </thead>
   <tbody>
@@ -25,7 +26,7 @@
       <td>{{ m.created_at|date:"d M Y H:i" }}</td>
       <td>
         <span class="badge {% if m.kind == 'Purchase' %}badge-green{% elif m.kind == 'Sale' %}badge-red{% elif m.kind == 'Transfer' %}badge-yellow{% else %}badge-secondary{% endif %}">
-          {{ m.kind }}
+          {% trans m.kind %}
         </span>
       </td>
       <td>{{ m.item.sku }} — {{ m.item.name }}</td>
@@ -35,7 +36,7 @@
         {% elif m.signed_quantity < 0 %}
           <span class="badge badge-red">{{ m.signed_quantity }}</span>
         {% else %}
-          <span class="badge badge-yellow">Transfer {{ m.quantity }}</span>
+          <span class="badge badge-yellow">{% trans "Transfer" %} {{ m.quantity }}</span>
         {% endif %}
         {{ m.item.unit }}
       </td>
@@ -43,21 +44,21 @@
       <td>
         {% if m.source %}
           {{ m.source.code }}
-          <div class="muted">After: {{ m.source_stock_after }} {{ m.item.unit }}</div>
+          <div class="muted">{% trans "After" %}: {{ m.source_stock_after }} {{ m.item.unit }}</div>
         {% else %}—{% endif %}
       </td>
       <td>
         {% if m.destination %}
           {{ m.destination.code }}
-          <div class="muted">After: {{ m.destination_stock_after }} {{ m.item.unit }}</div>
+          <div class="muted">{% trans "After" %}: {{ m.destination_stock_after }} {{ m.item.unit }}</div>
         {% else %}—{% endif %}
       </td>
       <td>{{ m.reference }}</td>
       <td style="max-width:240px">{{ m.note }}</td>
-      <td>{% if m.user %}{{ m.user.username }}{% else %}system{% endif %}</td>
+      <td>{% if m.user %}{{ m.user.username }}{% else %}{% trans "system" %}{% endif %}</td>
     </tr>
     {% empty %}
-    <tr><td colspan="10" style="text-align:center;padding:20px">No movements recorded yet.</td></tr>
+    <tr><td colspan="10" style="text-align:center;padding:20px">{% trans "No movements recorded yet." %}</td></tr>
     {% endfor %}
   </tbody>
 </table>

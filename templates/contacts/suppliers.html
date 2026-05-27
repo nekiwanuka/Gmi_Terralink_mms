@@ -1,41 +1,42 @@
 {% extends "base.html" %}
-{% block title %}Suppliers{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Suppliers" %}{% endblock %}
 {% block content %}
-<h2>Suppliers</h2>
+<h2>{% trans "Suppliers" %}</h2>
 <div class="grid">
   <div class="panel form-panel">
-    <h3>Add Supplier</h3>
+    <h3>{% trans "Add Supplier" %}</h3>
     <form method="post">
       {% csrf_token %}
       <div class="form-row">
-        <div><label class="form-label">Name</label>{{ form.name }}</div>
-        <div><label class="form-label">Country</label>{{ form.country }}</div>
+        <div><label class="form-label">{% trans "Name" %}</label>{{ form.name }}</div>
+        <div><label class="form-label">{% trans "Country" %}</label>{{ form.country }}</div>
       </div>
       <div class="form-row">
-        <div><label class="form-label">Contact Person</label>{{ form.contact_person }}</div>
-        <div><label class="form-label">Payment Terms</label>{{ form.payment_terms }}</div>
+        <div><label class="form-label">{% trans "Contact Person" %}</label>{{ form.contact_person }}</div>
+        <div><label class="form-label">{% trans "Payment Terms" %}</label>{{ form.payment_terms }}</div>
       </div>
       <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Add Supplier</button>
+        <button type="submit" class="btn btn-primary">{% trans "Add Supplier" %}</button>
       </div>
     </form>
   </div>
 
   <div class="panel">
-    <h3>All Suppliers</h3>
+    <h3>{% trans "All Suppliers" %}</h3>
     <table>
-      <thead><tr><th>Name</th><th>Country</th><th>Contact</th><th>Terms</th><th></th></tr></thead>
+      <thead><tr><th>{% trans "Name" %}</th><th>{% trans "Country" %}</th><th>{% trans "Contact" %}</th><th>{% trans "Terms" %}</th><th></th></tr></thead>
       <tbody>
         {% for s in suppliers %}
         <tr>
           <td>{{ s.name }}</td>
-          <td>{{ s.country }}</td>
+          <td>{% trans s.country %}</td>
           <td>{{ s.contact_person }}</td>
           <td>{{ s.payment_terms }}</td>
-          <td><a href="/contacts/suppliers/{{ s.pk }}/edit/" class="btn btn-secondary btn-sm">Edit</a></td>
+          <td><a href="/contacts/suppliers/{{ s.pk }}/edit/" class="btn btn-secondary btn-sm">{% trans "Edit" %}</a></td>
         </tr>
         {% empty %}
-        <tr><td colspan="5">No suppliers yet.</td></tr>
+        <tr><td colspan="5">{% trans "No suppliers yet." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>

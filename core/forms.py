@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
 from .models import (
     Brand,
@@ -47,13 +48,13 @@ class InventoryItemForm(_StyledMixin, forms.ModelForm):
     )
 
     UNIT_CHOICES = [
-        ("Piece", "Piece"),
-        ("Box", "Box"),
-        ("Kg", "Kg"),
-        ("Litre", "Litre"),
-        ("Metre", "Metre"),
-        ("Pack", "Pack"),
-        ("Set", "Set"),
+        ("Piece", _("Piece")),
+        ("Box", _("Box")),
+        ("Kg", _("Kg")),
+        ("Litre", _("Litre")),
+        ("Metre", _("Metre")),
+        ("Pack", _("Pack")),
+        ("Set", _("Set")),
     ]
 
     unit = forms.ChoiceField(choices=UNIT_CHOICES)
@@ -69,8 +70,8 @@ class InventoryItemForm(_StyledMixin, forms.ModelForm):
                 Location.KIND_SHELF,
             ]
         ).order_by("kind", "name")
-        self.fields["warehouse_location"].empty_label = "Main Warehouse"
-        self.fields["supplier"].empty_label = "No supplier selected"
+        self.fields["warehouse_location"].empty_label = _("Main Warehouse")
+        self.fields["supplier"].empty_label = _("No supplier selected")
         if self.instance and self.instance.pk:
             self.fields["quantity_stocked"].initial = 0
 
@@ -184,7 +185,7 @@ class NoticeTaskForm(_StyledMixin, forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["target_role"].choices = [
-            (value, "Director / Owner" if value == "Owner" else label)
+            (value, _("Director / Owner") if value == "Owner" else label)
             for value, label in self.fields["target_role"].choices
         ]
 
@@ -192,9 +193,9 @@ class NoticeTaskForm(_StyledMixin, forms.ModelForm):
         model = NoticeTask
         fields = ["target_role", "title", "details"]
         labels = {
-            "target_role": "Send to",
-            "title": "Task",
-            "details": "Details",
+            "target_role": _("Send to"),
+            "title": _("Task"),
+            "details": _("Details"),
         }
         widgets = {
             "details": forms.Textarea(attrs={"rows": 3}),
