@@ -80,6 +80,13 @@ from .serializers import (
     SalesOrderSerializer,
     SupplierSerializer,
 )
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
+def workflow_view(request):
+    return render(request, "workflow.html")
+
 
 # ---------- DRF ViewSets (API kept intact) ----------
 

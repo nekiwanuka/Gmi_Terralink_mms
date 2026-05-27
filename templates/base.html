@@ -68,6 +68,7 @@
     <span class="nav-section">{% trans "Main" %}</span>
     <a href="/" {% if request.resolver_match.url_name == 'dashboard' %}class="active"{% endif %}>{% trans "Dashboard" %}</a>
     <a href="/notice-board/" {% if '/notice-board/' in request.path %}class="active"{% endif %}>{% trans "Notice Board" %}</a>
+    <a href="{% url 'workflow' %}" {% if request.resolver_match.url_name == 'workflow' %}class="active"{% endif %}>{% trans "Workflow" %}</a>
 
     {% if user_role in "Owner,Admin,General Manager,Sales,Sales Attendant,Store Manager,Finance" %}
     <span class="nav-section">{% trans "Sales" %}</span>

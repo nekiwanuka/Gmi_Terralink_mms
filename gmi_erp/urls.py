@@ -66,6 +66,7 @@ from core.views import (
     stock_transfer,
     switch_currency,
     warehouse_receive,
+    workflow_view,
 )
 
 router = DefaultRouter()
@@ -190,6 +191,7 @@ urlpatterns = [
     path(
         "documents/quotation/<int:pk>/", quotation_document, name="quotation_document"
     ),
+    path("workflow/", workflow_view, name="workflow"),
 ]
 
 urlpatterns += [

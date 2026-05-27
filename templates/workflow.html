@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "System Workflow" %} - {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <h2>{% trans "System Workflow & User Manual" %}</h2>
+    <p class="muted">{% trans "A guide on how the GMI Mining Management System works." %}</p>
+  </div>
+</div>
+
+<div class="panel form-panel">
+  <div style="padding: 20px; line-height: 1.6;">
+    
+    <h2>1. {% trans "Introduction" %}</h2>
+    <p>{% trans "The GMI Mining Management System is a comprehensive ERP solution designed to manage the various operations of a mining company. It includes modules for inventory management, sales, procurement, payroll, and mining-specific activities." %}</p>
+
+    <h2 style="margin-top: 2em;">2. {% trans "Core Modules" %}</h2>
+    <p>{% trans "The system is divided into several core modules, each handling a specific business function:" %}</p>
+    <ul>
+      <li><strong>{% trans "Dashboard" %}:</strong> {% trans "Provides a high-level overview of the business with key performance indicators (KPIs)." %}</li>
+      <li><strong>{% trans "Inventory" %}:</strong> {% trans "Manage your products, stock levels, locations, and transfers." %}</li>
+      <li><strong>{% trans "Sales" %}:</strong> {% trans "Create and manage customer invoices, payments, and receipts." %}</li>
+      <li><strong>{% trans "Procurement" %}:</strong> {% trans "Manage supplier purchase orders and track incoming stock." %}</li>
+      <li><strong>{% trans "Mining" %}:</strong> {% trans "Record daily mining activities, including labor and equipment costs." %}</li>
+      <li><strong>{% trans "Payroll" %}:</strong> {% trans "Manage employee payroll, including deductions and allowances." %}</li>
+      <li><strong>{% trans "Contacts" %}:</strong> {% trans "Manage your clients and suppliers." %}</li>
+      <li><strong>{% trans "Reports" %}:</strong> {% trans "Generate various reports for sales, expenses, and inventory." %}</li>
+      <li><strong>{% trans "Settings" %}:</strong> {% trans "Configure your business profile, currency, and other system settings." %}</li>
+    </ul>
+
+    <h2 style="margin-top: 2em;">3. {% trans "Basic Workflows" %}</h2>
+    <p>{% trans "This section describes the basic steps for common tasks in the system." %}</p>
+
+    <h3 style="margin-top: 1.5em;">3.1. {% trans "Creating a Sale" %}</h3>
+    <ol>
+      <li><strong>{% trans "Navigate to Sales" %}:</strong> {% trans "From the sidebar, click on 'Sales' to go to the sales list page." %}</li>
+      <li><strong>{% trans "Create a New Invoice" %}:</strong> {% trans "Click on the 'New Invoice' button." %}</li>
+      <li><strong>{% trans "Select a Client" %}:</strong> {% trans "Choose an existing client or create a new one." %}</li>
+      <li><strong>{% trans "Add Items" %}:</strong> {% trans "Add items from your inventory to the invoice. Specify the quantity and price." %}</li>
+      <li><strong>{% trans "Save the Invoice" %}:</strong> {% trans "Once all the details are entered, save the invoice." %}</li>
+      <li><strong>{% trans "Record Payment" %}:</strong> {% trans "After the invoice is created, you can record a payment against it." %}</li>
+    </ol>
+
+    <h3 style="margin-top: 1.5em;">3.2. {% trans "Adding a New Inventory Item" %}</h3>
+    <ol>
+      <li><strong>{% trans "Navigate to Inventory" %}:</strong> {% trans "From the sidebar, click on 'Inventory'." %}</li>
+      <li><strong>{% trans "Create a New Item" %}:</strong> {% trans "Click on the 'New Item' button." %}</li>
+      <li><strong>{% trans "Fill in Details" %}:</strong> {% trans "Provide the item name, category, cost price, selling price, and other relevant details." %}</li>
+      <li><strong>{% trans "Save the Item" %}:</strong> {% trans "Click 'Save' to add the new item to your inventory." %}</li>
+    </ol>
+
+    <h3 style="margin-top: 1.5em;">3.3. {% trans "Recording a Mining Entry" %}</h3>
+    <ol>
+      <li><strong>{% trans "Navigate to Mining" %}:</strong> {% trans "From the sidebar, click on 'Mining'." %}</li>
+      <li><strong>{% trans "Create a New Entry" %}:</strong> {% trans "Click on 'New Mining Entry'." %}</li>
+      <li><strong>{% trans "Enter Details" %}:</strong> {% trans "Fill in the details for the mining activity, including the date, site, and costs." %}</li>
+      <li><strong>{% trans "Save the Entry" %}:</strong> {% trans "Save the entry to record the mining activity." %}</li>
+    </ol>
+
+    <h2 style="margin-top: 2em;">4. {% trans "User Roles and Permissions" %}</h2>
+    <p>{% trans "The system has different user roles with specific permissions:" %}</p>
+    <ul>
+      <li><strong>{% trans "Admin" %}:</strong> {% trans "Has full access to all modules and settings." %}</li>
+      <li><strong>{% trans "Manager" %}:</strong> {% trans "Can access most modules but has limited access to system settings." %}</li>
+      <li><strong>{% trans "Staff" %}:</strong> {% trans "Has limited access, typically to the sales and inventory modules." %}</li>
+    </ul>
+
+    <p style="margin-top: 2em;"><em>{% trans "This is a basic overview of how to use the system. For more detailed information on specific features, please refer to the relevant sections of the application." %}</em></p>
+  </div>
+</div>
+{% endblock %}
